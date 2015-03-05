@@ -8,7 +8,7 @@ namespace eManager.Domain
 {
     public interface IDepartmentDataSource
     {
-        public IQueryable<Employee> Employees { get;}
-        public IQueryable<Department> Departments { get;}
+        IQueryable<Employee> Employees { get;}
+        IQueryable<Department> Departments { get;}
     }
 }

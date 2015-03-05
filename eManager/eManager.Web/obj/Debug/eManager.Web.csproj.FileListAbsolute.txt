@@ -84,3 +84,5 @@ C:\work\ASP.net\eManager\eManager.Web\bin\zh-Hant\System.Spatial.resources.dll
 C:\work\ASP.net\eManager\eManager.Web\obj\Debug\eManager.Web.csprojResolveAssemblyReference.cache
 C:\work\ASP.net\eManager\eManager.Web\obj\Debug\eManager.Web.dll
 C:\work\ASP.net\eManager\eManager.Web\obj\Debug\eManager.Web.pdb
+C:\work\ASP.net\eManager\eManager.Web\bin\eManager.Domain.dll
+C:\work\ASP.net\eManager\eManager.Web\bin\eManager.Domain.pdb

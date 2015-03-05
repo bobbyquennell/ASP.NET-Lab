@@ -8,7 +8,7 @@ namespace eManager.Domain
 {
     public class Employee
     {
-        public int EmployeeId { get; set; }
-        public string Name { get; set; }
+        public virtual int EmployeeId { get; set; }
+        public virtual string Name { get; set; }
     }
 }
