@@ -1,5 +1,6 @@
 namespace eManager.Web.Migrations
 {
+    using eManager.Domain;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,24 @@ namespace eManager.Web.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Departments.AddOrUpdate(
+                    d => d.Name,
+                    new Department()
+                    {
+                        Name = "Engineering"
+                    },
+                    new Department()
+                    {
+                        Name = "Sales"
+                    },
+                    new Department()
+                    {
+                        Name = "Human Resources"
+                    },
+                    new Department()
+                    {
+                        Name = "Shipping"
+                    });
         }
     }
 }
