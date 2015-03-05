@@ -86,3 +86,7 @@ C:\work\ASP.net\eManager\eManager.Web\obj\Debug\eManager.Web.dll
 C:\work\ASP.net\eManager\eManager.Web\obj\Debug\eManager.Web.pdb
 C:\work\ASP.net\eManager\eManager.Web\bin\eManager.Domain.dll
 C:\work\ASP.net\eManager\eManager.Web\bin\eManager.Domain.pdb
+C:\work\ASP.net\eManager\eManager.Web\bin\StructureMap.dll
+C:\work\ASP.net\eManager\eManager.Web\bin\WebActivator.dll
+C:\work\ASP.net\eManager\eManager.Web\bin\StructureMap.pdb
+C:\work\ASP.net\eManager\eManager.Web\bin\StructureMap.xml
