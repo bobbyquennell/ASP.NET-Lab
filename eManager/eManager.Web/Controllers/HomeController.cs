@@ -1,4 +1,6 @@
-﻿using System;
+﻿using eManager.Domain;
+using eManager.Web.Infrasructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,18 @@ namespace eManager.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IDepartmentDataSource _db;
+       // private IDepartmentDataSource _db = new DepartmentDb(); 
+        //if you want the controller only knows about the IDepartmentDataSource,remove the hard code dependency above,
+        //define a new contructor like this:
+        public HomeController(IDepartmentDataSource db)
+        {
+            _db = db;
+        }
         public ActionResult Index()
         {
-            return View();
+            var AllDepartments = _db.Departments;
+            return View(AllDepartments);
         }
 
         public ActionResult About()

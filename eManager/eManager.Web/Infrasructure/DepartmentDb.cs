@@ -7,6 +7,8 @@ using System.Web;
 
 namespace eManager.Web.Infrasructure
 {
+    //IdepartmentDataSource: I dont' want the controllers to know about the DepartmentDb directly,I want them to do data access through the interface defination
+    // that just make the controller more testable, when I go into unit test in this modules, that makes them more decoulped and flexible.
     public class DepartmentDb:DbContext, IDepartmentDataSource
     {
         public DepartmentDb()
