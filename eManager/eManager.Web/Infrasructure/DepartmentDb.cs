@@ -9,6 +9,11 @@ namespace eManager.Web.Infrasructure
 {
     public class DepartmentDb:DbContext, IDepartmentDataSource
     {
+        public DepartmentDb()
+            : base("name=DepartmentDb")
+        {
+
+        }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
 
