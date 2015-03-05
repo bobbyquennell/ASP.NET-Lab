@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eManager.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +9,15 @@ namespace eManager.Web.Controllers
 {
     public class DepartmentController : Controller
     {
-        //
-        // GET: /Department/
-
-        public ActionResult Index()
+        private readonly IDepartmentDataSource _db;
+        public DepartmentController(IDepartmentDataSource db)
         {
-            return View();
+            _db = db;
+        }
+        public ActionResult Detail(int DepartmentId)
+        {
+            var model = _db.Departments.Single(d => d.DepartmentId == DepartmentId);
+            return View(model);
         }
 
     }
