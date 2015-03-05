@@ -1,0 +1,5 @@
+C:\work\ASP.net\eManager\eManager.Domain\bin\Debug\eManager.Domain.dll
+C:\work\ASP.net\eManager\eManager.Domain\bin\Debug\eManager.Domain.pdb
+C:\work\ASP.net\eManager\eManager.Domain\obj\Debug\eManager.Domain.csprojResolveAssemblyReference.cache
+C:\work\ASP.net\eManager\eManager.Domain\obj\Debug\eManager.Domain.dll
+C:\work\ASP.net\eManager\eManager.Domain\obj\Debug\eManager.Domain.pdb
