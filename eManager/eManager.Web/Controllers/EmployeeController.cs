@@ -8,6 +8,7 @@ using eManager.Domain;
 
 namespace eManager.Web.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class EmployeeController : Controller
     {
         private IDepartmentDataSource _db;
