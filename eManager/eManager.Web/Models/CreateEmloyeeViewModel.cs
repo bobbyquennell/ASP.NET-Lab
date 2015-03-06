@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace eManager.Web.Models
 {
@@ -12,8 +14,26 @@ namespace eManager.Web.Models
      * that way no one can sneak in anything on you.*/
     public class CreateEmloyeeViewModel
     {
+        /*The other nice thing I can do with the view model is 
+         * I can mark it up with presentation concerns. For instance,
+         * I can add metadata, I've been talking about how the HTML 
+         * helpers look at metadata on an object. What's metadata? 
+         * Well, it's typically attributes, attributes by default.*/
+        [HiddenInput(DisplayValue=false)]
+        /**For instance, I can tell the MVC runtime that DepartmentId should be HiddenInput, 
+         * it's not something that the user needs to edit, 
+         * but it does need to be embedded in the form in an input type equals hidden.*/
         public int DepartmentId { get; set; }
+        /* There's also validation attributes. So I can say that the name is a 
+         * required field. MVC runtime will automatically do 
+         * validation to make sure that was populated. 
+         * You can also do range validations and regular 
+         * expression matching for your validation.*/
+        [Required]
         public string Name { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime HireDate { get; set; }
     }
 }
