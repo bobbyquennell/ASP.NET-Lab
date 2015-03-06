@@ -5,4 +5,20 @@
 }
 
 <h2>@Model.Name</h2>
-<div>@Html.ActionLink("Create an Employee", "Create", "Employee", new{ departmentId = Model.DepartmentId}, null)</div>
+<div>@Html.ActionLink("Create an Employee", "Create", "Employee", new {departmentId = Model.DepartmentId}, null)</div>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Hire Date</th>
+    </tr>
+    @foreach (var employee in Model.Employees)
+    {
+        <tr>
+            <td>@employee.Name</td>
+            <td>@employee.HireDate</td>
+        </tr>
+
+    }
+</table>
+
+

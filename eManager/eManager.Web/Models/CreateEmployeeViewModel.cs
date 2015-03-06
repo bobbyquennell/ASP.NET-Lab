@@ -12,7 +12,7 @@ namespace eManager.Web.Models
      * from a user, so that you have these objects view models that will only contain 
      * properties for the information that you expect from the user, 
      * that way no one can sneak in anything on you.*/
-    public class CreateEmloyeeViewModel
+    public class CreateEmployeeViewModel
     {
         /*The other nice thing I can do with the view model is 
          * I can mark it up with presentation concerns. For instance,
@@ -34,6 +34,7 @@ namespace eManager.Web.Models
 
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyy}", ApplyFormatInEditMode = true)]
         public DateTime HireDate { get; set; }
     }
 }
