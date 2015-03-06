@@ -4,19 +4,5 @@
     ViewBag.Title = "Detail";
 }
 
-<h2>Department Detail</h2>
-
-<fieldset>
-    <legend>Department</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.DepartmentId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<h2>@Model.Name</h2>
+<div>@Html.ActionLink("Create an Employee", "Create", "Employee", new{ departmentId = Model.DepartmentId}, null)</div>
