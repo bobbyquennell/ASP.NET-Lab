@@ -90,3 +90,5 @@ C:\work\ASP.net\eManager\eManager.Web\bin\StructureMap.dll
 C:\work\ASP.net\eManager\eManager.Web\bin\WebActivator.dll
 C:\work\ASP.net\eManager\eManager.Web\bin\StructureMap.pdb
 C:\work\ASP.net\eManager\eManager.Web\bin\StructureMap.xml
+C:\work\ASP.net\eManager\eManager.Web\bin\Antlr3.Runtime.pdb
+C:\work\ASP.net\eManager\eManager.Web\bin\System.Web.Optimization.xml
