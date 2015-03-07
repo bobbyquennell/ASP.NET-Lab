@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using eManager.Web.Models;
 
 namespace eManager.Web.Infrasructure
 {
@@ -18,6 +19,7 @@ namespace eManager.Web.Infrasructure
         }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
         void IDepartmentDataSource.Save()
         {
@@ -32,5 +34,6 @@ namespace eManager.Web.Infrasructure
         {
             get { return Departments; }
         }
+
     }
 }

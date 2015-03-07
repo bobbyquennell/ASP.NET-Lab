@@ -1,3 +1,6 @@
+using System.Web.Security;
+using WebMatrix.WebData;
+
 namespace eManager.Web.Migrations
 {
     using eManager.Domain;
@@ -28,23 +31,47 @@ namespace eManager.Web.Migrations
             //    );
             //
             context.Departments.AddOrUpdate(
-                    d => d.Name,
-                    new Department()
-                    {
-                        Name = "Engineering"
-                    },
-                    new Department()
-                    {
-                        Name = "Sales"
-                    },
-                    new Department()
-                    {
-                        Name = "Human Resources"
-                    },
-                    new Department()
-                    {
-                        Name = "Shipping"
-                    });
+                d => d.Name,
+                new Department()
+                {
+                    Name = "Engineering"
+                },
+                new Department()
+                {
+                    Name = "Sales"
+                },
+                new Department()
+                {
+                    Name = "Human Resources"
+                },
+                new Department()
+                {
+                    Name = "Shipping"
+                });
+            SeedMemebership();
+        }
+
+        private void SeedMemebership()
+        {
+            WebSecurity.InitializeDatabaseConnection("DepartmentDb", "UserProfile", "UserId", "UserName",
+                autoCreateTables: true);
+            var roles = (SimpleRoleProvider) Roles.Provider;
+            var membership = (SimpleMembershipProvider) Membership.Provider;
+            if (!Roles.RoleExists("admin"))
+            {
+                Roles.CreateRole("admin");
+            }
+            if (membership.GetUser("bobbyquennell", false) == null)
+            {
+                membership.CreateUserAndAccount("bobbyquennell", "1234567");
+            }
+            if (!roles.GetRolesForUser("bobbyquennell").Contains("admin"))
+            {
+                roles.AddUsersToRoles(new[] {"bobbyquennell"}, new[]
+                {
+                    "admin"
+                });
+            }
         }
     }
 }
