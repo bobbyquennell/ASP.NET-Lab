@@ -28,6 +28,7 @@ namespace eManager.Web.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreateEmployeeViewModel viewModel)
         {
             if (ModelState.IsValid)
