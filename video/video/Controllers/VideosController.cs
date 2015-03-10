@@ -39,9 +39,20 @@ namespace Videos.Controllers
         }
 
         // POST api/video
-        public Video Post(Video video)
+        public HttpResponseMessage Post(Video video)
         {
-            return video;
+            if (ModelState.IsValid)
+            {
+                db.Videos.Add(video);
+                db.SaveChanges();
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, video);
+                response.Headers.Location = new Uri(Url.Link("DefaultApi",new { id = video.VideoId }));
+                return response;
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
 
         // PUT api/video/5
