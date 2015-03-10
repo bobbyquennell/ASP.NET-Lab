@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -43,8 +45,26 @@ namespace Videos.Controllers
         }
 
         // PUT api/video/5
-        public void PutVideo(int id, [FromBody]Video video)
+        public HttpResponseMessage PutVideo(int id, Video video)
         {
+            if (ModelState.IsValid && id == video.VideoId)
+            {
+                db.Entry(video).State = EntityState.Modified;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
+                return Request.CreateResponse(HttpStatusCode.OK,video);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
 
         }
 

@@ -16,7 +16,7 @@
         </thead>
         <tbody>
         {{#each video}}
-        <tr data-id={{Id}}>
+        <tr data-id={{VideoId}}>
             <td>{{Title}}</td>
             <td>{{Length}}</td>
             <td>
@@ -31,7 +31,7 @@
 <script id="videoEdit" type="text/html">
     <hr/>
     <form>
-        <input type="hidden" name="id" id="id" value="{{Id}}"/>
+        <input type="hidden" name="id" id="id" value="{{VideoId}}"/>
         <label for="title">Title:</label>
         <input type="text" name="Title" id="title" required value="{{Title}}"/>
         <label for="length">Length</label>
@@ -54,8 +54,8 @@
             var getVideo = function(id) {
                 return $.ajax(videoApiUrl + "/" + id);
             };
-            var updateVideo = function(video) {
-                return $.ajax(videoApiUrl + "/" + video.id, {
+            var updateVideo = function (video) {
+                return $.ajax(videoApiUrl + "/" + video.VideoId, {
                     type: "PUT",
                     data: video
                 });
@@ -63,7 +63,8 @@
 
             return {
                 getVideos: getVideos,
-                getVideo: getVideo
+                getVideo: getVideo,
+                updateVideo: updateVideo
             }
         }());
         (function () {
@@ -92,7 +93,7 @@
             }
             var saveVideo = function() {
                 var video = {
-                    "Id": $("#id").val(),
+                    "VideoId": $("#id").val(),
                     "Title": $("#title").val(),
                     "Length": $("#length").val()
                 };
