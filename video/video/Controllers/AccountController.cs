@@ -8,10 +8,10 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using video.Filters;
-using video.Models;
+using Videos.Filters;
+using Videos.Models;
 
-namespace video.Controllers
+namespace Videos.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]

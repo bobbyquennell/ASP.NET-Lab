@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
-using video.Models;
+using Videos.Models;
 
-namespace video
+namespace Videos
 {
     public static class AuthConfig
     {
