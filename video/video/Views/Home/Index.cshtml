@@ -68,12 +68,18 @@
                     data: video
                 });
             };
+            var deletVideo = function(id) {
+                return $.ajax(videoApiUrl + "/" + id, {
+                    type: "DELETE"
+                });
+            };
 
             return {
                 getVideos: getVideos,
                 getVideo: getVideo,
                 updateVideo: updateVideo,
-                addVideo: addVideo
+                addVideo: addVideo,
+                deletVideo: deletVideo
             }
         }());
         (function () {
@@ -121,10 +127,15 @@
                 var video = { VideoId: 0, Title: "", Length: 0 };
                 showVideoForEdit(video);
             };
+            var deleteVideo = function() {
+                var id = getId(this);
+                videoServer.deletVideo(id).done(refreshVideos);
+            };
             var wireEvents = function() {
                 $(document).on("click", ".editVideo", editVideo);
                 $(document).on("click", "#saveVideo", saveVideo);
                 $(document).on("click", "#createVideo", createVideo);
+                $(document).on("click", ".deleteVideo", deleteVideo);
             }
             var getId = function(element) {
                 return $(element).parents("tr").attr("data-id");
