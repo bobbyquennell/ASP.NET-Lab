@@ -2,6 +2,9 @@
     ViewBag.Title = "Home Page";
 }
 <div id="videoTableOutput">
+
+</div>
+<div id="videoEditOutput">
     
 </div>
 <script id="videoTable" type="text/html">
@@ -21,9 +24,20 @@
                 <button class="deleteVideo">Delete</button>
             </td>
         </tr>
-            {{/each}}
+        {{/each}}
         </tbody>
     </table>
+</script>
+<script id="videoEdit" type="text/html">
+    <hr/>
+    <form>
+        <input type="hidden" name="id" id="id" value="{{Id}}"/>
+        <label for="title">Title:</label>
+        <input type="text" name="Title" id="title" required value="{{Title}}"/>
+        <label for="length">Length</label>
+        <input type="number" min="0" max="200" name="Length" id="length" value="{{Length}}"/>
+        <input type="submit" id="saveVideo"/>
+    </form>
 </script>
 @section scripts
 {
@@ -37,14 +51,26 @@
             var getVideos = function() {
                 return $.ajax(videoApiUrl);
             };
+            var getVideo = function(id) {
+                return $.ajax(videoApiUrl + "/" + id);
+            };
+            var updateVideo = function(video) {
+                return $.ajax(videoApiUrl + "/" + video.id, {
+                    type: "PUT",
+                    data: video
+                });
+            };
+
             return {
                 getVideos: getVideos,
+                getVideo: getVideo
             }
         }());
         (function () {
             var templates = {};
             var compileTemplates = function() {
                 templates.videoTable = Handlebars.compile($("#videoTable").html());
+                templates.videoEdit = Handlebars.compile($("#videoEdit").html());
             }
             var showAllVideos = function(data) {
                 var output = templates.videoTable({ video: data });
@@ -53,8 +79,35 @@
             var refreshVideos = function() {
                 videoServer.getVideos().done(showAllVideos);
             };
-
+            var showVideoForEdit = function (video) {
+                var output = templates.videoEdit(video);
+                $("#videoEditOutput").html(output);
+            };
+            var editVideo = function() {
+                var id = getId(this);
+                videoServer.getVideo(id).done(showVideoForEdit);
+            }
+            var clearEdit = function() {
+                $("#videoEditOutput").empty();
+            }
+            var saveVideo = function() {
+                var video = {
+                    "Id": $("#id").val(),
+                    "Title": $("#title").val(),
+                    "Length": $("#length").val()
+                };
+                videoServer.updateVideo(video).done(refreshVideos, clearEdit);
+                return false;
+            };
+            var wireEvents = function() {
+                $(document).on("click", ".editVideo", editVideo);
+                $(document).on("click", "#saveVideo", saveVideo);
+            }
+            var getId = function(element) {
+                return $(element).parents("tr").attr("data-id");
+            };
             $(function () {
+                wireEvents();
                 compileTemplates();
                 refreshVideos();
             });

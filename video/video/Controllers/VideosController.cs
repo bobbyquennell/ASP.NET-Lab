@@ -26,9 +26,14 @@ namespace Videos.Controllers
         }
 
         // GET api/video/5
-        public string Get(int id)
+        public Video Get(int id)
         {
-            return "value" + " " + id.ToString();
+            var video = db.Videos.Find(id);
+            if (video == null)
+            {
+                throw  new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            }
+            return video;
         }
 
         // POST api/video
@@ -38,8 +43,9 @@ namespace Videos.Controllers
         }
 
         // PUT api/video/5
-        public void Put(int id, [FromBody]string value)
+        public void PutVideo(int id, [FromBody]Video video)
         {
+
         }
 
         // DELETE api/video/5
