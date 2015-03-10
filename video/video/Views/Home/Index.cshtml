@@ -4,9 +4,11 @@
 <div id="videoTableOutput">
 
 </div>
+<button id="createVideo">Create Video</button>
 <div id="videoEditOutput">
-    
+
 </div>
+
 <script id="videoTable" type="text/html">
     <table>
         <thead>
@@ -60,11 +62,18 @@
                     data: video
                 });
             };
+            var addVideo = function(video) {
+                return $.ajax(videoApiUrl, {
+                    type: "POST",
+                    data: video
+                });
+            };
 
             return {
                 getVideos: getVideos,
                 getVideo: getVideo,
-                updateVideo: updateVideo
+                updateVideo: updateVideo,
+                addVideo: addVideo
             }
         }());
         (function () {
@@ -97,12 +106,25 @@
                     "Title": $("#title").val(),
                     "Length": $("#length").val()
                 };
-                videoServer.updateVideo(video).done(refreshVideos, clearEdit);
+                //create a new video or just update existing video
+                var operation;
+                if (video.VideoId !== "0") {
+                    operation = videoServer.updateVideo(video);
+                } else {
+                    operation = videoServer.addVideo(video);
+                }
+                operation.done(refreshVideos, clearEdit);
+                
                 return false;
+            };
+            var createVideo = function() {
+                var video = { VideoId: 0, Title: "", Length: 0 };
+                showVideoForEdit(video);
             };
             var wireEvents = function() {
                 $(document).on("click", ".editVideo", editVideo);
                 $(document).on("click", "#saveVideo", saveVideo);
+                $(document).on("click", "#createVideo", createVideo);
             }
             var getId = function(element) {
                 return $(element).parents("tr").attr("data-id");
