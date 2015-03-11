@@ -1,0 +1,33 @@
+﻿@model IEnumerable<IDisplayMode>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>DisplayModes</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>CanHandleContext</th>
+        </tr>
+        @foreach (var mode in Model)
+        {
+            <tr>
+                <td>
+                    @mode.DisplayModeId
+                </td>
+                <td>
+                    @mode.CanHandleContext(ViewContext.HttpContext)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>
