@@ -11,7 +11,7 @@ namespace TaskParallelLibraryTest
     {
         static void Main(string[] args)
         {
-            var task = Task.Factory.StartNew<int>(SlowOperation);
+            var task = SlowOperationAsync();
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(i);
@@ -21,10 +21,11 @@ namespace TaskParallelLibraryTest
             Console.ReadKey();
         }
 
-        private static int SlowOperation()
+        private static async Task<int> SlowOperationAsync()
         {
             Console.WriteLine("Slow operation started on {0}", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
+            await Task.Delay(2000);
             Console.WriteLine("Slow operation complete on {0}",Thread.CurrentThread.ManagedThreadId);
             return 42;
         }
