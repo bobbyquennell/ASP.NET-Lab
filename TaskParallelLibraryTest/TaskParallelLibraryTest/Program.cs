@@ -11,17 +11,17 @@ namespace TaskParallelLibraryTest
     {
         static void Main(string[] args)
         {
-            var result = SlowOperation();
+            var task = Task.Factory.StartNew<int>(SlowOperation);
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(i);
             }
-            Console.WriteLine("Slow operation result:{0}", result);
+            Console.WriteLine("Slow operation result:{0}", task.Result);
             Console.WriteLine("Main complete on {0}", Thread.CurrentThread.ManagedThreadId);
             Console.ReadKey();
         }
 
-        private static object SlowOperation()
+        private static int SlowOperation()
         {
             Console.WriteLine("Slow operation started on {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(2000);
