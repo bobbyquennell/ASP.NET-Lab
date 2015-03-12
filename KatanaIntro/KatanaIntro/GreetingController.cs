@@ -11,7 +11,7 @@ namespace KatanaIntro
     {
         public Greeting Get()
         {
-            return new Greeting{Text = "Hello World!!"};
+            return new Greeting{Text = "Hello World!!greetings fro greeting Controller"};
         }
     }
 }

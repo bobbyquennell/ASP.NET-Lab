@@ -18,21 +18,21 @@ namespace KatanaIntro
      * have this using apply across multiple source code files so anywhere that you want to 
      * use the AppFunc, you'll have to define this using.*/
     using AppFunc = Func<IDictionary<string, object>, Task>;
-    class Program
-    {
+    //class Program
+    //{
 
-        static void Main(string[] args)
-        {
-            string uri = "http://localhost:8080";
-            using (WebApp.Start<Startup>(uri))
-            {
-                Console.WriteLine("Started!");
-                Console.ReadKey();
-                Console.WriteLine("Stopping!");
-            }
+    //    static void Main(string[] args)
+    //    {
+    //        string uri = "http://localhost:8080";
+    //        using (WebApp.Start<Startup>(uri))
+    //        {
+    //            Console.WriteLine("Started!");
+    //            Console.ReadKey();
+    //            Console.WriteLine("Stopping!");
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     public class Startup
     {
@@ -45,7 +45,9 @@ namespace KatanaIntro
                 await next();
                 Console.WriteLine("Response : " + environment.Response.StatusCode);
             });
+
             ConfigureWebApi(app);
+
             //Respond("Hello!!")
             app.UseHelloWorld();// same as app.Use<HelloWorldComponent>();
 
@@ -53,11 +55,8 @@ namespace KatanaIntro
 
         private void ConfigureWebApi(IAppBuilder app)
         {
-            var config = new HttpConfiguration();
-            config.Routes.MapHttpRoute(
-                "DefaultApi",
-                "api/{controller}/{id}",
-                new { id = RouteParameter.Optional });
+            HttpConfiguration config = new HttpConfiguration();
+            config.Routes.MapHttpRoute("DefaultApi","api/{controller}/{id}",new { id = RouteParameter.Optional });
             app.UseWebApi(config);
 
         }
