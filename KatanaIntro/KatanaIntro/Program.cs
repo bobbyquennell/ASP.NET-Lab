@@ -37,12 +37,21 @@ namespace KatanaIntro
     {
         public void Configuration(IAppBuilder app)
         {
-            //app.UseWelcomePage();
-            //app.Run(ctx =>
-            //{
-            //    return ctx.Response.WriteAsync("Hello World!");
+            //app.Use(async (environment, next) =>
+            //{   //Dump Enviroment
+            //    foreach (var pair in environment.Environment)
+            //    {
+            //        Console.WriteLine("{0}:{1}", pair.Key, pair.Value);
+            //    }
+            //    await next();
             //});
-            //app.Use<HelloWorldComponent>();
+            app.Use(async (environment, next) =>
+            {   //Write Request.Path
+                Console.WriteLine("Requesting : " + environment.Request.Path);
+                await next();
+                Console.WriteLine("Response : " + environment.Response.StatusCode);
+            });
+            //Respond("Hello!!")
             app.UseHelloWorld();// same as app.Use<HelloWorldComponent>();
         }
 
