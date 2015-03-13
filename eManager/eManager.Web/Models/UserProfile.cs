@@ -7,6 +7,11 @@ using System.Web;
 
 namespace eManager.Web.Models
 {
+    //this UserProfile definition comes from AccountModels.cs, we just want more control of the membership in MVC4
+     // we also delete the definition of UserContext in AccountModel.cs, and move the SQL server table of UserProfile to our Own
+    // DepartmentDb.cs. see more details about this 
+    // in scott allen's course: 
+    //Building Applications with ASP.NET MVC4\7 Security and ASP.NET MVC4\5 Taking Control of Membership
     [Table("UserProfile")]
     public class UserProfile
     {
