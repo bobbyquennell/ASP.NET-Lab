@@ -39,6 +39,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Glimpse.Ado">
+      <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.AspNet">
+      <HintPath>..\packages\Glimpse.AspNet.1.9.2\lib\net45\Glimpse.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core">
+      <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.EF6">
+      <HintPath>..\packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc5">
+      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -167,13 +182,22 @@
     <Compile Include="DataContext\BooksMigrations\201503170209093_InitialCreate.Designer.cs">
       <DependentUpon>201503170209093_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataContext\BooksMigrations\201503172217160_DefaultSchema.cs" />
+    <Compile Include="DataContext\BooksMigrations\201503172217160_DefaultSchema.Designer.cs">
+      <DependentUpon>201503172217160_DefaultSchema.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataContext\BooksMigrations\Configuration.cs" />
     <Compile Include="DataContext\IdentityDb.cs" />
     <Compile Include="DataContext\IdentityMigrations\201503170206305_InitialCreate.cs" />
     <Compile Include="DataContext\IdentityMigrations\201503170206305_InitialCreate.Designer.cs">
       <DependentUpon>201503170206305_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataContext\IdentityMigrations\201503172218144_DefaultSchema.cs" />
+    <Compile Include="DataContext\IdentityMigrations\201503172218144_DefaultSchema.Designer.cs">
+      <DependentUpon>201503172218144_DefaultSchema.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataContext\IdentityMigrations\Configuration.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -267,8 +291,14 @@
     <EmbeddedResource Include="DataContext\BooksMigrations\201503170209093_InitialCreate.resx">
       <DependentUpon>201503170209093_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataContext\BooksMigrations\201503172217160_DefaultSchema.resx">
+      <DependentUpon>201503172217160_DefaultSchema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataContext\IdentityMigrations\201503170206305_InitialCreate.resx">
       <DependentUpon>201503170206305_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContext\IdentityMigrations\201503172218144_DefaultSchema.resx">
+      <DependentUpon>201503172218144_DefaultSchema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

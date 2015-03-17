@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Books.Web.Models;
+using System.Data.Entity;
 
 namespace Books.Web.DataContext
 {
@@ -17,6 +18,11 @@ namespace Books.Web.DataContext
         public static IdentityDb Create()
         {
             return new IdentityDb();
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("identity");
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
