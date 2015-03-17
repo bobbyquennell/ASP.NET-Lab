@@ -1,0 +1,22 @@
+﻿@using Books.Entities
+@using Books.Web.Helpers
+@{
+    //var items = new List<SelectListItem>();
+    //items.Add(new SelectListItem { Text = "Action" });
+    /*This would be one way to do it and just by hand create select list items whose text is equal to some value and whose value is equal to a genre value, 
+    like 0, 1, 2, 3. But the obvious draw back here is that if anyone goes in and adds an additional genre, they'll have to remember to come into 
+     * this template and add a new select list item. 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * So instead of building this manually, 
+     * what I would like to do is somehow build that information using the enum type. 
+    In other words, I would actually like to reflect over the genre type and find out what names are inside of here and what values are associated with each name. */
+    var items = typeof(Genre).GetItems((int?)Model);
+    
+}
+@Html.DropDownList("", items)
