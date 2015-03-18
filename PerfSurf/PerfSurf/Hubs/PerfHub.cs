@@ -12,5 +12,11 @@ namespace PerfSurf.Hubs
         {
             Clients.All.Hello("Hi!");
         }
+        public void Send(string message)
+        {
+            Clients.All.newMessage(
+                Context.User.Identity.Name + " says " + message
+                );
+        }
     }
 }
