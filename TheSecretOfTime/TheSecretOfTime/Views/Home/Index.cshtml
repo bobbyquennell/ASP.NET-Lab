@@ -1,35 +1,45 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+    <div class="row">
+        <div class="col-md-3">
+            <h1>The Secret of Time</h1>
 
 
-<div class="row">
-    <div class="col-md-12">
-        <h1>The Secret of Time</h1>
+        </div>
+        <div class="col-md-4 col-md-offset-1 analog-clock">
+            <svg width="300" height="300">
+                <circle class="clock-face" cx="150" cy="150" r="145" fill="transparent"></circle>
+                <circle class="clock-face" cx="150" cy="150" r="5"></circle>
+                @*<polygon class="clock-hand" id="m-hand" points="146 150, 154 150, 150 20" />
+                    <polygon class="clock-hand" id="h-hand" points="150 146, 150 154, 60 150" />
+                    <polygon class="clock-hand" id="s-hand" points="150 149, 150 151, 10 171" />*@
+                <polygon class="clock-hand" id="m-hand" points="146 150, 154 150, 150 15" />
+                <polygon class="clock-hand" id="h-hand" points="146 150, 154 150, 150 60" />
+                <polygon class="clock-hand" id="s-hand" points="149 165, 151 165, 150,10" />
+                @*<line class="clock-hand" id="s-tail" x1="150" y1="150" x2="150" y2="180" />*@
 
 
-    </div>
-    <div class="col-md-offset-4 analog-clock">
-        <svg width="300" height="300">
-            <circle class="clock-face" cx="150" cy="150" r="145" fill="transparent"></circle>
-            <circle class="clock-face" cx="150" cy="150" r="5"></circle>
-            @*<polygon class="clock-hand" id="m-hand" points="146 150, 154 150, 150 20" />
-            <polygon class="clock-hand" id="h-hand" points="150 146, 150 154, 60 150" />
-            <polygon class="clock-hand" id="s-hand" points="150 149, 150 151, 10 171" />*@
-            <polygon class="clock-hand" id="m-hand" points="146 150, 154 150, 150 15" />
-            <polygon class="clock-hand" id="h-hand" points="146 150, 154 150, 150 60" />
-            <polygon class="clock-hand" id="s-hand" points="149 165, 151 165, 150,10" />
-            @*<line class="clock-hand" id="s-tail" x1="150" y1="150" x2="150" y2="180" />*@
-
-
-        </svg>
-        <div class="time-txt">
-            <span></span>
+            </svg>
+            <div class="time-txt">
+                <span></span>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-12">
-        <h1>Enter Your Age</h1>
-        <button type="button" class="btn btn-danger btn-lg btn-go">GO</button>
-    </div>
+<div class="enter-your-age">
+        <div class=" row">
+            <div class="col-md-4 col-md-offset-5">
+                    <form>
+                        <div class="group">
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Enter Your Age</label>
+                        </div>
+                    </form>
+                
+            </div>
+            <div class="col-md-2"><button type="button" class="btn btn-danger btn-lg btn-go">GO</button></div>
+        </div>
 </div>
