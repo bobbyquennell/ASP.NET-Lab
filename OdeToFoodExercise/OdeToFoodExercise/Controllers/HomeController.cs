@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OdeToFoodExercise.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,9 +19,12 @@ namespace OdeToFoodExercise.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
-            ViewBag.Location = "Maryland, USA";
+            //ViewBag.Location = "Maryland, USA";
+            var model = new AboutModel();
+            model.Name = "Bobby";
+            model.Location = "Melbourne, Australia";
 
-            return View();
+            return View(model);
         }
 
         public ActionResult Contact()
