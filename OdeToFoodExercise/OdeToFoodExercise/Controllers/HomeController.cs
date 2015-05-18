@@ -18,6 +18,7 @@ namespace OdeToFoodExercise.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
+            ViewBag.Location = "Maryland, USA";
 
             return View();
         }
