@@ -17,7 +17,8 @@ namespace OdeToFoodExercise.Controllers
             //var name = RouteData.Values["name"];
             //var message = String.Format("the parameter is: {0}", name);
             //return View();
-            return Content(name);
+            var encodedMessage = Server.HtmlEncode(name);
+            return Content(encodedMessage);
         }
 
     }
