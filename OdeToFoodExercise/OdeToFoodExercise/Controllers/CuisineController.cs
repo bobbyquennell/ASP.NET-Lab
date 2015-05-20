@@ -11,7 +11,7 @@ namespace OdeToFoodExercise.Controllers
         //
         // GET: /Cuisine/
 
-        public ActionResult Search(string name)
+        public ActionResult Search(string name = "French")
         {   
              
             //var name = RouteData.Values["name"];
