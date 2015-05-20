@@ -11,13 +11,13 @@ namespace OdeToFoodExercise.Controllers
         //
         // GET: /Cuisine/
 
-        public ActionResult Search()
+        public ActionResult Search(string name)
         {   
              
-            var name = RouteData.Values["name"];
-            var message = String.Format("the parameter is: {0}", name);
+            //var name = RouteData.Values["name"];
+            //var message = String.Format("the parameter is: {0}", name);
             //return View();
-            return Content(message);
+            return Content(name);
         }
 
     }
