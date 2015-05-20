@@ -13,7 +13,7 @@ namespace OdeToFoodExercise
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Cuisine", "cuisine/{name}", new { controller = "Cuisine", action = "search", name = "" });
+            routes.MapRoute("Cuisine", "cuisine/{name}", new { controller = "Cuisine", action = "search", name = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Default",
