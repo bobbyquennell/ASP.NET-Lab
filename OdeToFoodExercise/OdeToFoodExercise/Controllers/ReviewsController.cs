@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OdeToFoodExercise.Models;
 
 namespace OdeToFoodExercise.Controllers
 {
@@ -101,5 +102,39 @@ namespace OdeToFoodExercise.Controllers
                 return View();
             }
         }
+        //add some in-memory data here to work with, so we don't focus on data access, and we can focus on views right now
+        // using a static list with example data：
+        static List<RestaurantReview> _reviews = new List<RestaurantReview>
+        {
+            new RestaurantReview{
+                Id = 1,
+                Name = "Cinnamon Club",
+                City = "Melbourne",
+                Country = "Australia",
+                Rating = 10,
+            },
+            new RestaurantReview{
+                Id = 1,
+                Name = "Cinnamon Club2",
+                City = "Melbourne",
+                Country = "Australia",
+                Rating = 10,
+            },
+            new RestaurantReview{
+                Id = 1,
+                Name = "Cinnamon Club3",
+                City = "Melbourne",
+                Country = "Australia",
+                Rating = 10,
+            },
+            new RestaurantReview{
+                Id = 1,
+                Name = "Cinnamon Club4",
+                City = "Melbourne",
+                Country = "Australia",
+                Rating = 10,
+            },
+        };
+
     }
 }
