@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OdeToFoodExercise.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace OdeToFoodExercise.Controllers
 {
+    [Log]// using your own action filter: Log
     public class CuisineController : Controller
     {
         //
@@ -28,7 +30,7 @@ namespace OdeToFoodExercise.Controllers
         [HttpGet]
         public ActionResult Search()
         {
-
+            throw new Exception("Something terrible is happening!");
             return Content("Search!");
 
         }
