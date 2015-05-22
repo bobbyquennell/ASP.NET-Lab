@@ -14,7 +14,12 @@ namespace OdeToFoodExercise.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            //using LinQ to grab some in-memory static data for the view:
+            var model = from r in _reviews
+                        orderby r.Country
+                        select r;
+
+            return View(model);
         }
 
         //
