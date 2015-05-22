@@ -121,7 +121,8 @@ namespace OdeToFoodExercise.Controllers
             new RestaurantReview{
                 Id = 1,
                 Name = "Cinnamon Club2",
-                City = "Melbourne",
+                //City = "Melbourne",
+                City = "<script>alert('this is a cross-site scripting attack');</script>",//to demonstrate the cross-site scripting attack
                 Country = "Australia",
                 Rating = 10,
             },

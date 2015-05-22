@@ -34,7 +34,8 @@ we are showing the latest @Model.Count() reviews
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.City)
+            @*@Html.DisplayFor(modelItem => item.City)*@
+            @Html.Raw(item.City) @*This code is used to show how the cross-site scripting attack affects your site*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Country)
