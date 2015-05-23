@@ -2,8 +2,9 @@
 
 @{
     ViewBag.Title = "Index";
+    var firstReview = Model.First();//we can define a variable here then firstReview can be used in anywhere in this view.
 }
-
+@firstReview.Name
 <h2>The Latest Reviews</h2>
 we are showing the latest @Model.Count() reviews
 @VirtualPath
