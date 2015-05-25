@@ -11,7 +11,13 @@ namespace OdeToFoodExercise.Controllers
     {
         //
         // GET: /Reviews/
-
+        public ActionResult BestReviewRestaurant()
+        {
+            var restaurants = from r in _reviews
+                              orderby r.Rating descending
+                              select r;
+            return PartialView("_Review", restaurants.First());
+        }
         public ActionResult Index()
         {
             //using LinQ to grab some in-memory static data for the view:
