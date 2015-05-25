@@ -23,10 +23,12 @@
         <h4>@reviewItem.Name</h4>
         <span>@reviewItem.Rating</span>
         <p>@reviewItem.City, @reviewItem.Country</p>
+        <p>@Html.ActionLink("Edit","Edit",new { id = reviewItem.Id})</p>
     </div>
     
-}
+} 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
+ 
