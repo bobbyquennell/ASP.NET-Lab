@@ -33,13 +33,14 @@
         </div>
     </header>
     <div id="body">
-        @RenderSection("featured", required: true)@*we can set the required propterty of this rendersection to true
+       @* @RenderSection("featured", required: true)@*we can set the required propterty of this rendersection to true
         and that means the view require a section called: featured. if there is not featured section , error happens*@
         <section class="content-wrapper main-content clear-fix">
             @RenderBody()
         </section>
     </div>
     <footer>
+        @RenderSection("featured", required: true)
         <div class="content-wrapper">
             <div class="float-left">
                 <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>

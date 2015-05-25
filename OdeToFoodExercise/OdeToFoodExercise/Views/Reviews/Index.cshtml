@@ -8,7 +8,9 @@
 }
 @firstReview.Name
 <h2>The Latest Reviews</h2>
-we are showing the latest @Model.Count() reviews
+@section featured{
+    we are showing the latest @Model.Count() reviews
+}
 @VirtualPath
 
 @*Below is the second type of code block come with a foreach loop *@
