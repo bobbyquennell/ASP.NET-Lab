@@ -754,3 +754,17 @@ tr.pager td {
             margin: 0;
         }
 }
+/*add here for the 3.4 foreach type code block display in reviews view*/
+.review{
+    padding:5px;
+    margin:20px,0,20px,0;
+    border-bottom:5px solid black;
+    padding-bottom:10px;
+}
+.review h4{
+    background:lightcoral;
+    padding:5px;
+}
+.review p{
+    font-size:.8em;
+}
