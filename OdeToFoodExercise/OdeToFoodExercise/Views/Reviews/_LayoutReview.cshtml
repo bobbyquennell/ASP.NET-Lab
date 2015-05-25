@@ -27,6 +27,7 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Reviews","Index","Reviews")</li>
                     </ul>
                 </nav>
             </div>
@@ -40,9 +41,9 @@
         </section>
     </div>
     <footer>
-        @RenderSection("featured", required: true)
         <div class="content-wrapper">
             <div class="float-left">
+                @RenderSection("featured", required: true)
                 <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
             </div>
         </div>
