@@ -11,6 +11,7 @@ namespace OdeToFoodExercise.Controllers
     {
         //
         // GET: /Reviews/
+        [ChildActionOnly]//ChildActionOnly action filter will prohibit call the action with url in the browser
         public ActionResult BestReviewRestaurant()
         {
             var restaurants = from r in _reviews
