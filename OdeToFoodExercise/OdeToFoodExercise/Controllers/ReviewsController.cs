@@ -73,16 +73,13 @@ namespace OdeToFoodExercise.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add update logic here
-
+            
+            var review = _reviews.Single(r => r.Id == id);
+            if(TryUpdateModel(review)){
+                
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(review);
         }
 
         //
