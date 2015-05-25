@@ -61,7 +61,10 @@ namespace OdeToFoodExercise.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var review = _reviews.Single(r => r.Id == id);
+
+            
+            return View(review);
         }
 
         //
@@ -119,7 +122,7 @@ namespace OdeToFoodExercise.Controllers
                 Rating = 10,
             },
             new RestaurantReview{
-                Id = 1,
+                Id = 2,
                 Name = "Cinnamon Club2",
                 //City = "Melbourne",
                 City = "<script>alert('this is a cross-site scripting attack');</script>",//to demonstrate the cross-site scripting attack
@@ -127,14 +130,14 @@ namespace OdeToFoodExercise.Controllers
                 Rating = 10,
             },
             new RestaurantReview{
-                Id = 1,
+                Id = 3,
                 Name = "Cinnamon Club3",
                 City = "Melbourne",
                 Country = "Australia",
                 Rating = 10,
             },
             new RestaurantReview{
-                Id = 1,
+                Id = 4,
                 Name = "Cinnamon Club4",
                 City = "Melbourne",
                 Country = "Australia",
