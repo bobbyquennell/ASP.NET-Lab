@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
     var firstReview = Model.First();//we can define a variable here then firstReview can be used in anywhere in this view.
+    Layout = "~/Views/Reviews/_LayoutReview.cshtml";//besides the _ViewStart.cshtml file, we can also configure the Layout on the top of your view, 
+    //inside this code block.also you can set the Layout = null if your want
 }
 @firstReview.Name
 <h2>The Latest Reviews</h2>
