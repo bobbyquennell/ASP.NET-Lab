@@ -1,6 +1,8 @@
 namespace OdeToFoodExercise.Migrations
 {
+    using OdeToFoodExercise.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -9,7 +11,7 @@ namespace OdeToFoodExercise.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(OdeToFoodExercise.Models.OdeToFoodDb context)
@@ -26,6 +28,17 @@ namespace OdeToFoodExercise.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Restaurants.AddOrUpdate(
+                r => r.Name,
+                new Restaurant { Name="VietStar", City="Hawthorn", Country="Australia"},
+                new Restaurant { Name="Grill'd", City="Hawthorn", Country="Australia"},
+                new Restaurant { Name="ToroToro", City="Melbourne", Country="Australia",
+                                 Reviews = new List<RestaurantReview>
+                                 {
+                                     new RestaurantReview{ Rating=9, Body="Very Yummy!"}
+                                 }
+                }
+            );
         }
     }
 }
