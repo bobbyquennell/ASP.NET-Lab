@@ -25,7 +25,7 @@ namespace OdeToFoodExercise.Controllers
             //var model = _db.Restaurants.ToList();
             //using LINQ comprehensive syntax expression to order restaurants in alphabetic order
             var model = from r in _db.Restaurants
-                        orderby r.Name ascending
+                        orderby r.Reviews.Average(review => review.Rating) descending
                         select r;
 
             return View(model);
