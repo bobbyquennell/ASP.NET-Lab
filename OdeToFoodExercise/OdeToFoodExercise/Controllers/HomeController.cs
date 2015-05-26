@@ -22,7 +22,12 @@ namespace OdeToFoodExercise.Controllers
             ViewBag.Message = message;
             // this line of code below will go into the database, find all the restaurants
             //retrieve all of them and put them into a list.
-            var model = _db.Restaurants.ToList();
+            //var model = _db.Restaurants.ToList();
+            //using LINQ comprehensive syntax expression to order restaurants in alphabetic order
+            var model = from r in _db.Restaurants
+                        orderby r.Name ascending
+                        select r;
+
             return View(model);
         }
 
