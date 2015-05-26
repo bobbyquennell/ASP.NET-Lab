@@ -10,6 +10,7 @@ namespace OdeToFoodExercise.Models
     //and this class need to derived from a EF class named--DbContext
     public class OdeToFoodDb:DbContext
     {
+        public OdeToFoodDb() : base("name=OdeTOFoodDb") { }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<RestaurantReview> Reviews { get; set; }
     }
