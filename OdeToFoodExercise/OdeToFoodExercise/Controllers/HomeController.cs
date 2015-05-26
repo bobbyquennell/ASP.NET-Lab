@@ -11,7 +11,7 @@ namespace OdeToFoodExercise.Controllers
     {
         //in order to show how to use the EF, suppose we want to show  restaurants from the database
         //in the home page.
-           //First, before using the database, we instanciate the OdeToFoodDb firstly.
+        //First, before using the database, we instanciate the OdeToFoodDb firstly.
         OdeToFoodDb _db = new OdeToFoodDb();
         public ActionResult Index()
         {
@@ -26,13 +26,13 @@ namespace OdeToFoodExercise.Controllers
             //using LINQ comprehensive syntax expression to order restaurants in alphabetic order
             var model = from r in _db.Restaurants
                         orderby r.Reviews.Average(review => review.Rating) descending
-                        select new
+                        select new RestaurantListViewModel
                         {
-                            r.Id,
-                            r.Name,
-                            r.City,
-                            r.Country,
-                            NumberOfReviews = r.Reviews.Count()
+                            Id = r.Id,
+                            Name = r.Name,
+                            City = r.City,
+                            Country = r.Country,
+                            CountOfReviews = r.Reviews.Count()
                         };
 
             return View(model);

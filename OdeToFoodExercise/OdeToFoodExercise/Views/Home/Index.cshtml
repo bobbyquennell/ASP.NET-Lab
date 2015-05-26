@@ -1,5 +1,5 @@
 ﻿@*in order to use the restaurants model sent from home controller here, we need to include the model firstly, as shown below*@
-@model IEnumerable<OdeToFoodExercise.Models.Restaurant>
+@model IEnumerable<OdeToFoodExercise.Models.RestaurantListViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -9,6 +9,7 @@
     <div>
         <h4>@item.Name</h4>
         <div>@item.City, @item.Country</div>
+        <div>Reviews:@item.CountOfReviews</div>
         <hr />
     </div>
 }
