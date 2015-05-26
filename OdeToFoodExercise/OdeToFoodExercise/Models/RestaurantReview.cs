@@ -11,6 +11,7 @@ namespace OdeToFoodExercise.Models
         public int Id { get; set; }
         public int Rating { get; set; }
         public string Body { get; set; }
+        public string Reviewer { get; set; }
         public int RestaurantId { get; set; }// add to restaurant id here will help to create
         //the relationship between the reviews and the restaurant
 

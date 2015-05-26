@@ -35,7 +35,7 @@ namespace OdeToFoodExercise.Migrations
                 new Restaurant { Name="ToroToro", City="Melbourne", Country="Australia",
                                  Reviews = new List<RestaurantReview>
                                  {
-                                     new RestaurantReview{ Rating=9, Body="Very Yummy!"}
+                                     new RestaurantReview{ Rating=9, Body="Very Yummy!", Reviewer="Bobby"}
                                  }
                 }
             );
