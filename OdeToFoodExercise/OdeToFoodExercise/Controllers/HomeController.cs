@@ -20,9 +20,10 @@ namespace OdeToFoodExercise.Controllers
             var id = RouteData.Values["id"];
             var message = string.Format("route data is : {0}/{1}/{2}", controller, action, id);
             ViewBag.Message = message;
-            
-
-            return View();
+            // this line of code below will go into the database, find all the restaurants
+            //retrieve all of them and put them into a list.
+            var model = _db.Restaurants.ToList();
+            return View(model);
         }
 
         public ActionResult About()
