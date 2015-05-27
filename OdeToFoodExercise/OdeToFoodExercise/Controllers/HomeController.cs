@@ -24,16 +24,28 @@ namespace OdeToFoodExercise.Controllers
             //retrieve all of them and put them into a list.
             //var model = _db.Restaurants.ToList();
             //using LINQ comprehensive syntax expression to order restaurants in alphabetic order
-            var model = from r in _db.Restaurants
-                        orderby r.Reviews.Average(review => review.Rating) descending
-                        select new RestaurantListViewModel
-                        {
-                            Id = r.Id,
-                            Name = r.Name,
-                            City = r.City,
-                            Country = r.Country,
-                            CountOfReviews = r.Reviews.Count()
-                        };
+            //var model = from r in _db.Restaurants
+            //            orderby r.Reviews.Average(review => review.Rating) descending
+            //            select new RestaurantListViewModel
+            //            {
+            //                Id = r.Id,
+            //                Name = r.Name,
+            //                City = r.City,
+            //                Country = r.Country,
+            //                CountOfReviews = r.Reviews.Count()
+            //            };
+            //besides the above method--comprehensive query syntax method,we can do it in the second way---extension method with 
+            //Lamda expression.
+            var model = _db.Restaurants.OrderByDescending( r =>r.Reviews.Average(reviews => reviews.Rating))
+                .Select(r => new RestaurantListViewModel
+                            {
+                                Id = r.Id,
+                                Name = r.Name,
+                                City = r.City,
+                                Country = r.Country,
+                                CountOfReviews = r.Reviews.Count()
+                            }
+                        );
 
             return View(model);
         }
