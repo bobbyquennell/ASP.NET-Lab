@@ -13,7 +13,7 @@ namespace OdeToFoodExercise.Controllers
         //in the home page.
         //First, before using the database, we instanciate the OdeToFoodDb firstly.
         OdeToFoodDb _db = new OdeToFoodDb();
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm = null)
         {
             var controller = RouteData.Values["controller"];
             var action = RouteData.Values["action"];
@@ -37,6 +37,7 @@ namespace OdeToFoodExercise.Controllers
             //besides the above method--comprehensive query syntax method,we can do it in the second way---extension method with 
             //Lamda expression.
             var model = _db.Restaurants.OrderByDescending( r =>r.Reviews.Average(reviews => reviews.Rating))
+                .Where(restaurant =>searchTerm == null || restaurant.Name.StartsWith(searchTerm))
                 .Take(10)//some operaters like take and skip can be only used when using the extension syntax method.
                 .Select(r => new RestaurantListViewModel
                             {
