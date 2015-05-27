@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Home Page";
 }
+@*add a search form here to help user to filter the restaurant by name *@
+<form method="get">
+    <input type="submit" value="search by name" /> 
+    <input type="search"  placeholder="Restaurant Name" name="searchTerm" />
+</form>
+
 @*now we display the restaurant list here*@
 @foreach (var item in Model)
 {
