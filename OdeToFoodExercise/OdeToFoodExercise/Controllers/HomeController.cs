@@ -37,6 +37,7 @@ namespace OdeToFoodExercise.Controllers
             //besides the above method--comprehensive query syntax method,we can do it in the second way---extension method with 
             //Lamda expression.
             var model = _db.Restaurants.OrderByDescending( r =>r.Reviews.Average(reviews => reviews.Rating))
+                .Take(10)//some operaters like take and skip can be only used when using the extension syntax method.
                 .Select(r => new RestaurantListViewModel
                             {
                                 Id = r.Id,
