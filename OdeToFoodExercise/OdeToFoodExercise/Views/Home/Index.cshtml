@@ -4,11 +4,17 @@
     ViewBag.Title = "Home Page";
 }
 @*add a search form here to help user to filter the restaurant by name *@
-<form method="get">
-    <input type="submit" value="search by name" /> 
-    <input type="search"  placeholder="Restaurant Name" name="searchTerm" />
-</form>
-
+@*<form method="get">
+    <input type="submit" value="search by name" />
+    <input type="search" placeholder="Restaurant Name" name="searchTerm" />@*we have a "searchTerm" parameter on our Index action, so we need the name attribute to match with that, cuz the "name" of
+        the control will be submitted with the form data to the server
+</form>*@
+@*another version of form using razor syntax's html.helper*@
+@using (Html.BeginForm())
+{
+    <input type="submit" name="" value="search by the name" />
+    @Html.Editor("searchTerm")
+}
 @*now we display the restaurant list here*@
 @foreach (var item in Model)
 {
