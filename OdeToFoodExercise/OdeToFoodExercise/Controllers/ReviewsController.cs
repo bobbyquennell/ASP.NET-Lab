@@ -59,6 +59,14 @@ namespace OdeToFoodExercise.Controllers
             }
             return View();
         }
+
+        public ActionResult edit([Bind(Prefix = "id")]int reviewId)
+        {
+            RestaurantReview review = _db.Reviews.Find(reviewId);
+            return View(review);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (_db != null)
