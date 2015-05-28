@@ -11,7 +11,11 @@
 
 @Html.Partial("_Reviews", Model.Reviews)
 @*the Reviews property is going to be null by default, to fix this with lazy loading--using a virtual key word
-to the definition of Reviews in the Restaurant class *@
+    to the definition of Reviews in the Restaurant class *@
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create", new { id = Model.Id }) @*we add a new route value here to pass
+        the restaurant id to the create action*@
+    @Html.ActionLink("Create New", "Create", new { restaurantId = Model.Id }) @*we add a new route value here to pass
+        the restaurant id to the create action, the second way will add a query string to the url *@
+    @*NOTE: // the Html.ActionLink's routeValue must match  the input parameter of Create action exactly *@
 </p>

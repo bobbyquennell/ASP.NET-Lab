@@ -39,6 +39,22 @@ namespace OdeToFoodExercise.Controllers
                 return HttpNotFound();
             
         }
+        [HttpGet]
+        public ActionResult Create(int restaurantId)// the input parameter must match the Html.ActionLink's routeValue exactly
+        {
+            var restaurant_id = restaurantId;
+            var model = _db.Restaurants.Find(restaurantId);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(FormCollection form)
+        {
+            RestaurantReview review = new RestaurantReview();
+            review.Body = form["Body"];
+            //review.Rating = (int)form["Rating"];
+            review.Reviewer = form["Reviewer"];
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (_db != null)
