@@ -10,7 +10,8 @@
 @*create a partial view here*@
 
 @Html.Partial("_Reviews", Model.Reviews)
-@*the Reviews property is going to be null by default, this is something you run into wit EF *@
+@*the Reviews property is going to be null by default, to fix this with lazy loading--using a virtual key word
+to the definition of Reviews in the Restaurant class *@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

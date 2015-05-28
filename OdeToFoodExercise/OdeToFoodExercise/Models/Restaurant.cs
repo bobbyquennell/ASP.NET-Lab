@@ -13,7 +13,8 @@ namespace OdeToFoodExercise.Models
         public string Country { get; set; }
         //any restaurant can have multiple associated reviews, we can put that in 
         //the ICollection:
-        public ICollection<RestaurantReview> Reviews { get; set; }
+        public virtual ICollection<RestaurantReview> Reviews { get; set; }//using lazy loading here(virtual key word) to
+        //let the EF to load multiple level of entities
 
     }
 }

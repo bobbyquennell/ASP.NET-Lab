@@ -27,10 +27,10 @@ namespace OdeToFoodExercise.Controllers
             //use a "Bind" attribute
         {
             //using LinQ to grab some in-memory static data for the view:
-            var model = from r in _db.Restaurants
-                        where r.Id == restaurantId
-                        select r;
-            //var model = _db.Restaurants.Find(restaurantId);
+            //var model = from r in _db.Restaurants
+            //            where r.Id == restaurantId
+            //            select r;
+            var model = _db.Restaurants.Find(restaurantId);
             if (model != null)
             {
                 return View(model);
