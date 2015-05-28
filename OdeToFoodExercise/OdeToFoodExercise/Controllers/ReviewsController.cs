@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OdeToFoodExercise.Models;
+using System.Data;
 
 namespace OdeToFoodExercise.Controllers
 {
@@ -65,7 +66,19 @@ namespace OdeToFoodExercise.Controllers
             RestaurantReview review = _db.Reviews.Find(reviewId);
             return View(review);
         }
-
+        [HttpPost]
+        public ActionResult edit(RestaurantReview review)
+        {
+            //the model binder will still populate the review object with things that find in the request
+            //so,again, we don't have to look in the query strings and post the form values ourself.
+            if (ModelState.IsValid)
+            {
+                _db.Entry(review).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index", new { id = review.RestaurantId });
+            }
+            return View(review);
+        }
 
         protected override void Dispose(bool disposing)
         {
