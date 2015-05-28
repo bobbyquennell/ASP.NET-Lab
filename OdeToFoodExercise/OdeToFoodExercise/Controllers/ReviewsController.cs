@@ -47,13 +47,17 @@ namespace OdeToFoodExercise.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(FormCollection form)
+        public ActionResult Create(RestaurantReview review)// the model binder will instansize that type 
+            // and look through all the properties to see if it can match up something in the request.
         {
-            RestaurantReview review = new RestaurantReview();
-            review.Body = form["Body"];
-            //review.Rating = (int)form["Rating"];
-            review.Reviewer = form["Reviewer"];
-            return View();
+            if (ModelState.IsValid)
+            {
+                //if validation is done, save the new review to the database
+                _db.Reviews.Add(review);
+                _db.SaveChanges();
+                return RedirectToAction("Index", new { restaurantId = review.RestaurantId });
+            }
+            return View(review);
         }
         protected override void Dispose(bool disposing)
         {
