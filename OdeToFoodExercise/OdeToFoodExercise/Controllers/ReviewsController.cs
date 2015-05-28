@@ -55,9 +55,9 @@ namespace OdeToFoodExercise.Controllers
                 //if validation is done, save the new review to the database
                 _db.Reviews.Add(review);
                 _db.SaveChanges();
-                return RedirectToAction("Index", new { restaurantId = review.RestaurantId });
+                return RedirectToAction("Index", new { id = review.RestaurantId });
             }
-            return View(review);
+            return View();
         }
         protected override void Dispose(bool disposing)
         {
