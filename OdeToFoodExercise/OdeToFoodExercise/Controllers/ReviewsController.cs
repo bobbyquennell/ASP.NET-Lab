@@ -30,6 +30,7 @@ namespace OdeToFoodExercise.Controllers
             var model = from r in _db.Restaurants
                         where r.Id == restaurantId
                         select r;
+            //var model = _db.Restaurants.Find(restaurantId);
             if (model != null)
             {
                 return View(model);
