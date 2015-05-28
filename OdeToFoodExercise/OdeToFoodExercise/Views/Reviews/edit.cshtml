@@ -39,13 +39,7 @@
             @Html.ValidationMessageFor(model => model.Reviewer)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.RestaurantId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.RestaurantId)
-            @Html.ValidationMessageFor(model => model.RestaurantId)
-        </div>
+        @Html.HiddenFor(model => model.RestaurantId)
 
         <p>
             <input type="submit" value="Save" />
