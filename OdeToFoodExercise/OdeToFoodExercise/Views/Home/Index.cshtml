@@ -10,20 +10,21 @@
         the control will be submitted with the form data to the server
 </form>*@
 @*another version of form using razor syntax's html.helper*@
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())
 {
     <input type="submit" name="" value="search by the name" />
     @Html.Editor("searchTerm")
-}
-@*now we display the restaurant list here*@
-@foreach (var item in Model)
+}*@
+@using (Ajax.BeginForm(new AjaxOptions
 {
-    <div>
-        <h4>@item.Name</h4>
-        <div>@item.City, @item.Country</div>
-        <div>Reviews:@item.CountOfReviews</div>
-        <hr />
-    </div>
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "restaurantList"
+}))
+{
+    <input type="submit" value="search by the name" />
+    <input type="search" name="SearchTerm" placeholder="Search Key Word"/>
+    
 }
-
+@Html.Partial("_PartialRestaurant",Model)
 

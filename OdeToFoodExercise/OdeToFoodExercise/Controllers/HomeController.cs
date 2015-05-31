@@ -48,7 +48,10 @@ namespace OdeToFoodExercise.Controllers
                                 CountOfReviews = r.Reviews.Count()
                             }
                         );
-
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_PartialRestaurant", model);
+            }
             return View(model);
         }
 
