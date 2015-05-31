@@ -4,18 +4,19 @@
     ViewBag.Title = "Home Page";
 }
 @*add a search form here to help user to filter the restaurant by name *@
-@*<form method="get">
+<form method="get" action="@Url.Action("Index")" data-otf-ajax="true" data-otf-target="#restaurantList">
     <input type="submit" value="search by name" />
     <input type="search" placeholder="Restaurant Name" name="searchTerm" />@*we have a "searchTerm" parameter on our Index action, so we need the name attribute to match with that, cuz the "name" of
-        the control will be submitted with the form data to the server
-</form>*@
+        the control will be submitted with the form data to the server*@
+</form>
 @*another version of form using razor syntax's html.helper*@
 @*@using (Html.BeginForm())
 {
     <input type="submit" name="" value="search by the name" />
     @Html.Editor("searchTerm")
 }*@
-@using (Ajax.BeginForm(new AjaxOptions
+@* Ajax version Form *@
+@*@using (Ajax.BeginForm(new AjaxOptions
 {
     HttpMethod = "get",
     InsertionMode = InsertionMode.Replace,
@@ -25,6 +26,6 @@
     <input type="submit" value="search by the name" />
     <input type="search" name="SearchTerm" placeholder="Search Key Word"/>
     
-}
+}*@
 @Html.Partial("_PartialRestaurant",Model)
 
