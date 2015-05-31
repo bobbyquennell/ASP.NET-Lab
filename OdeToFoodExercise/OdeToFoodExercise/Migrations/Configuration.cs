@@ -39,6 +39,20 @@ namespace OdeToFoodExercise.Migrations
                                  }
                 }
             );
+            for (int loop = 0; loop < 333; loop++)
+            {
+                context.Restaurants.AddOrUpdate(
+                r => r.Name,
+                new Restaurant { Name="VietStar"+loop, City="Hawthorn", Country="Australia"},
+                new Restaurant { Name="Grill'd"+loop, City="Hawthorn", Country="Australia"},
+                new Restaurant { Name="ToroToro"+loop, City="Melbourne", Country="Australia",
+                                 Reviews = new List<RestaurantReview>
+                                 {
+                                     new RestaurantReview{ Rating=9, Body="Very Yummy!", Reviewer="Bobby"}
+                                 }
+                               }
+            );}
+
         }
     }
 }
