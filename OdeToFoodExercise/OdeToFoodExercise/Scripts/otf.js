@@ -13,4 +13,10 @@
         return false;
     };
     $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
+    $("#searchTag").autocomplete(
+        {
+            //source:[ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ]
+            source: $("#searchTag").attr("data-otf-action")
+            //minLength: 0
+        });
 });

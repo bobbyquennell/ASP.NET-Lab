@@ -13,6 +13,17 @@ namespace OdeToFoodExercise.Controllers
         //in the home page.
         //First, before using the database, we instanciate the OdeToFoodDb firstly.
         OdeToFoodDb _db = new OdeToFoodDb();
+        public ActionResult AutoComplete(string term)
+        {
+            //var result = from r in _db.Restaurants
+            //             where r.Name.Contains(term)
+            //             select new{
+            //                r.Name
+            //             };
+            var result = _db.Restaurants.Where(restaurant => restaurant.Name.Contains(term))
+                .Take(10).Select(r => new { r.Name });
+            return Json(result,"text/json",JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Index(string searchTerm = null)
         {
             var controller = RouteData.Values["controller"];

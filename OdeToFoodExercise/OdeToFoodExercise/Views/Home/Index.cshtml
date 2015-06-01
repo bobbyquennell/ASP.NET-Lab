@@ -6,7 +6,7 @@
 @*add a search form here to help user to filter the restaurant by name *@
 <form method="get" action="@Url.Action("Index")" data-otf-ajax="true" data-otf-target="#restaurantList">
     <input type="submit" value="search by name" />
-    <input type="search" placeholder="Restaurant Name" name="searchTerm" />@*we have a "searchTerm" parameter on our Index action, so we need the name attribute to match with that, cuz the "name" of
+    <input type="search" placeholder="Restaurant Name" id="searchTag" data-otf-action="@Url.Action("AutoComplete")" name="searchTerm" />@*we have a "searchTerm" parameter on our Index action, so we need the name attribute to match with that, cuz the "name" of
         the control will be submitted with the form data to the server*@
 </form>
 @*another version of form using razor syntax's html.helper*@

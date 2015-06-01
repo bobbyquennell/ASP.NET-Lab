@@ -768,3 +768,8 @@ tr.pager td {
 .review p{
     font-size:.8em;
 }
+/*add style for autocompletion 6.6*/
+  .ui-autocomplete-loading {
+    background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
+     max-height: 100px;
+  }
