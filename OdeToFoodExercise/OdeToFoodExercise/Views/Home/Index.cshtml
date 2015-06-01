@@ -1,5 +1,7 @@
 ﻿@*in order to use the restaurants model sent from home controller here, we need to include the model firstly, as shown below*@
-@model IEnumerable<OdeToFoodExercise.Models.RestaurantListViewModel>
+@*@model IEnumerable<OdeToFoodExercise.Models.RestaurantListViewModel>*@
+@model PagedList.IPagedList<OdeToFoodExercise.Models.RestaurantListViewModel>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Home Page";
 }

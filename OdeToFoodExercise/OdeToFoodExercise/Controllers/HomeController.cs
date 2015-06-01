@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
 namespace OdeToFoodExercise.Controllers
 {
     public class HomeController : Controller
@@ -24,7 +24,7 @@ namespace OdeToFoodExercise.Controllers
                 .Take(10).Select(r => new { label = r.Name, value = r.Name });
             return Json(result,"text/json",JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Index(string searchTerm = null)
+        public ActionResult Index(string searchTerm = null, int pageNumber = 2)
         {
             var controller = RouteData.Values["controller"];
             var action = RouteData.Values["action"];
@@ -47,9 +47,9 @@ namespace OdeToFoodExercise.Controllers
             //            };
             //besides the above method--comprehensive query syntax method,we can do it in the second way---extension method with 
             //Lamda expression.
-            var model = _db.Restaurants.OrderByDescending( r =>r.Reviews.Average(reviews => reviews.Rating))
-                .Where(restaurant =>searchTerm == null || restaurant.Name.StartsWith(searchTerm))
-                .Take(10)//some operaters like take and skip can be only used when using the extension syntax method.
+            var model = _db.Restaurants.OrderByDescending(r => r.Reviews.Average(reviews => reviews.Rating))
+                .Where(restaurant => searchTerm == null || restaurant.Name.StartsWith(searchTerm))
+                //.Take(10)//some operaters like take and skip can be only used when using the extension syntax method.
                 .Select(r => new RestaurantListViewModel
                             {
                                 Id = r.Id,
@@ -58,7 +58,7 @@ namespace OdeToFoodExercise.Controllers
                                 Country = r.Country,
                                 CountOfReviews = r.Reviews.Count()
                             }
-                        );
+                        ).ToPagedList(pageNumber, 10);
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_PartialRestaurant", model);
