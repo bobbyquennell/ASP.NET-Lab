@@ -16,7 +16,11 @@
     $("#searchTag").autocomplete(
         {
             //source:[ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ]
-            source: $("#searchTag").attr("data-otf-action")
+            source: $("#searchTag").attr("data-otf-action"),
+            select: function (event, ui) {
+                
+                $("form[data-otf-ajax='true']").trigger("submit");
+            }
             //minLength: 0
         });
 });

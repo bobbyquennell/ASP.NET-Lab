@@ -21,7 +21,7 @@ namespace OdeToFoodExercise.Controllers
             //                r.Name
             //             };
             var result = _db.Restaurants.Where(restaurant => restaurant.Name.Contains(term))
-                .Take(10).Select(r => new { label = r.Name });
+                .Take(10).Select(r => new { label = r.Name, value = r.Name });
             return Json(result,"text/json",JsonRequestBehavior.AllowGet);
         }
         public ActionResult Index(string searchTerm = null)
