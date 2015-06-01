@@ -18,7 +18,7 @@
             //source:[ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ]
             source: $("#searchTag").attr("data-otf-action"),
             select: function (event, ui) {
-                
+                $(this).val(ui.item.value);
                 $("form[data-otf-ajax='true']").trigger("submit");
             }
             //minLength: 0
