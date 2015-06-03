@@ -42,6 +42,8 @@
             //minLength: 0
     });
 
-    $(".pagedList a").click(ajaxPageUpdate);
+    //$(".pagedList a").click(ajaxPageUpdate); //method1: this method leads to a bug that only 1 out of 2 times clicking the next page will trige a ajax 
+    //request, the other request is a http version, so the page will reload every two time, I don't know why
+    $(".main-content").on("click",".pagedList a", ajaxPageUpdate);// method 2: fix the method1 bug.
     
 });
