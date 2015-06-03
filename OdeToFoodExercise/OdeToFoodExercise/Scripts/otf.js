@@ -14,6 +14,22 @@
         });
         return false;
     };
+    var ajaxPageUpdate = function () {
+        var $a = $(this);
+        var options = {
+        url: $a.attr("href"),
+        type: "get"
+        //data: $a.serialize() "get" method doesn't need to send data to server.
+        };
+        $.ajax(options).done(function(data){
+            $("#restaurantList").replaceWith(data);
+            //var target = $a.parents("div.pagedLlist").attr("data-otf-target");
+            //$(target).replaceWith(data);
+            });
+        return false;// if we don't return false here, the HTTP get request will still send to server which will lead to redraw the page again.
+            //to be more exactly, clicking "next page" one time will create two request to the server, one is http get request, the other 
+                //is ajax get request sent from java script
+    };
     $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
     $("#searchTag").autocomplete(
         {
@@ -24,5 +40,8 @@
                 $("form[data-otf-ajax='true']").trigger("submit");
             }
             //minLength: 0
-        });
+    });
+
+    $(".pagedList a").click(ajaxPageUpdate);
+    
 });
