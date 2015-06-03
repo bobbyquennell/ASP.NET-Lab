@@ -66,6 +66,7 @@ namespace OdeToFoodExercise.Controllers
             return View(model);
         }
 
+        [Authorize]//this action filter attribute will trigger an authentication action.
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
