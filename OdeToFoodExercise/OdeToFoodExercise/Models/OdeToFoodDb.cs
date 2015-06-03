@@ -13,5 +13,6 @@ namespace OdeToFoodExercise.Models
         public OdeToFoodDb() : base("name=OdeTOFoodDb") { }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<RestaurantReview> Reviews { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
     }
 }
