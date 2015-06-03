@@ -18,7 +18,8 @@
         var $a = $(this);
         var options = {
         url: $a.attr("href"),
-        type: "get"
+        type: "get",
+        data: $("#searchTag").serialize()
         //data: $a.serialize() "get" method doesn't need to send data to server.
         };
         $.ajax(options).done(function(data){
