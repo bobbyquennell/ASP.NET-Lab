@@ -38,7 +38,7 @@ namespace OdeToFoodExercise.Models
         [Range(1,10, ErrorMessage="custom")]
         [Required]
         public int Rating { get; set; }
-        [Required]
+        [Required(ErrorMessageResourceType=typeof(OdeToFoodExercise.Views.Home.Resource), ErrorMessageResourceName="Greeting")]
         [StringLength(1024)]
         public string Body { get; set; }
         [Display(Name=" User Name")]
