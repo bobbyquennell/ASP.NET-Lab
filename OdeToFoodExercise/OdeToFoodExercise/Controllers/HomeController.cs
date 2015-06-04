@@ -24,6 +24,7 @@ namespace OdeToFoodExercise.Controllers
                 .Take(10).Select(r => new { label = r.Name, value = r.Name });
             return Json(result,"text/json",JsonRequestBehavior.AllowGet);
         }
+        [OutputCache(Duration=60)]
         public ActionResult Index(string searchTerm = null, int pageNumber = 1)
         {
             var controller = RouteData.Values["controller"];
