@@ -47,7 +47,7 @@ namespace OdeToFoodExercise.Controllers
         // POST: /Restaurant/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]//step1 to avoid cross site request forgery issue.
         [Authorize(Roles = "admin")]
         public ActionResult Create(Restaurant restaurant)
         {
