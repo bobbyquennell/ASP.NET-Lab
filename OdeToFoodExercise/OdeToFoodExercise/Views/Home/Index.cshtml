@@ -5,7 +5,16 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+@{
+    var amount = 10.0m;
+    var someDate = new DateTime(1999,2,28);
+}
+<div>
+    @amount.ToString("c")
+</div>
+<div>
+    @someDate.ToShortDateString()
+</div>
 @*add a search form here to help user to filter the restaurant by name *@
 <form method="get" action="@Url.Action("Index")" data-otf-ajax="true" data-otf-target="#restaurantList">
     <input type="submit" value="search by name" />
