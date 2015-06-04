@@ -37,6 +37,7 @@ namespace OdeToFoodExercise.Controllers
         //
         // GET: /Restaurant/Create
 
+        [Authorize(Roles="admin")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +48,7 @@ namespace OdeToFoodExercise.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(Restaurant restaurant)
         {
             if (ModelState.IsValid)

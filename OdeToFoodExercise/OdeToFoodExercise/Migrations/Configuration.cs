@@ -6,6 +6,8 @@ namespace OdeToFoodExercise.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web.Security;
+    using WebMatrix.WebData;
 
     internal sealed class Configuration : DbMigrationsConfiguration<OdeToFoodExercise.Models.OdeToFoodDb>
     {
@@ -52,7 +54,27 @@ namespace OdeToFoodExercise.Migrations
                                  }
                                }
             );}
+            seedMembership();
 
+        }
+
+        private void seedMembership()
+        {
+            WebSecurity.InitializeDatabaseConnection("OdeToFoodDb", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            var roles = (SimpleRoleProvider)Roles.Provider;
+            var membership = (SimpleMembershipProvider)Membership.Provider;
+            if (!roles.RoleExists("admin"))
+            {
+                roles.CreateRole("admin");
+            }
+            if (membership.GetUser("bobby", false) == null)
+            {
+                membership.CreateUserAndAccount("bobby", "111111");
+            }
+            if (!roles.GetRolesForUser("bobby").Contains("admin"))
+            {
+                roles.AddUsersToRoles(new[] {"bobby"}, new[]{"admin"});
+            }
         }
     }
 }
