@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Web.UI;
 namespace OdeToFoodExercise.Controllers
 {
     public class HomeController : Controller
@@ -25,7 +26,7 @@ namespace OdeToFoodExercise.Controllers
             return Json(result,"text/json",JsonRequestBehavior.AllowGet);
         }
 
-        [OutputCache(Duration=10)]
+        [OutputCache(Duration=360, VaryByHeader="X-Requested-With", Location=OutputCacheLocation.Server)]
         public ActionResult Index(string searchTerm = null, int pageNumber = 1)
         {
             var controller = RouteData.Values["controller"];
