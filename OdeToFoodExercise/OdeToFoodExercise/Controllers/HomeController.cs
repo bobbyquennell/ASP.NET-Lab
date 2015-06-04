@@ -26,7 +26,7 @@ namespace OdeToFoodExercise.Controllers
             return Json(result,"text/json",JsonRequestBehavior.AllowGet);
         }
 
-        [OutputCache(Duration=360, VaryByHeader="X-Requested-With", Location=OutputCacheLocation.Server)]
+        [OutputCache(CacheProfile="long", VaryByHeader="X-Requested-With", Location=OutputCacheLocation.Server)]
         public ActionResult Index(string searchTerm = null, int pageNumber = 1)
         {
             var controller = RouteData.Values["controller"];
