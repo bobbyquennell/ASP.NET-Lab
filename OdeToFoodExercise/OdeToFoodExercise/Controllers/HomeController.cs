@@ -24,12 +24,7 @@ namespace OdeToFoodExercise.Controllers
                 .Take(10).Select(r => new { label = r.Name, value = r.Name });
             return Json(result,"text/json",JsonRequestBehavior.AllowGet);
         }
-        [ChildActionOnly]
-        [OutputCache(Duration=20)]
-        public ActionResult ChildActionSayHello()
-        {
-            return Content("Say Hello");
-        }
+
         [OutputCache(Duration=10)]
         public ActionResult Index(string searchTerm = null, int pageNumber = 1)
         {

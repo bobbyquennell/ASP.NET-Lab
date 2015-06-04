@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-@Html.Action("ChildActionSayHello")
+
 @*add a search form here to help user to filter the restaurant by name *@
 <form method="get" action="@Url.Action("Index")" data-otf-ajax="true" data-otf-target="#restaurantList">
     <input type="submit" value="search by name" />
