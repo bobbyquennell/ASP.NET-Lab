@@ -26,14 +26,14 @@ namespace OdeToFoodExercise.Controllers
             return Json(result,"text/json",JsonRequestBehavior.AllowGet);
         }
 
-        [OutputCache(CacheProfile="long", VaryByHeader="X-Requested-With; Accept-Language", Location=OutputCacheLocation.Server)]
+        //[OutputCache(CacheProfile="long", VaryByHeader="X-Requested-With; Accept-Language", Location=OutputCacheLocation.Server)]
         public ActionResult Index(string searchTerm = null, int pageNumber = 1)
         {
-            var controller = RouteData.Values["controller"];
-            var action = RouteData.Values["action"];
-            var id = RouteData.Values["id"];
-            var message = string.Format("route data is : {0}/{1}/{2}", controller, action, id);
-            ViewBag.Message = message;
+            //var controller = RouteData.Values["controller"];
+            //var action = RouteData.Values["action"];
+            //var id = RouteData.Values["id"];
+            //var message = string.Format("route data is : {0}/{1}/{2}", controller, action, id);
+            //ViewBag.Message = message;
             // this line of code below will go into the database, find all the restaurants
             //retrieve all of them and put them into a list.
             //var model = _db.Restaurants.ToList();
