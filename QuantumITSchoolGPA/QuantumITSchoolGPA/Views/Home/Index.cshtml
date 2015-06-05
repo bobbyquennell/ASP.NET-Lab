@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<QuantumITSchoolGPA.Models.Class>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "QuantumIT School GPA system";
 }
 
-<h2>Index</h2>
+<h2>QuantumIT School GPA system</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,7 +26,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(@item.Name, "ShowStudentList", new { id = item.Id},null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Location)
@@ -36,11 +36,13 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Index", "Students", new { id=item.Id },null) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
 
 </table>
-@Html.Action("Index","Students")
+<div id="StudentListSection">
+    <h4 id="ClassName">Biology</h4>
+    <div id="StudentList"></div>
+</div>

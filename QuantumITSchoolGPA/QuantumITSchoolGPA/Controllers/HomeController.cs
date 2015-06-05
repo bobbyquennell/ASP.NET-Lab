@@ -17,7 +17,12 @@ namespace QuantumITSchoolGPA.Controllers
 
             return View(model);
         }
+        public ActionResult ShowStudentList(int id =1)
+        {
+            Class myClass = _db.Classes.Find(id);
+            return PartialView("_ShowStudentList", myClass.Students);
 
+        }
         public ActionResult Details(int id = 0)
         {
             Class myclass = _db.Classes.Find(id);
