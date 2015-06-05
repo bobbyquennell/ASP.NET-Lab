@@ -1,7 +1,13 @@
 ﻿@model IEnumerable<QuantumITSchoolGPA.Models.Student>
-@Html.DisplayNameFor(model => model.ClassId)
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
 <p>
-    @Html.ActionLink("Add", "Create", "Student", null, null)
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table>
     <tr>
@@ -14,7 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.GPA)
         </th>
-            
+        <th>
+            @Html.DisplayNameFor(model => model.ClassId)
+        </th>
         <th></th>
     </tr>
 
@@ -30,8 +38,12 @@
             @Html.DisplayFor(modelItem => item.GPA)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", "Student",new { id=item.Id },null) |
-            @Html.ActionLink("Delete", "Delete", "Student",new { id=item.Id },null)
+            @Html.DisplayFor(modelItem => item.ClassId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
