@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace QuantumITSchoolGPA.Controllers
 {
@@ -17,6 +18,7 @@ namespace QuantumITSchoolGPA.Controllers
 
             return View(model);
         }
+        [OutputCache(Location= OutputCacheLocation.None)]
         public ActionResult ShowStudentList(int id =1)
         {
             Class myClass = _db.Classes.Find(id);
