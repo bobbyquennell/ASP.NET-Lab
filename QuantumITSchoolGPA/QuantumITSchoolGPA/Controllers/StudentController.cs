@@ -37,8 +37,9 @@ namespace QuantumITSchoolGPA.Controllers
         //
         // GET: /Student/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int ClassId)
         {
+            var model = db.Classes.Find(ClassId);
             return View();
         }
 
@@ -53,7 +54,7 @@ namespace QuantumITSchoolGPA.Controllers
             {
                 db.Students.Add(student);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home", null);
+                return RedirectToAction("Index", "Home", new { id=student.ClassId});
             }
 
             return View(student);
