@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<QuantumITSchoolGPA.Models.Class>
 
 @{
-    ViewBag.Title = "QuantumIT School GPA system";
+    ViewBag.Title = "Index";
 }
 
-<h2>QuantumIT School GPA system</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Add", "Create", "Class", null, null)
+    @Html.ActionLink("Add", "Create","Class",null,null)
+    <button value="Add">@Html.ActionLink("Create","Class",null,null)"</button>
 </p>
 <table>
     <tr>
@@ -25,8 +26,8 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td class="CourseName">
-            @Html.ActionLink(@item.Name, "ShowStudentList", new { id = item.Id},null)
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Location)
@@ -35,14 +36,11 @@
             @Html.DisplayFor(modelItem => item.TeacherName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit","Class",new { id=item.Id },null) |
-            @Html.ActionLink("Delete", "Delete", "Class", new { id = item.Id }, null)
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
 
 </table>
-<div id="StudentListSection">
-    <h4 id="ClassName">Biology</h4>
-    <div id="StudentList"></div>
-</div>

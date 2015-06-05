@@ -11,6 +11,6 @@
         return false;
     };
 
-    $(".main-content").on("click", "a", ajaxGetStudentList);
+    $(".main-content").on("click", ".CourseName a", ajaxGetStudentList);
 
 });

@@ -23,27 +23,6 @@ namespace QuantumITSchoolGPA.Controllers
             return PartialView("_ShowStudentList", myClass.Students);
 
         }
-        public ActionResult Details(int id = 0)
-        {
-            Class myclass = _db.Classes.Find(id);
-            if (myclass == null)
-            {
-                return HttpNotFound();
-            }
-            return View(myclass);
-        }
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
