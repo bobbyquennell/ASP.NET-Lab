@@ -1,6 +1,12 @@
 ﻿@*@model IEnumerable<QuantumITSchoolGPA.Models.Student>*@
 @model QuantumITSchoolGPA.Models.Class
-<p>
-    @Html.ActionLink("Add", "Create", "Student", new { ClassId = Model.Id}, null)
-</p>
+<h4 id="ClassName">@Model.Name</h4>
+
 @Html.Partial("_PartialViewStudentList", Model.Students)
+<div class="add">
+    @*@Html.ActionLink("Add", "Create", "Student", new { ClassId = Model.Id }, null)*@
+    <form action="@Url.Action("Create", "Student",new { ClassId = Model.Id })", method="get">
+        <input type="text" value="@Model.Id" name="ClassId" hidden="hidden" />
+        <input type="submit" name="add" value="Add A Student" />
+    </form>
+</div>

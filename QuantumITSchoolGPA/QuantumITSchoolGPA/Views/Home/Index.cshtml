@@ -5,44 +5,51 @@
 }
 
 <h2>QuantumIT School GPA system</h2>
+<div class="content-wrapper CourseSection">
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherName)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Add", "Create", "Class", null, null)
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeacherName)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="CourseName">
+                    @Html.ActionLink(@item.Name, "ShowStudentList", new { id = item.Id }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Class", new { id = item.Id }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Class", new { id = item.Id }, null)
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td class="CourseName">
-            @Html.ActionLink(@item.Name, "ShowStudentList", new { id = item.Id},null)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit","Class",new { id=item.Id },null) |
-            @Html.ActionLink("Delete", "Delete", "Class", new { id = item.Id }, null)
-        </td>
-    </tr>
-}
+    </table>
 
-</table>
-<div id="StudentListSection">
-    <h4 id="ClassName">Biology</h4>
+    <div class="addCourse" id="addClass">
+        @*@Html.ActionLink("Add", "Create", "Class", null, null)*@
+        <form action="@Url.Action("Create", "Class")" , method="get">
+            <input type="submit" name="add" value="Add A Course" />
+        </form>
+    </div>
+</div>
+
+<div class="StudentListSection">
+    
     <div id="StudentList"></div>
 </div>

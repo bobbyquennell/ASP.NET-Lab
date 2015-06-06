@@ -18,13 +18,13 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="studentName">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Age)
             </td>
-            <td>
+            <td class="studentGpa">
                 @Html.DisplayFor(modelItem => item.GPA)
             </td>
             <td>
