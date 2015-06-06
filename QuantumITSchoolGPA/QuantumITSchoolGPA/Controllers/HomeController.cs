@@ -12,8 +12,9 @@ namespace QuantumITSchoolGPA.Controllers
     public class HomeController : Controller
     {
         SchoolGpaDb _db = new SchoolGpaDb();
-        public ActionResult Index()
+        public ActionResult Index(int id =1)
         {
+            
             var model = _db.Classes.ToList();
 
             return View(model);
