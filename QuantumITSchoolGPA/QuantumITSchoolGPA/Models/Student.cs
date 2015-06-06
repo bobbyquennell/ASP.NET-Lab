@@ -7,12 +7,12 @@ namespace QuantumITSchoolGPA.Models
 {
     public class Student
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         [Surname]
         [NameLength(2,3)]
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public float GPA { get; set; }
-        public int ClassId { get; set; }
+        public virtual string Name { get; set; }
+        public virtual int Age { get; set; }
+        public virtual float GPA { get; set; }
+        public virtual int ClassId { get; set; }
     }
 }

@@ -8,13 +8,13 @@ namespace QuantumITSchoolGPA.Models
 {
     public class Class
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         [Required]
-        public string Location { get; set; }
+        public virtual string Location { get; set; }
         [Required]
-        public string TeacherName { get; set; }
+        public virtual string TeacherName { get; set; }
         public virtual ICollection<Student> Students { get; set; }
     }
 }

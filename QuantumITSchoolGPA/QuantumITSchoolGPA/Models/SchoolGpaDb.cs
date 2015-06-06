@@ -6,10 +6,19 @@ using System.Data.Entity;
 
 namespace QuantumITSchoolGPA.Models
 {
-    public class SchoolGpaDb:DbContext
+    //public interface ISchoolGpaDb : IDisposable
+    //{
+    //    IQueryable<T> Query<T>() where T : class;
+    //}
+    public class SchoolGpaDb:DbContext//, ISchoolGpaDb
     {
         public SchoolGpaDb() : base("name=QuantumITSchoolGPA") { }
         public DbSet<Class> Classes { get; set; }
         public DbSet<Student> Students { get; set; }
+
+        //IQueryable<T> ISchoolGpaDb.Query<T>()
+        //{
+        //    return Set<T>();
+        //}
     }
 }
