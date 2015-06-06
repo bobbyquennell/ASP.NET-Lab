@@ -8,7 +8,7 @@ namespace QuantumITSchoolGPA.Models
 {
     public class NameLengthAttribute:ValidationAttribute
     {
-        public NameLengthAttribute(int minWords, int maxWords) : base("Woops, Name length error, please input your full name splited with a space")
+        public NameLengthAttribute(int minWords, int maxWords) : base("Woops, Name length error, please input your full name split with a space")
         {
             _maxWords = maxWords;
             _minWords = minWords;
