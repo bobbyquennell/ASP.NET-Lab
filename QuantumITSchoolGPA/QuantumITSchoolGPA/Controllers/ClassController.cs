@@ -11,8 +11,12 @@ namespace QuantumITSchoolGPA.Controllers
 {
     public class ClassController : Controller
     {
-        private SchoolGpaDb db = new SchoolGpaDb();
-
+        //private SchoolGpaDb db = new SchoolGpaDb();
+        private ISchoolGpaDataSource db;
+        public ClassController(ISchoolGpaDataSource db)
+        {
+            this.db = db;
+        }
 
         // GET: /Class/Create
 
@@ -30,7 +34,7 @@ namespace QuantumITSchoolGPA.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Classes.Add(myClass);
+                db.Add<Class>(myClass);
                 db.SaveChanges();
                 return RedirectToAction("Index","Home",null);
             }
@@ -43,7 +47,10 @@ namespace QuantumITSchoolGPA.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Class myClass = db.Classes.Find(id);
+            //Class myClass = db.Classes.Find(id);
+            Class myClass = (from item in db.Query<Class>()
+                             where item.Id == id
+                             select item).SingleOrDefault();
             if (myClass == null)
             {
                 return HttpNotFound();
@@ -60,7 +67,8 @@ namespace QuantumITSchoolGPA.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(myClass).State = EntityState.Modified;
+                //db.Entry(myClass).State = EntityState.Modified;
+                db.Update<Class>(myClass);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home", null);
             }
@@ -72,7 +80,10 @@ namespace QuantumITSchoolGPA.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Class myClass = db.Classes.Find(id);
+            //Class myClass = db.Classes.Find(id);
+            Class myClass = (from item in db.Query<Class>()
+                             where item.Id == id
+                             select item).SingleOrDefault();
             if (myClass == null)
             {
                 return HttpNotFound();
@@ -87,8 +98,11 @@ namespace QuantumITSchoolGPA.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Class myClass = db.Classes.Find(id);
-            db.Classes.Remove(myClass);
+            //Class myClass = db.Classes.Find(id);
+            Class myClass = (from item in db.Query<Class>()
+                             where item.Id == id
+                             select item).SingleOrDefault();
+            db.Remove<Class>(myClass);
             db.SaveChanges();
             return RedirectToAction("Index", "Home", null);
         }

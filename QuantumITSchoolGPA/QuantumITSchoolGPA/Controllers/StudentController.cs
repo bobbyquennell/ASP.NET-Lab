@@ -11,14 +11,18 @@ namespace QuantumITSchoolGPA.Controllers
 {
     public class StudentController : Controller
     {
-        private SchoolGpaDb db = new SchoolGpaDb();
-
+        //private SchoolGpaDb db = new SchoolGpaDb();
+        private ISchoolGpaDataSource db;
+        public StudentController(ISchoolGpaDataSource db)
+        {
+            this.db = db;
+        }
         //
         // GET: /Student/
 
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            return View(db.Query<Student>().ToList());
         }
 
         //
@@ -26,7 +30,10 @@ namespace QuantumITSchoolGPA.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Student student = db.Students.Find(id);
+            //Student student = db.Students.Find(id);
+            Student student = (from item in db.Query<Student>()
+                             where item.Id == id
+                             select item).SingleOrDefault();
             if (student == null)
             {
                 return HttpNotFound();
@@ -39,7 +46,10 @@ namespace QuantumITSchoolGPA.Controllers
 
         public ActionResult Create(int ClassId)
         {
-            var model = db.Classes.Find(ClassId);
+            //var model = db.Classes.Find(ClassId);
+            var model = (from item in db.Query<Class>()
+                         where item.Id == ClassId
+                         select item).SingleOrDefault();
             return View();
         }
 
@@ -52,7 +62,7 @@ namespace QuantumITSchoolGPA.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
+                db.Add<Student>(student);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home", new { id=student.ClassId});
             }
@@ -65,7 +75,10 @@ namespace QuantumITSchoolGPA.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Student student = db.Students.Find(id);
+            //Student student = db.Students.Find(id);
+            Student student = (from item in db.Query<Student>()
+                               where item.Id == id
+                               select item).SingleOrDefault();
             if (student == null)
             {
                 return HttpNotFound();
@@ -82,7 +95,8 @@ namespace QuantumITSchoolGPA.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
+                //db.Entry(student).State = EntityState.Modified;
+                db.Update<Student>(student);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home", null);
             }
@@ -94,7 +108,10 @@ namespace QuantumITSchoolGPA.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Student student = db.Students.Find(id);
+            //Student student = db.Students.Find(id);
+            Student student = (from item in db.Query<Student>()
+                               where item.Id == id
+                               select item).SingleOrDefault();
             if (student == null)
             {
                 return HttpNotFound();
@@ -109,8 +126,11 @@ namespace QuantumITSchoolGPA.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
+            //Student student = db.Students.Find(id);
+            Student student = (from item in db.Query<Student>()
+                               where item.Id == id
+                               select item).SingleOrDefault();
+            db.Remove<Student>(student);
             db.SaveChanges();
             return RedirectToAction("Index", "Home", null);
         }
