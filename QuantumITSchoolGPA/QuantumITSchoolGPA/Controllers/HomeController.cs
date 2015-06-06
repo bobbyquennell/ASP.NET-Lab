@@ -12,6 +12,11 @@ namespace QuantumITSchoolGPA.Controllers
     public class HomeController : Controller
     {
         SchoolGpaDb _db = new SchoolGpaDb();
+       // private ISchoolGpaDataSource _db;
+        //public HomeController(ISchoolGpaDataSource db)
+        //{
+        //    _db = db;
+        //}
         public ActionResult Index(int id =1)
         {
             
@@ -22,7 +27,10 @@ namespace QuantumITSchoolGPA.Controllers
         [OutputCache(Location= OutputCacheLocation.None)]
         public ActionResult ShowStudentList(int id =1)
         {
-            Class myClass = _db.Classes.Find(id);
+            //Class myClass = _db.Classes.Find(id);
+            Class myClass = (from item in _db.Classes
+                          where item.Id == id
+                          select item).SingleOrDefault();
             return PartialView("_ShowStudentList", myClass);
 
         }
