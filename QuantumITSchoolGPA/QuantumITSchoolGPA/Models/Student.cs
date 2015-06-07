@@ -7,6 +7,7 @@ namespace QuantumITSchoolGPA.Models
 {
     public class Student
     {
+        private ISchoolGpaDataSource _db = new SchoolGpaDb();
         public virtual int Id { get; set; }
         [Surname]
         [NameLength(2,3)]

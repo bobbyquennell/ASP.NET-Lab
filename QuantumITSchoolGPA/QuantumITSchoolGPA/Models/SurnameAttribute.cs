@@ -8,24 +8,36 @@ namespace QuantumITSchoolGPA.Models
 {
     public class SurnameAttribute:ValidationAttribute
     {
-        SchoolGpaDb _db = new SchoolGpaDb();
-        public SurnameAttribute() : base("Surname must be unique, please try another one") { }
+        //SchoolGpaDb _db = new SchoolGpaDb();
+        private ISchoolGpaDataSource _db;
+        public SurnameAttribute(ISchoolGpaDataSource db): base("Surname must be unique, please try another one")
+        {
+            this._db = db;
+        }
+        public SurnameAttribute() : base("Surname must be unique, please try another one") {
+        }
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             string path = HttpContext.Current.Request.Path;
             int StudentId = 0x0fffffff;
             bool isCreateNew = path.ToLower().Contains("create");
+            if (_db == null)
+            {
+                _db = new SchoolGpaDb();
+            }
             if (!isCreateNew)
             {
                 //get old name
                 StudentId = Convert.ToInt32((path.Split('/').Last()));
-                string oldName =_db.Students.Find(StudentId).Name;
+                string oldName =(from item in _db.Query<Student>()
+                                 where item.Id == StudentId
+                                select item).SingleOrDefault().Name;
             }
             if (value!=null)
             {
                 var ValueAsString = value.ToString();
                 string Surname = ValueAsString.Split(' ').Last().ToLower();
-                var CandidateStuList = _db.Students.Where(stu => stu.Name.Contains(Surname))
+                var CandidateStuList = _db.Query<Student>().Where(stu => stu.Name.Contains(Surname))
                     .Select( stu=> new
                             {
                                 name = stu.Name,

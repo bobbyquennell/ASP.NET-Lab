@@ -26,17 +26,17 @@ namespace QuantumITSchoolGPA.Tests.Fakes
 
         public void Update<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Updated.Add(entity);
         }
 
         public void Remove<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Removed.Add(entity);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            IsChangesSaved = true;
         }
 
         public void Dispose()
@@ -45,5 +45,8 @@ namespace QuantumITSchoolGPA.Tests.Fakes
         }
         public Dictionary<Type, object> Sets = new Dictionary<Type, object>();
         public List<object> Added = new List<object>();
+        public List<object> Updated = new List<object>();
+        public List<object> Removed = new List<object>();
+        public bool IsChangesSaved = false;
     }
 }
