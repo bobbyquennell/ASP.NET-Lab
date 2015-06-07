@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QuantumITSchoolGPA;
 using QuantumITSchoolGPA.Controllers;
+using QuantumITSchoolGPA.Tests.Fakes;
+using QuantumITSchoolGPA.Models;
 
 namespace QuantumITSchoolGPA.Tests.Controllers
 {
@@ -16,23 +18,27 @@ namespace QuantumITSchoolGPA.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var db = new FakeSchoolGpaDb();
+            db.AddSet(TestData.Classes);
+            HomeController controller = new HomeController(db);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
-
+            IEnumerable<Class> model = result.Model as IEnumerable<Class>;
             // Assert
-            Assert.AreEqual("Modify this template to jump-start your ASP.NET MVC application.", result.ViewBag.Message);
+            Assert.AreEqual(4, model.Count());
         }
 
         [TestMethod]
         public void ShowStudentList()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var db = new FakeSchoolGpaDb();
+            db.AddSet(TestData.Classes);
+            HomeController controller = new HomeController(db);
 
             // Act
-            ViewResult result = controller.ShowStudentList() as ViewResult;
+            PartialViewResult result = controller.ShowStudentList() as PartialViewResult;
 
             // Assert
             Assert.IsNotNull(result);
