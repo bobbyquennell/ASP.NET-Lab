@@ -13,8 +13,7 @@ namespace QuantumITSchoolGPA.Tests.Controllers
         public void Create_Saves_Student_When_Valid()
         {
             var db = new FakeSchoolGpaDb();
-            var controller = new StudentController(db);
-
+            var controller = new StudentController(db);            
             controller.Create(new Student());
 
             Assert.AreEqual(1, db.Added.Count);
