@@ -129,7 +129,6 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="TestData.cs" />
     <Compile Include="ValidationAttributes\SurnameAttributeTest.cs" />
-    <Compile Include="ValidationAttributeTestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
