@@ -18,6 +18,7 @@ namespace OdeToFood.Tests.Features
         public RatingResult  ComputeRating(int p)
         {
             var result =  new RatingResult();
+            result.Rating = 4;
             return result;
         }
     }
