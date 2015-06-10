@@ -32,5 +32,18 @@ namespace OdeToFood.Tests.Features
 
             Assert.AreEqual(4, result.Rating);
         }
+        [TestMethod]
+        public void Computes_Result_With_Two_Result()
+        {
+            var model = new Restaurant();
+            model.Reviews = new List<RestaurantReview>();
+            model.Reviews.Add(new RestaurantReview() { Rating = 4 });
+            model.Reviews.Add(new RestaurantReview() { Rating = 8 });
+            var rater = new RestaurantRater(model);
+            RatingResult result = rater.ComputeRating(10);
+
+            Assert.AreEqual(6, result.Rating);
+
+        }
     }
 }
