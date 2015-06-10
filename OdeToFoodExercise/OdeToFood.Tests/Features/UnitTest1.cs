@@ -25,10 +25,7 @@ namespace OdeToFood.Tests.Features
         {
             var model = new Restaurant();
             model.Reviews = new List<RestaurantReview>();
-            model.Reviews.Add(new RestaurantReview
-            {
-                Rating = 4
-            });
+            model.Reviews.Add(new RestaurantReview(){ Rating = 4 });
 
             var rater = new RestaurantRater(model);
             var result = rater.ComputeRating(10);
