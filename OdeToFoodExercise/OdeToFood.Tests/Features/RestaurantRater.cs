@@ -8,14 +8,13 @@ namespace OdeToFood.Tests.Features
 {
     class RestaurantRater
     {
-        private Restaurant model;
+        private Restaurant _restaurant;
 
-        public RestaurantRater(Restaurant model)
+        public RestaurantRater(Restaurant restaurant)
         {
-            // TODO: Complete member initialization
-            this.model = model;
+            this._restaurant = restaurant;
         }
-        public RatingResult  ComputeRating(int p)
+        public RatingResult  ComputeRating(int NumberOfReviews)
         {
             var result =  new RatingResult();
             result.Rating = 4;
