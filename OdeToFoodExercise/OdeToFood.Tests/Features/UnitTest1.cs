@@ -30,6 +30,10 @@ namespace OdeToFood.Tests.Features
                 Rating = 4
             });
 
+            var rater = new RestaurantRater(model);
+            var result = rater.ComputeRating(10);
+
+            Assert.AreEqual(4, result.Rating);
         }
     }
 }
