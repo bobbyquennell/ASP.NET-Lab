@@ -20,5 +20,10 @@ namespace OdeToFood.Tests.Features
             result.Rating = (int)_restaurant.Reviews.Average(r=> r.Rating);
             return result;
         }
+
+        internal RatingResult ComputeRatingWeighted(int p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
