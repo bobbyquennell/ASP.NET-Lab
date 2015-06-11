@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OdeToFoodExercise.Models;
 using System.Collections.Generic;
+using System.Linq;
 /*
  * A restaurant's overall rating can be calculated using various methods
  * For this application we'll want to try different methods over time,
@@ -21,11 +22,9 @@ namespace OdeToFood.Tests.Features
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Computes_Result_With_One_Review()
         {
-            var model = new Restaurant();
-            model.Reviews = new List<RestaurantReview>();
-            model.Reviews.Add(new RestaurantReview(){ Rating = 4 });
+            var model = BuildRestaurantAndReviews(new int[] { 4 });
 
             var rater = new RestaurantRater(model);
             var result = rater.ComputeRating(10);
@@ -33,17 +32,22 @@ namespace OdeToFood.Tests.Features
             Assert.AreEqual(4, result.Rating);
         }
         [TestMethod]
-        public void Computes_Result_With_Two_Result()
+        public void Computes_Result_With_Two_Reviews()
         {
-            var model = new Restaurant();
-            model.Reviews = new List<RestaurantReview>();
-            model.Reviews.Add(new RestaurantReview() { Rating = 4 });
-            model.Reviews.Add(new RestaurantReview() { Rating = 8 });
+            var model = BuildRestaurantAndReviews(new int[]{4,8});
             var rater = new RestaurantRater(model);
+
             RatingResult result = rater.ComputeRating(10);
 
             Assert.AreEqual(6, result.Rating);
 
+        }
+
+        private Restaurant BuildRestaurantAndReviews(params int[] ratings)
+        {
+            Restaurant rest = new Restaurant();
+            rest.Reviews = ratings.Select(r => new RestaurantReview { Rating = r }).ToList();
+            return rest;
         }
     }
 }
