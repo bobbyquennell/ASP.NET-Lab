@@ -14,10 +14,10 @@ namespace OdeToFood.Tests.Features
         {
             this._restaurant = restaurant;
         }
-        public RatingResult  ComputeRating(int NumberOfReviews)
+        public RatingResult ComputeRating(int NumberOfReviews)
         {
-            var result =  new RatingResult();
-            result.Rating = (int)_restaurant.Reviews.Average(r=> r.Rating);
+            var result = new RatingResult();
+            result.Rating = (int)_restaurant.Reviews.Average(r => r.Rating);
             return result;
         }
 
@@ -25,7 +25,24 @@ namespace OdeToFood.Tests.Features
         {
 
             RatingResult result = new RatingResult();
-            result.Rating = 4;
+            int sumValue = 0;
+            int sumWeight = 0;
+            for (int i = 0; i < _restaurant.Reviews.Count; i++)
+            {
+                if (i < _restaurant.Reviews.Count/2)
+	            {
+                    sumValue += _restaurant.Reviews.ElementAt(i).Rating * 2;
+                    sumWeight += 2;
+	            }
+                else
+                {
+                    sumValue += _restaurant.Reviews.ElementAt(i).Rating;
+                    sumWeight += 1;
+                }
+                
+            }
+
+            result.Rating = sumValue / sumWeight;
             return result;
         }
     }
