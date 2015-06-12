@@ -25,9 +25,10 @@ namespace OdeToFood.Tests.Features
         public void Computes_Result_With_One_Review()
         {
             var model = BuildRestaurantAndReviews(new int[] { 4 });
+            var alg = new SimpleAverageRatingAlgorithm();
 
-            var rater = new RestaurantRater(model);
-            var result = rater.ComputeRating(10);
+            var rater = new RestaurantRater(model, alg);
+            var result = rater.Compute(10);
 
             Assert.AreEqual(4, result.Rating);
         }
@@ -35,9 +36,10 @@ namespace OdeToFood.Tests.Features
         public void Computes_Result_With_Two_Reviews()
         {
             var model = BuildRestaurantAndReviews(new int[]{4,8});
-            var rater = new RestaurantRater(model);
+            var alg = new SimpleAverageRatingAlgorithm();
+            var rater = new RestaurantRater(model, alg);
 
-            RatingResult result = rater.ComputeRating(10);
+            RatingResult result = rater.Compute(10);
 
             Assert.AreEqual(6, result.Rating);
 
@@ -46,8 +48,9 @@ namespace OdeToFood.Tests.Features
         public void Weighted_Average_With_Two_Reviews()
         {
             var model = BuildRestaurantAndReviews(new int[] { 3, 6 });
-            var rater = new RestaurantRater(model);
-            RatingResult result = rater.ComputeRatingWeighted(10);
+            var alg = new WeightedRatingAlgorithm();
+            var rater = new RestaurantRater(model, alg);
+            RatingResult result = rater.Compute(10);
 
             Assert.AreEqual(4, result.Rating);
         }
@@ -55,8 +58,9 @@ namespace OdeToFood.Tests.Features
         public void Weighted_Average_With_Four_Reviews()
         {
             var model = BuildRestaurantAndReviews(new int[] { 1,1,1,1,3,3,3,3 });
-            var rater = new RestaurantRater(model);
-            RatingResult result = rater.ComputeRatingWeighted(10);
+            var alg = new WeightedRatingAlgorithm();
+            var rater = new RestaurantRater(model, alg);
+            RatingResult result = rater.Compute(10);
 
             Assert.AreEqual(1, result.Rating);
         }
