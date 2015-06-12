@@ -1,3 +1,4 @@
+using OdeToFoodExercise.Models;
 using StructureMap;
 namespace OdeToFoodExercise {
     public static class IoC {
@@ -9,7 +10,7 @@ namespace OdeToFoodExercise {
                                         scan.TheCallingAssembly();
                                         scan.WithDefaultConventions();
                                     });
-            //                x.For<IExample>().Use<Example>();
+                            x.For<IOdeToFoodDataSource>().Use<OdeToFoodDb>();
                         });
             return ObjectFactory.Container;
         }

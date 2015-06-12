@@ -147,6 +147,7 @@
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
+    <Compile Include="FakeOdeToFoodDb.cs" />
     <Compile Include="Features\IRatingAlgorithm.cs" />
     <Compile Include="Features\RatingResult.cs" />
     <Compile Include="Features\RestaurantRater.cs" />

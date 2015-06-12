@@ -13,7 +13,12 @@ namespace OdeToFoodExercise.Controllers
         //in order to show how to use the EF, suppose we want to show  restaurants from the database
         //in the home page.
         //First, before using the database, we instanciate the OdeToFoodDb firstly.
-        OdeToFoodDb _db = new OdeToFoodDb();
+        //OdeToFoodDb _db = new OdeToFoodDb();
+        IOdeToFoodDataSource _db;
+        public HomeController(IOdeToFoodDataSource db)
+        {
+            _db = db;
+        }
         public ActionResult AutoComplete(string term)
         {
             //var result = from r in _db.Restaurants
@@ -21,7 +26,7 @@ namespace OdeToFoodExercise.Controllers
             //             select new{
             //                r.Name
             //             };
-            var result = _db.Restaurants.Where(restaurant => restaurant.Name.Contains(term))
+            var result = _db.Query<Restaurant>().Where(restaurant => restaurant.Name.Contains(term))
                 .Take(10).Select(r => new { label = r.Name, value = r.Name });
             return Json(result,"text/json",JsonRequestBehavior.AllowGet);
         }
@@ -50,7 +55,7 @@ namespace OdeToFoodExercise.Controllers
             //            };
             //besides the above method--comprehensive query syntax method,we can do it in the second way---extension method with 
             //Lamda expression.
-            var model = _db.Restaurants.OrderByDescending(r => r.Reviews.Average(reviews => reviews.Rating))
+            var model = _db.Query<Restaurant>().OrderByDescending(r => r.Reviews.Average(reviews => reviews.Rating))
                 .Where(restaurant => searchTerm == null || restaurant.Name.StartsWith(searchTerm))
                 //.Take(10)//some operaters like take and skip can be only used when using the extension syntax method.
                 .Select(r => new RestaurantListViewModel
