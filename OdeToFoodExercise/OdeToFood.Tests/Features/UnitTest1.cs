@@ -65,7 +65,7 @@ namespace OdeToFood.Tests.Features
             Assert.AreEqual(1, result.Rating);
         }
         [TestMethod]
-        public void Should_Only_Rate_From_Firt_N_Reviews()
+        public void Should_Only_Rate_From_First_N_Reviews()
         {
             var model = BuildRestaurantAndReviews(new int[] { 1, 1, 1, 1, 3, 3, 3, 3 });
             var alg = new SimpleAverageRatingAlgorithm();

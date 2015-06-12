@@ -18,7 +18,7 @@ namespace OdeToFood.Tests.Features
         }
         public RatingResult Compute(int NumberOfReviews)
         {
-            return _alg.ComputeRating(_restaurant.Reviews);
+            return _alg.ComputeRating(_restaurant.Reviews.Take(NumberOfReviews));
         }
 
 
