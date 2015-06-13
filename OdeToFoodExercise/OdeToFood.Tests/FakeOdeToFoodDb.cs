@@ -10,7 +10,7 @@ namespace OdeToFood.Tests
     {
         public IQueryable<T> Query<T>() where T : class
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();//THis should be implemented
         }
 
         public void Dispose()
