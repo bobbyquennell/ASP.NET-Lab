@@ -19,5 +19,29 @@ namespace OdeToFoodExercise.Models
         {
             return Set<T>();//The Set<T>() method is derived from base class: DbContext
         }
+
+
+
+
+        public void Add<T>(T entity) where T : class
+        {
+            Set<T>().Add(entity);
+        }
+
+        public void Update<T>(T entity) where T : class
+        {
+            Entry(entity).State = System.Data.EntityState.Modified;
+        }
+
+        public void Remove<T>(T entity) where T : class
+        {
+            Set<T>().Remove(entity);
+        }
+
+        void IOdeToFoodDataSource.SaveChanges()
+        {
+            SaveChanges();
+        }
     }
+    
 }

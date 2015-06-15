@@ -141,10 +141,11 @@
     <Compile Include="Features\RatingResult.cs" />
     <Compile Include="Features\RestaurantRater.cs" />
     <Compile Include="Features\SimpleAverageRatingAlgorithm.cs" />
-    <Compile Include="Features\UnitTest1.cs" />
+    <Compile Include="Features\RatingAlgorithmTests.cs" />
     <Compile Include="Features\WeightedRatingAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HomeControllerTests.cs" />
+    <Compile Include="RestaurantControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OdeToFoodExercise\OdeToFoodExercise.csproj">

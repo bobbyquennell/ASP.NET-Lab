@@ -19,7 +19,7 @@ using System.Linq;
 namespace OdeToFood.Tests.Features
 {
     [TestClass]
-    public class UnitTest1
+    public class RatingAlgorithmTests
     {
         [TestMethod]
         public void Computes_Result_With_One_Review()
