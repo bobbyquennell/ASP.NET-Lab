@@ -18,33 +18,31 @@ namespace OdeToFood.Tests
             Sets.Add(typeof(T), objects);
         }
 
-        public Dictionary<Type, object> Sets = new Dictionary<Type,object>();
-        public List<object> Added = new List<object>();
-        public List<object> Updated = new List<object>();
-        public List<object> Removed = new List<object>();
-
-        public object SavedChanges { get; set; }
-
-
-
         public void Add<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Added.Add(entity);
         }
 
         public void Update<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Updated.Add(entity);
         }
 
         public void Remove<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Added.Add(entity);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            this.IsSaved = true;
         }
+
+        public Dictionary<Type, object> Sets = new Dictionary<Type, object>();
+        public List<object> Added = new List<object>();
+        public List<object> Updated = new List<object>();
+        public List<object> Removed = new List<object>();
+
+        public bool IsSaved = false;
     }
 }

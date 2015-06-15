@@ -15,7 +15,7 @@ namespace OdeToFood.Tests
             var controller = new RestaurantController(db);
             controller.Create(new Restaurant());
             Assert.AreEqual(1, db.Added.Count);
-            Assert.AreEqual(true, db.SavedChanges);
+            Assert.AreEqual(true, db.IsSaved);
 
         }
     }
