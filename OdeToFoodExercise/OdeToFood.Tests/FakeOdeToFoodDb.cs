@@ -10,12 +10,17 @@ namespace OdeToFood.Tests
     {
         public IQueryable<T> Query<T>() where T : class
         {
-            throw new NotImplementedException();//THis should be implemented
+            return Sets[typeof(T)] as IQueryable<T>;
         }
 
         public void Dispose()
         {
             throw new NotImplementedException();//this can be ignore
         }
+        public void  AddSets<T>(IQueryable<T> objects){
+            Sets.Add(typeof(T), objects);
+        }
+
+        public Dictionary<Type, object> Sets = new Dictionary<Type,object>();
     }
 }

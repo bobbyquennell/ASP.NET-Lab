@@ -18,7 +18,8 @@ namespace OdeToFood.Tests
         public void Index()
         {
             //arrange
-            IOdeToFoodDataSource db = new FakeOdeToFoodDb();
+            var db = new FakeOdeToFoodDb();
+            db.AddSets(FakeData.Restaurants);
             HomeController controller = new HomeController(db);
             // Act
             ViewResult result = controller.Index() as ViewResult;
