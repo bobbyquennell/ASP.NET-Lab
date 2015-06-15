@@ -18,5 +18,14 @@ namespace OdeToFood.Tests
             Assert.AreEqual(true, db.IsSaved);
 
         }
+        [TestMethod]
+        public void Create_Does_Not_Save_Restaurant_When_Invalid()
+        {
+            var db = new FakeOdeToFoodDb();
+            var controller = new RestaurantController(db);
+            controller.ModelState.AddModelError("", "Invalid");
+            controller.Create(new Restaurant());
+            Assert.AreEqual(0, db.Added.Count);
+        }
     }
 }
