@@ -134,6 +134,7 @@
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
+    <Compile Include="FakeControllerContext.cs" />
     <Compile Include="FakeData.cs" />
     <Compile Include="FakeOdeToFoodDb.cs" />
     <Compile Include="Features\IRatingAlgorithm.cs" />

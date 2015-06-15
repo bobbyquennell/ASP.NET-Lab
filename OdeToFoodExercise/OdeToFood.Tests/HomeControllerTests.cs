@@ -21,6 +21,7 @@ namespace OdeToFood.Tests
             var db = new FakeOdeToFoodDb();
             db.AddSets(FakeData.Restaurants);
             HomeController controller = new HomeController(db);
+            controller.ControllerContext = new FakeControllerContext();
             // Act
             ViewResult result = controller.Index() as ViewResult;
             //Assert
