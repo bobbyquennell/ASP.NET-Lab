@@ -62,9 +62,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Calculator\Calculator.csproj">
+    <ProjectReference Include="..\Calculator\NUnitDemo.csproj">
       <Project>{f9bde0a7-81e2-43ed-9325-a274bac88742}</Project>
-      <Name>Calculator</Name>
+      <Name>NUnitDemo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
