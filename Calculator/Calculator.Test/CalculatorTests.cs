@@ -4,7 +4,7 @@
 namespace Calculator.Test
 {
     [TestFixture]
-    public class CalculatorTests
+    public class SimpleCalculatorTests
     {
         [Test]
         public void ShouldAddTwoNumbers()

@@ -14,8 +14,7 @@ namespace Calculator
         }
         public int Multiply(int a, int b)
         {
-            // Bug for demo purposes
-            return a + b;
+            return a * b;
         }
     }
 }
