@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using System.Web.UI;
+using System.Configuration;
 namespace OdeToFoodExercise.Controllers
 {
     public class HomeController : Controller
@@ -55,6 +56,7 @@ namespace OdeToFoodExercise.Controllers
             //            };
             //besides the above method--comprehensive query syntax method,we can do it in the second way---extension method with 
             //Lamda expression.
+            ViewBag.MailServer = ConfigurationManager.AppSettings["MailServer"];//an example of retrieving stored value from Web.Config file.
             var model = _db.Query<Restaurant>().OrderByDescending(r => r.Reviews.Average(reviews => reviews.Rating))
                 .Where(restaurant => searchTerm == null || restaurant.Name.StartsWith(searchTerm))
                 //.Take(10)//some operaters like take and skip can be only used when using the extension syntax method.
