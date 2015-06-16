@@ -32,5 +32,12 @@ namespace Calculator.Test
             var result = sut.AddDoubles(1.1, 2.2);
             Assert.That(result, Is.EqualTo(3.3).Within(0.01));
         }
+        [Test]
+        public void ShouldAddDoubles_WithPercentTolerance()
+        {
+            var sut = new Calculator();
+            var result = sut.AddDoubles(500, 500);
+            Assert.That(result, Is.EqualTo(1002).Within(1).Percent);
+        }
     }
 }
