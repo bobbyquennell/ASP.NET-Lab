@@ -19,5 +19,19 @@ namespace Calculator.Test
             Assert.That(result, Is.EqualTo("Tonny Albert"));
             
         }
+        [Test]
+        public void ShouldJoinNames_CaseInsensitive()
+        {
+            var sut = new NameJoiner();
+            var result = sut.JoinName("tonny", "albert");
+            Assert.That(result, Is.EqualTo("TONNY ALBERT").IgnoreCase);
+        }
+        [Test]
+        public void ShouldJoinName_NotEqual()
+        {
+            var sut = new NameJoiner();
+            var result = sut.JoinName("Tonny", "Albert");
+            Assert.That(result, Is.Not.EqualTo("Barack Obama"));
+        }
     }
 }
