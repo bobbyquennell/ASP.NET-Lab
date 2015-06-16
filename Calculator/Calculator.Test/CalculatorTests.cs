@@ -39,5 +39,10 @@ namespace Calculator.Test
             var result = sut.AddDoubles(500, 500);
             Assert.That(result, Is.EqualTo(1002).Within(1).Percent);
         }
+
+        //Also available:
+          //Is.Positive
+          //Is.Negative
+          //Is.NaN (Not a Number)
     }
 }
