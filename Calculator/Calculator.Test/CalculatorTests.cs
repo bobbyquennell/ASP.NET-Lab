@@ -1,25 +1,29 @@
 ﻿using NUnit.Framework;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Calculator.Test
 {
     [TestFixture]
-    public class SimpleCalculatorTests
+    public class CalculatorTests
     {
         [Test]
-        public void ShouldAddTwoNumbers()
+        public void ShouldAddInts()
         {
-            var sut = new SimpleCalculator();
-            var result = sut.Add(1, 2);
-
+            var sut = new Calculator();
+            var result = sut.AddInts(1, 2);
             Assert.That(result, Is.EqualTo(3));
         }
+
         [Test]
-        public void ShouldMultiplyTwoNumbers()
+        public void ShouldAddDoubles()
         {
-            var sut = new SimpleCalculator();
-            var result = sut.Multiply(2, 10);
-            Assert.That(result, Is.EqualTo(20));
+            var sut = new Calculator();
+            var result = sut.AddDoubles(1.1, 2.2);
+            Assert.That(result, Is.EqualTo(3.3));
         }
     }
 }
