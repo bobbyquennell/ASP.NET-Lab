@@ -13,7 +13,7 @@ namespace OdeToFoodExercise.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(OdeToFoodExercise.Models.OdeToFoodDb context)
@@ -41,26 +41,29 @@ namespace OdeToFoodExercise.Migrations
                                  }
                 }
             );
-            for (int loop = 0; loop < 333; loop++)
-            {
-                context.Restaurants.AddOrUpdate(
-                r => r.Name,
-                new Restaurant { Name="VietStar"+loop, City="Hawthorn", Country="Australia"},
-                new Restaurant { Name="Grill'd"+loop, City="Hawthorn", Country="Australia"},
-                new Restaurant { Name="ToroToro"+loop, City="Melbourne", Country="Australia",
-                                 Reviews = new List<RestaurantReview>
-                                 {
-                                     new RestaurantReview{ Rating=9, Body="Very Yummy!", Reviewer="Bobby"}
-                                 }
-                               }
-            );}
+            //for (int loop = 0; loop < 333; loop++)
+            //{
+            //    context.Restaurants.AddOrUpdate(
+            //    r => r.Name,
+            //    new Restaurant { Name="VietStar"+loop, City="Hawthorn", Country="Australia"},
+            //    new Restaurant { Name="Grill'd"+loop, City="Hawthorn", Country="Australia"},
+            //    new Restaurant { Name="ToroToro"+loop, City="Melbourne", Country="Australia",
+            //                     Reviews = new List<RestaurantReview>
+            //                     {
+            //                         new RestaurantReview{ Rating=9, Body="Very Yummy!", Reviewer="Bobby"}
+            //                     }
+            //                   }
+            //);}
             seedMembership();
 
         }
 
         private void seedMembership()
         {
-            WebSecurity.InitializeDatabaseConnection("OdeToFoodDb", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("OdeToFoodDb", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            } 
             var roles = (SimpleRoleProvider)Roles.Provider;
             var membership = (SimpleMembershipProvider)Membership.Provider;
             if (!roles.RoleExists("admin"))

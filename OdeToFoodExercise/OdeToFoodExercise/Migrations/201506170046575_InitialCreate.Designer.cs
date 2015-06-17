@@ -11,7 +11,7 @@ namespace OdeToFoodExercise.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201505260434571_InitialCreate"; }
+            get { return "201506170046575_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

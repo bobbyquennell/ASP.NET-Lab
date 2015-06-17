@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OdeToFoodExercise.Migrations;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -17,7 +19,12 @@ namespace OdeToFoodExercise
     {
         protected void Application_Start()
         {
-            WebSecurity.InitializeDatabaseConnection("OdeToFoodDb", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            var migrator = new DbMigrator(new Configuration());
+            migrator.Update();
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("OdeToFoodDb", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            }
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
