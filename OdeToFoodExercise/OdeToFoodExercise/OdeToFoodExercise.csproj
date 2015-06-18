@@ -210,9 +210,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506170046575_InitialCreate.cs" />
-    <Compile Include="Migrations\201506170046575_InitialCreate.Designer.cs">
-      <DependentUpon>201506170046575_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201506171232595_InitialCreate.cs" />
+    <Compile Include="Migrations\201506171232595_InitialCreate.Designer.cs">
+      <DependentUpon>201506171232595_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
@@ -289,6 +289,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\OdeToFoodExerciseRelease.pubxml" />
+    <None Include="Properties\PublishProfiles\release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -343,7 +345,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Shared\_Review.cshtml" />
     <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Restaurant\Details.cshtml" />
@@ -363,8 +367,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506170046575_InitialCreate.resx">
-      <DependentUpon>201506170046575_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506171232595_InitialCreate.resx">
+      <DependentUpon>201506171232595_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
