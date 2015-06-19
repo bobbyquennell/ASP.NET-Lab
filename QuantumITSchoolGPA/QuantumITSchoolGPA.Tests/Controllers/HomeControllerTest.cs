@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QuantumITSchoolGPA;
 using QuantumITSchoolGPA.Controllers;
 using QuantumITSchoolGPA.Tests.Fakes;
 using QuantumITSchoolGPA.Models;
+using NUnit.Framework;
 
 namespace QuantumITSchoolGPA.Tests.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class HomeControllerTest
     {
-        [TestMethod]
-        public void Index()
+        [Test]
+        public void Index_Should_Return_Class_Model_List()
         {
             // Arrange
             var db = new FakeSchoolGpaDb();
@@ -26,22 +27,24 @@ namespace QuantumITSchoolGPA.Tests.Controllers
             ViewResult result = controller.Index() as ViewResult;
             IEnumerable<Class> model = result.Model as IEnumerable<Class>;
             // Assert
-            Assert.AreEqual(4, model.Count());
+            Assert.That(model.Count(), Is.EqualTo(4));
         }
 
-        [TestMethod]
-        public void ShowStudentList()
+        [Test]
+        public void ShowStudentList_Should_Return_a_ClassModel_with_Student_List()
         {
             // Arrange
             var db = new FakeSchoolGpaDb();
             db.AddSet(TestData.Classes);
             HomeController controller = new HomeController(db);
+            int classId = 1;
 
             // Act
-            PartialViewResult result = controller.ShowStudentList() as PartialViewResult;
-
+            PartialViewResult result = controller.ShowStudentList(classId) as PartialViewResult;
+            Class model = result.Model as Class;
             // Assert
-            Assert.IsNotNull(result);
+            Assert.That(model.Id, Is.EqualTo(classId));
+            Assert.That(model.Students.Count, Is.EqualTo(1));
         }
 
        

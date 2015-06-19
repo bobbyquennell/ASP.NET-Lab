@@ -21,6 +21,7 @@ namespace QuantumITSchoolGPA.Tests
                     float FakeGpa = (float)(random.Next(5)+ random.NextDouble());
                    
                     var course = new Class();
+                    course.Id = i + 1;
                     course.Location = "fake location " + index;
                     course.Name = "fake CourseName" + index;
                     course.TeacherName = "fake TeacherName " + index;
@@ -28,8 +29,8 @@ namespace QuantumITSchoolGPA.Tests
                         new Student{ Age = 18,
                          Name ="FakeStuFName"+index + " " + "FakeStuLName"+index,
                          GPA = FakeGpa,
-                          ClassId = i,
-                         Id= i }};
+                          ClassId = i+1,
+                         Id= i+1 }};
                     Classes.Add(course);
                 }
                 return Classes.AsQueryable();
