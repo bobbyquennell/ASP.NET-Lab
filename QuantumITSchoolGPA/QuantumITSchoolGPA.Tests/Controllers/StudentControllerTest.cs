@@ -10,15 +10,23 @@ namespace QuantumITSchoolGPA.Tests.Controllers
     [TestFixture]
     public class StudentControllerTest
     {
+        private FakeSchoolGpaDb db;
+        private StudentController sut;
         [Test]
         public void Create_Should_Save_A_New_Student_When_Valid()
         {
-            var db = new FakeSchoolGpaDb();
-            var controller = new StudentController(db);            
-            controller.Create(new Student());
+                 
+            sut.Create(new Student());
 
             Assert.That(db.Added.Count, Is.EqualTo(1));
             Assert.That(db.IsChangesSaved, Is.True);
+        }
+
+        [SetUp]
+        public void StudentControllerArrange()
+        {
+            db = new FakeSchoolGpaDb();
+            sut = new StudentController(db);
         }
     }
 }
