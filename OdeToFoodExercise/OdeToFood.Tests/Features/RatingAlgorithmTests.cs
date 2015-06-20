@@ -1,8 +1,9 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OdeToFoodExercise.Models;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
 /*
  * A restaurant's overall rating can be calculated using various methods
  * For this application we'll want to try different methods over time,
@@ -18,10 +19,10 @@ using System.Linq;
  */
 namespace OdeToFood.Tests.Features
 {
-    [TestClass]
+    [TestFixture]
     public class RatingAlgorithmTests
     {
-        [TestMethod]
+        [Test]
         public void Computes_Result_With_One_Review()
         {
             var model = BuildRestaurantAndReviews(new int[] { 4 });
@@ -30,9 +31,9 @@ namespace OdeToFood.Tests.Features
             var rater = new RestaurantRater(model, alg);
             var result = rater.Compute(10);
 
-            Assert.AreEqual(4, result.Rating);
+            Assert.That(result.Rating, Is.EqualTo(4));
         }
-        [TestMethod]
+        [Test]
         public void Computes_Result_With_Two_Reviews()
         {
             var model = BuildRestaurantAndReviews(new int[]{4,8});
@@ -41,10 +42,10 @@ namespace OdeToFood.Tests.Features
 
             RatingResult result = rater.Compute(10);
 
-            Assert.AreEqual(6, result.Rating);
+            Assert.That(result.Rating, Is.EqualTo(6));
 
         }
-        [TestMethod]
+        [Test]
         public void Weighted_Average_With_Two_Reviews()
         {
             var model = BuildRestaurantAndReviews(new int[] { 3, 6 });
@@ -52,9 +53,9 @@ namespace OdeToFood.Tests.Features
             var rater = new RestaurantRater(model, alg);
             RatingResult result = rater.Compute(10);
 
-            Assert.AreEqual(4, result.Rating);
+            Assert.That(result.Rating, Is.EqualTo(4));
         }
-        [TestMethod]
+        [Test]
         public void Weighted_Average_With_Four_Reviews()
         {
             var model = BuildRestaurantAndReviews(new int[] { 1,1,1,1,3,3,3,3 });
@@ -62,9 +63,9 @@ namespace OdeToFood.Tests.Features
             var rater = new RestaurantRater(model, alg);
             RatingResult result = rater.Compute(10);
 
-            Assert.AreEqual(1, result.Rating);
+            Assert.That(result.Rating, Is.EqualTo(1));
         }
-        [TestMethod]
+        [Test]
         public void Should_Only_Rate_From_First_N_Reviews()
         {
             var model = BuildRestaurantAndReviews(new int[] { 1, 1, 1, 1, 3, 3, 3, 3 });
@@ -72,7 +73,7 @@ namespace OdeToFood.Tests.Features
             var rater = new RestaurantRater(model, alg);
             RatingResult result = rater.Compute(4);
 
-            Assert.AreEqual(1, result.Rating);
+            Assert.That(result.Rating, Is.EqualTo(1));
 
         }
         private Restaurant BuildRestaurantAndReviews(params int[] ratings)
