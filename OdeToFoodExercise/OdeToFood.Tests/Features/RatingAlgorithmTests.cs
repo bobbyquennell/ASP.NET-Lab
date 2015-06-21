@@ -29,6 +29,7 @@ namespace OdeToFood.Tests.Features
             var alg = new SimpleAverageRatingAlgorithm();
 
             var rater = new RestaurantRater(model, alg);
+            /////above code could be abtract to a set up or something like that to reduce duplicated code
             var result = rater.Compute(10);
 
             Assert.That(result.Rating, Is.EqualTo(4));
