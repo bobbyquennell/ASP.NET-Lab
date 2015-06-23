@@ -36,10 +36,22 @@ namespace GPASystem.Web.Migrations
                     Location = "Building 5 Room 201",
                     TeacherName = "Mr Robertson",
                     Students = new List<Student>() { 
-                     new Student(){ Name = "David Jackson", Age=19, Gpa= 3.4},
-                     new Student(){ Name = "Peter Parker", Age= 19, Gpa = 2.9},
-                     new Student(){Name="Robert Smith", Age=18, Gpa =3.1},
-                     new Student(){Name="Rebecca Black", Age =19, Gpa=2.1}
+                         new Student(){ Name = "David Jackson", Age=19, Gpa= 3.4},
+                         new Student(){ Name = "Peter Parker", Age= 19, Gpa = 2.9},
+                         new Student(){Name="Robert Smith", Age=18, Gpa =3.1},
+                         new Student(){Name="Rebecca Black", Age =19, Gpa=2.1}
+                    }
+                },
+                new Course
+                {
+                    CourseName = "English",
+                    Location = "Building 3 Room 134",
+                    TeacherName = "Miss Sanderson",
+                    Students = new List<Student>() { 
+                        new Student(){ Name = "David Beckham", Age=19, Gpa= 3.4},
+                        new Student(){ Name = "Peter Obama", Age= 19, Gpa = 2.9},
+                        new Student(){Name="Robert Merkel", Age=18, Gpa =3.1},
+                        new Student(){Name="Rebecca Albert", Age =19, Gpa=2.1}
                     }
                 }
             );
