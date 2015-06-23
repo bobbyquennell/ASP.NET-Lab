@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GPA.Domain;
+using GPASystem.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,23 +12,24 @@ namespace GPASystem.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
+            // return list of courses
+            EfGPARepository _GpaRepo = new EfGPARepository();
+            var ListOfCourses = _GpaRepo.GetAll<Course>().ToList();
+            return View(ListOfCourses);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your app description page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //public ActionResult Contact()
+        //{
+        //    ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+        //    return View();
+        //}
     }
 }
