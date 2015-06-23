@@ -1,4 +1,4 @@
-﻿@model GPASystem.Web.Models.HomeIndexViewModel
+﻿@model GPASystem.Web.Models.Home.HomeIndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -19,8 +19,8 @@
                  <td>@Html.DisplayFor(model => course.Name)</td>
                  <td>@Html.DisplayFor(item => course.Location)</td>
                  <td>@Html.DisplayFor(item => course.TeacherName)</td>
-                 <td>@Html.ActionLink("Edit","Edit","Course", new{ Id = course.Id}, null)</td>
-                 <td>@Html.ActionLink("Delete", "Delte", "Course", new { Id = course.Id }, null)</td>
+                 <td>@Html.ActionLink("Edit","Edit","Lesson", new{ Id = course.Id}, null)</td>
+                 <td>@Html.ActionLink("Delete", "Delte", "Lesson", new { Id = course.Id }, null)</td>
              </tr>
          }
      </table>

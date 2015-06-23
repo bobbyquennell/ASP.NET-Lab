@@ -1,4 +1,5 @@
-﻿using GPA.Domain;
+﻿using GPA.Domain.Entities;
+using GPASystem.Web.Models.Home;
 using GPASystem.Web.Models;
 using System;
 using System.Collections.Generic;

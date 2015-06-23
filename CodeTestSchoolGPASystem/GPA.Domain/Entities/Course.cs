@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GPA.Domain
+namespace GPA.Domain.Entities
 {
     public class Course
     {

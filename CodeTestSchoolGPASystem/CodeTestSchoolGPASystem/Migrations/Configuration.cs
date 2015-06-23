@@ -1,6 +1,6 @@
 namespace GPASystem.Web.Migrations
 {
-    using GPA.Domain;
+    using GPA.Domain.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
