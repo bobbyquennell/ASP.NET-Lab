@@ -1,15 +1,17 @@
 namespace GPASystem.Web.Migrations
 {
+    using GPA.Domain;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Collections.Generic;
 
     internal sealed class Configuration : DbMigrationsConfiguration<GPASystem.Web.Models.EfGPARepository>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(GPASystem.Web.Models.EfGPARepository context)
@@ -26,6 +28,21 @@ namespace GPASystem.Web.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Courses.AddOrUpdate(
+                c => c.CourseName,
+                new Course
+                {
+                    CourseName = "Biology",
+                    Location = "Building 5 Room 201",
+                    TeacherName = "Mr Robertson",
+                    Students = new List<Student>() { 
+                     new Student(){ Name = "David Jackson", Age=19, Gpa= 3.4},
+                     new Student(){ Name = "Peter Parker", Age= 19, Gpa = 2.9},
+                     new Student(){Name="Robert Smith", Age=18, Gpa =3.1},
+                     new Student(){Name="Rebecca Black", Age =19, Gpa=2.1}
+                    }
+                }
+            );
         }
     }
 }
