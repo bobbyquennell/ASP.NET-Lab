@@ -14,8 +14,9 @@ namespace GPASystem.Web.Controllers
         {
             // return list of courses
             EfGPARepository _GpaRepo = new EfGPARepository();
-            var ListOfCourses = _GpaRepo.GetAll<Course>().ToList();
-            return View(ListOfCourses);
+            HomeIndexViewModel model = new HomeIndexViewModel();
+            model.Courses = _GpaRepo.GetAll<Course>().ToList();
+            return View(model);
         }
 
         //public ActionResult About()
