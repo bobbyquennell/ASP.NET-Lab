@@ -29,10 +29,10 @@ namespace GPASystem.Web.Migrations
             //    );
             //
             context.Courses.AddOrUpdate(
-                c => c.CourseName,
+                c => c.Name,
                 new Course
                 {
-                    CourseName = "Biology",
+                    Name = "Biology",
                     Location = "Building 5 Room 201",
                     TeacherName = "Mr Robertson",
                     Students = new List<Student>() { 
@@ -44,7 +44,7 @@ namespace GPASystem.Web.Migrations
                 },
                 new Course
                 {
-                    CourseName = "English",
+                    Name = "English",
                     Location = "Building 3 Room 134",
                     TeacherName = "Miss Sanderson",
                     Students = new List<Student>() { 
