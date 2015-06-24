@@ -34,9 +34,9 @@ namespace GPASystem.Web.Models
             Set<TEntity>().Remove(entity);
         }
 
-        public new void SaveChanges()
+        void IRepository.SaveChanges()
         {
-            base.SaveChanges();
+            SaveChanges();
         }
     }
 }

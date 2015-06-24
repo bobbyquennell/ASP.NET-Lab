@@ -73,9 +73,10 @@ namespace GPASystem.Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var model = _GpaRepo.GetAll<Course>().Single(c => c.Id == id);
+                _GpaRepo.Delete<Course>(model);
+                _GpaRepo.SaveChanges();
+                return RedirectToAction("Index","Home",null);
             }
             catch
             {
