@@ -33,9 +33,18 @@ namespace GPASystem.Web.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    LessonEditViewModel viewModel = new LessonEditViewModel();
+                    var model = _GpaRepo.GetAll<Course>().Single(c => c.Id == id);
+                    model.Name = collection["CourseName"];
+                    model.Location = collection["Location"];
+                    model.TeacherName = collection["TeacherName"];
+                    _GpaRepo.Update<Course>(model);
+                    _GpaRepo.SaveChanges();
+                }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home",null);
             }
             catch
             {

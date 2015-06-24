@@ -36,7 +36,7 @@ namespace GPASystem.Web.Models
 
         public new void SaveChanges()
         {
-            SaveChanges();
+            base.SaveChanges();
         }
     }
 }
