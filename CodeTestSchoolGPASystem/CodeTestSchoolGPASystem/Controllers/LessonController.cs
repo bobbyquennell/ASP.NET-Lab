@@ -56,7 +56,13 @@ namespace GPASystem.Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            //get a course model from the repo and put it to the view back
+            LessonEditViewModel viewModel = new LessonEditViewModel();
+            var model = _GpaRepo.GetAll<Course>().Single(c => c.Id == id);
+            viewModel.CourseName = model.Name;
+            viewModel.Location = model.Location;
+            viewModel.TeacherName = model.TeacherName;
+            return View(viewModel);
         }
 
         //
