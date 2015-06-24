@@ -12,6 +12,11 @@ namespace GPASystem.Web.Controllers
     public class LessonController : Controller
     {
         private EfGPARepository _GpaRepo = new EfGPARepository();
+        public ActionResult Create()
+        {
+            var viewModel = new LessonEditViewModel();
+            return View(viewModel);
+        }
         // GET: /Course/Edit/5
 
         public ActionResult Edit(int id)
