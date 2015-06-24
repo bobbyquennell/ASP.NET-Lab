@@ -11,6 +11,6 @@ namespace GPA.Domain.Entities
         public string Name { get; set; }
         public int Age { get; set; }
         public double Gpa { get; set; }
-
+        public int CourseId { get; set; }
     }
 }
