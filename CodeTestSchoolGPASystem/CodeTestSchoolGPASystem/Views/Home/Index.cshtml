@@ -16,7 +16,7 @@
          @foreach (var course in Model.Courses)
          {
              <tr>
-                 <td>@Html.ActionLink(@course.Name,"Index","Learner",new{id = course.Id},null) </td>
+                 <td class="ShowStudentList">@Html.ActionLink(@course.Name,"Index","Learner",new{id = course.Id},null) </td>
                  <td>@Html.DisplayFor(item => course.Location)</td>
                  <td>@Html.DisplayFor(item => course.TeacherName)</td>
                  <td>@Html.ActionLink("Edit","Edit","Lesson", new{ Id = course.Id}, null)</td>
