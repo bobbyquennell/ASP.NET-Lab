@@ -29,17 +29,16 @@ namespace GPASystem.Web.Controllers
         // POST: /Course/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, LessonEditViewModel LessonToEdit)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    LessonEditViewModel viewModel = new LessonEditViewModel();
                     var model = _GpaRepo.GetAll<Course>().Single(c => c.Id == id);
-                    model.Name = collection["CourseName"];
-                    model.Location = collection["Location"];
-                    model.TeacherName = collection["TeacherName"];
+                    model.Name = LessonToEdit.CourseName;
+                    model.Location = LessonToEdit.Location;
+                    model.TeacherName = LessonToEdit.TeacherName;
                     _GpaRepo.Update<Course>(model);
                     _GpaRepo.SaveChanges();
                 }
