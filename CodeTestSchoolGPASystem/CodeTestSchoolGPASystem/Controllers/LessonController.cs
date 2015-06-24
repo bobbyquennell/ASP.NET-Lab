@@ -17,6 +17,20 @@ namespace GPASystem.Web.Controllers
             var viewModel = new LessonEditViewModel();
             return View(viewModel);
         }
+        [HttpPost]
+        public ActionResult Create(LessonEditViewModel LessonToCreate)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = new Course();
+                model.Location = LessonToCreate.Location;
+                model.Name = LessonToCreate.CourseName;
+                model.TeacherName = LessonToCreate.TeacherName;
+                _GpaRepo.Add<Course>(model);
+                _GpaRepo.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home", null);
+        }
         // GET: /Course/Edit/5
 
         public ActionResult Edit(int id)
