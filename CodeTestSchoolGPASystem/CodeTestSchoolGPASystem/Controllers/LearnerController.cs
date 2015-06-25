@@ -100,7 +100,12 @@ namespace GPASystem.Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            Student stu = _GpaRepo.GetAll<Student>().Single(s => s.Id == id);
+            var StuViewModel = new LearnerCreateViewModel();
+            StuViewModel.GPA = stu.Gpa;
+            StuViewModel.StudentName = stu.Name;
+            StuViewModel.StudentAge = stu.Age;
+            return View(StuViewModel);
         }
 
         //
