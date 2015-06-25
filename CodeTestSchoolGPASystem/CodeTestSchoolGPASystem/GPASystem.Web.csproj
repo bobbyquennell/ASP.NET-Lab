@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Learner\LearnerIndexViewModel.cs" />
     <Compile Include="Models\Lesson\LessonEditViewModel.cs" />
     <Compile Include="Models\EfGPARepository.cs" />
     <Compile Include="Models\Home\HomeInexViewModel.cs" />
@@ -309,6 +310,7 @@
     <Content Include="Views\Lesson\Edit.cshtml" />
     <Content Include="Views\Lesson\Delete.cshtml" />
     <Content Include="Views\Lesson\Create.cshtml" />
+    <Content Include="Views\Learner\_IndexPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,6 +12,6 @@ namespace GPA.Domain.Entities
         public string Name { get; set; }
         public string Location { get; set; }
         public string TeacherName { get; set; }
-        public List<Student> Students { get; set; }
+        public virtual IList<Student> Students { get; set; }
     }
 }

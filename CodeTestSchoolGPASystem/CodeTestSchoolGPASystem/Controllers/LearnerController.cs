@@ -1,5 +1,6 @@
 ﻿using GPA.Domain.Entities;
 using GPASystem.Web.Models;
+using GPASystem.Web.Models.Learner;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,10 @@ namespace GPASystem.Web.Controllers
         public ActionResult Index(int id)
         {
             var model = _GpaRepo.GetAll<Course>().Single(c => c.Id == id);
-
-            return View();
+            var viewModel = new LearnerIndexViewModel();
+            viewModel.CourseName = model.Name;
+            viewModel.Students = model.Students;
+            return PartialView("_IndexPartialView",viewModel);
         }
 
         //
