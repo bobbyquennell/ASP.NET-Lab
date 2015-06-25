@@ -36,30 +36,5 @@ namespace GPASystem.Web.Tests.Controllers
             Assert.That(model.Courses.Count, Is.EqualTo(2));
         }
 
-        //[TestMethod]
-        //public void About()
-        //{
-        //    // Arrange
-        //    HomeController controller = new HomeController();
-
-        //    // Act
-        //    ViewResult result = controller.About() as ViewResult;
-
-        //    // Assert
-        //    Assert.IsNotNull(result);
-        //}
-
-        //[TestMethod]
-        //public void Contact()
-        //{
-        //    // Arrange
-        //    HomeController controller = new HomeController();
-
-        //    // Act
-        //    ViewResult result = controller.Contact() as ViewResult;
-
-        //    // Assert
-        //    Assert.IsNotNull(result);
-        //}
     }
 }
