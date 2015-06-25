@@ -313,6 +313,7 @@
     <Content Include="Views\Lesson\Create.cshtml" />
     <Content Include="Views\Learner\_IndexPartialView.cshtml" />
     <Content Include="Views\Learner\Create.cshtml" />
+    <Content Include="Views\Learner\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
