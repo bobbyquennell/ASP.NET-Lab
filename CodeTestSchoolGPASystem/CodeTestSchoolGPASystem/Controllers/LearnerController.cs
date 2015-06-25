@@ -76,13 +76,18 @@ namespace GPASystem.Web.Controllers
         // POST: /Learner/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, LearnerCreateViewModel studentToUpdate)
         {
             try
             {
-                // TODO: Add update logic here
+                Student stu = _GpaRepo.GetAll<Student>().Single(s => s.Id == id);
+                stu.Gpa = studentToUpdate.GPA;
+                stu.Name = studentToUpdate.StudentName;
+                stu.Age = studentToUpdate.StudentAge;
+                _GpaRepo.Update<Student>(stu);
+                _GpaRepo.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home",null);
             }
             catch
             {
