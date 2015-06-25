@@ -23,15 +23,6 @@ namespace GPASystem.Web.Controllers
             viewModel.Students = model.Students;
             return PartialView("_IndexPartialView",viewModel);
         }
-
-        //
-        // GET: /Learner/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         //
         // GET: /Learner/Create
 
