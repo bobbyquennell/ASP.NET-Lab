@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using GPASystem.Web;
 using GPASystem.Web.Controllers;
 using NUnit.Framework;
+using Moq;
+using GPA.Domain.Repositories;
+using GPA.Domain.Entities;
 
 namespace GPASystem.Web.Tests.Controllers
 {
@@ -17,13 +20,14 @@ namespace GPASystem.Web.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            Mock<IRepository> GpaRepoMock = new Mock<IRepository>();
+            HomeController controller = new HomeController(GpaRepoMock.Object);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Modify this template to jump-start your ASP.NET MVC application.", result.ViewBag.Message);
+            Assert.That(result, Is.Not.Null);
         }
 
         //[TestMethod]

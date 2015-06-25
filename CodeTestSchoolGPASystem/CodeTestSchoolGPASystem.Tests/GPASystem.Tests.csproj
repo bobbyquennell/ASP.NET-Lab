@@ -149,6 +149,10 @@
       <Project>{FC54AC19-5662-426C-A710-0E3240FC2EBB}</Project>
       <Name>GPASystem.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GPA.Domain\GPA.Domain.csproj">
+      <Project>{8f908110-c8a7-4ff8-a783-d76d75986ba6}</Project>
+      <Name>GPA.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

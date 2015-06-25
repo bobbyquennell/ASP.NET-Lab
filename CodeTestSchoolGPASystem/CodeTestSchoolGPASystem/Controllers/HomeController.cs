@@ -6,15 +6,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GPA.Domain.Repositories;
 
 namespace GPASystem.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IRepository _GpaRepo;
+        public HomeController(IRepository repo)
+        {
+            _GpaRepo = repo;
+        }
         public ActionResult Index()
         {
             // return list of courses
-            EfGPARepository _GpaRepo = new EfGPARepository();
+            //EfGPARepository _GpaRepo = new EfGPARepository();
             HomeIndexViewModel model = new HomeIndexViewModel();
             model.Courses = _GpaRepo.GetAll<Course>().ToList();
             return View(model);
