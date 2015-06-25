@@ -42,9 +42,16 @@ namespace GPASystem.Web.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                var NewStudent = new Student();
+                NewStudent.Name = learnerToCreate.StudentName;
+                NewStudent.Age = learnerToCreate.StudentAge;
+                NewStudent.Gpa = learnerToCreate.GPA;
+                NewStudent.CourseId = id;
 
-                return RedirectToAction("Index");
+                _GpaRepo.Add<Student>(NewStudent);
+
+                _GpaRepo.SaveChanges();
+                return RedirectToAction("Index","Home",null);
             }
             catch
             {
