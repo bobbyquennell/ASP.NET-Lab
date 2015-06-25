@@ -11,7 +11,7 @@
             alert("failed to get ajax data");
         });
         console.log("clickHandlerFunction hitted");
-        //return false;
+        return false;
     };
     //$(".ShowStudentList a").click(ajaxShowStudentList);
     $(".main-content").on("click", ".ShowStudentList a", ajaxShowStudentList);
