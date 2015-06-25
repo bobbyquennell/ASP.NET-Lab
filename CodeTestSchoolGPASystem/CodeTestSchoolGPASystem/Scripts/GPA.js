@@ -7,7 +7,13 @@
         }
         $.ajax(settings).done(function (data) {
             $("#StudentSection").html(data);
-        }).fail(function(){
+            $('td.GPA').each(function () {
+                var gpa = parseFloat($(this).text());
+                if (gpa >= 3.2) {
+                    $(this).prev().prev().css("color", "red");
+                }
+            });
+        }).fail(function (){
             alert("failed to get ajax data");
         });
         console.log("clickHandlerFunction hitted");
