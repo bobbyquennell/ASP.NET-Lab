@@ -116,9 +116,10 @@ namespace GPASystem.Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                Student stu = _GpaRepo.GetAll<Student>().Single(s => s.Id == id);
+                _GpaRepo.Delete<Student>(stu);
+                _GpaRepo.SaveChanges();
+                return RedirectToAction("Index","Home",null);
             }
             catch
             {
