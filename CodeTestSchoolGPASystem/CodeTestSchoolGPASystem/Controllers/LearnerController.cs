@@ -21,21 +21,24 @@ namespace GPASystem.Web.Controllers
             var viewModel = new LearnerIndexViewModel();
             viewModel.CourseName = model.Name;
             viewModel.Students = model.Students;
+            viewModel.CourseId = model.Id;
             return PartialView("_IndexPartialView",viewModel);
         }
         //
         // GET: /Learner/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id )
         {
-            return View();
+            var course = _GpaRepo.GetAll<Course>().Single(c => c.Id == id);
+            var model = new LearnerCreateViewModel();
+            return View(model);
         }
 
         //
         // POST: /Learner/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int id, LearnerCreateViewModel learnerToCreate)
         {
             try
             {

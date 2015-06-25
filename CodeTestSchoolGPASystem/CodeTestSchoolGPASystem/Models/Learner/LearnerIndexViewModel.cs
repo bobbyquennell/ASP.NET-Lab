@@ -10,5 +10,6 @@ namespace GPASystem.Web.Models.Learner
     {
         public ICollection<Student> Students { get; set; }
         public string CourseName { get; set; }
+        public int CourseId { get; set; }
     }
 }

@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Learner\LearnerCreateViewModel.cs" />
     <Compile Include="Models\Learner\LearnerIndexViewModel.cs" />
     <Compile Include="Models\Lesson\LessonEditViewModel.cs" />
     <Compile Include="Models\EfGPARepository.cs" />

@@ -37,6 +37,6 @@
     }
 
 </table>
-<form action=@Url.Action("Create","Learer",null) method="get">
+<form action=@Url.Action("Create","Learner",new{ id = Model.CourseId}) method="get">
     <input type="submit" value="Add a Student" />
 </form>
