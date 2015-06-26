@@ -19,7 +19,7 @@ namespace GPASystem.Web.Tests.Features
     public class UnitTest1
     {
         [Test]
-        public void Validator_Should_Return_True_When_Surname_Valid()
+        public void SurnameValidator_Should_Return_True_When_Add_A_Student_With_Valid_Surname()
         {
             //arrange
             Student newStudent = new Student();
@@ -40,7 +40,7 @@ namespace GPASystem.Web.Tests.Features
 
         }
         [Test]
-        public void SurnameValidator_Should_Return_False_When_SurName_Invalid()
+        public void SurnameValidator_Should_Return_False_When_Add_A_Student_With_Invalid_Surname()
         {
             //arrange
             Student newStudent = new Student();
@@ -58,6 +58,33 @@ namespace GPASystem.Web.Tests.Features
 
             //assert
             Assert.That(isSurnameValid, Is.False);
+        }
+        [Test]
+        public void SurnameValidator_Should_Return_True_When_Edit_A_Student_With_Valid_Surname()
+        {
+            //arrange
+            Student stuToEdit = new Student()
+            {
+                Id = 2,
+                Name = "Peter Black"
+            };
+            IList<Student> Students = new List<Student>(){ 
+                new Student(){ Name = "Peter Yellow", Id = 1},
+                stuToEdit,
+                new Student(){ Name = "Peter White", Id = 3}
+            };
+            Mock<IRepository> MockGpaRepo = new Mock<IRepository>();
+            MockGpaRepo.Setup(r => r.GetAll<Student>()).Returns(Students.AsQueryable());
+            var Validator = new SurnameValidator(MockGpaRepo.Object);
+
+            //act
+              //edit the student's properties:
+            stuToEdit.Name = "Bobby Black";//change first name.
+            stuToEdit.Gpa = 3.8;
+            bool isSurnameValid = Validator.ValidSurname(stuToEdit);
+
+            //assert
+            Assert.That(isSurnameValid, Is.True);
         }
     }
 }
