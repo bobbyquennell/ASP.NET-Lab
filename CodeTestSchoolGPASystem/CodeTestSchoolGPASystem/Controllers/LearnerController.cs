@@ -40,7 +40,7 @@ namespace GPASystem.Web.Controllers
         [HttpPost]
         public ActionResult Create(int id, LearnerCreateViewModel learnerToCreate)
         {
-            try
+            if(ModelState.IsValid)
             {
                 var NewStudent = new Student();
                 NewStudent.Name = learnerToCreate.StudentName;
@@ -53,7 +53,7 @@ namespace GPASystem.Web.Controllers
                 _GpaRepo.SaveChanges();
                 return RedirectToAction("Index","Home",null);
             }
-            catch
+            else
             {
                 return View();
             }
