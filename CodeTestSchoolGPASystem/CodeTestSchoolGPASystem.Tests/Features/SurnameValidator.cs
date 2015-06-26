@@ -9,15 +9,24 @@ namespace GPASystem.Web.Tests.Features
 {
     class SurnameValidator
     {
-        private IRepository repository;
+        private IRepository repo;
 
         public SurnameValidator(IRepository repository)
         {
-            this.repository = repository;
+            this.repo = repository;
         }
 
         internal bool ValidSurname(Student newStudent)
         {
+
+            string SurnameToCheck = newStudent.Name.Split(' ').Last().ToLower();
+            foreach (var item in repo.GetAll<Student>())
+            {
+                var surname = item.Name.Split(' ').Last().ToLower();
+                if (SurnameToCheck == surname)
+                    return false;
+            }  
+
             return true;
         }
     }
