@@ -46,8 +46,8 @@ namespace GPASystem.Web.Tests.Features
             Student newStudent = new Student();
             newStudent.Name = "Peter Black";
             IList<Student> Students = new List<Student>(){ 
-                new Student(){ Name = "Peter Wang"},
-                new Student(){ Name = "Peter Black"}
+                new Student(){ Name = "Peter Wang", Id = 1},
+                new Student(){ Name = "Peter Black", Id = 2}
             };
             Mock<IRepository> MockGpaRepo = new Mock<IRepository>();
             MockGpaRepo.Setup(r => r.GetAll<Student>()).Returns(Students.AsQueryable());
