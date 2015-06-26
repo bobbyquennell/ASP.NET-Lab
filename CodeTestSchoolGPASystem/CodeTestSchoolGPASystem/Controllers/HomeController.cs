@@ -13,6 +13,10 @@ namespace GPASystem.Web.Controllers
     public class HomeController : Controller
     {
         private IRepository _GpaRepo;
+        public HomeController()
+        {
+            _GpaRepo = new EfGPARepository();
+        }
         public HomeController(IRepository repo)
         {
             _GpaRepo = repo;
