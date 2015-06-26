@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using GPA.Domain.Entities;
 using GPA.Domain.Repositories;
 using System.Linq;
-using GPASystem.Web.Tests.Features;
+using GPA.Domain.Features;
 /*
  * A (stupid) business rule is that surnames must be unique across classes
  * (and within the same class/lesson)i.e. 
@@ -33,7 +33,7 @@ namespace GPASystem.Web.Tests.Features
 
             //act
             var Validator = new SurnameValidator(MockGpaRepo.Object);
-            bool isSurnameValid = Validator.ValidSurname(newStudent);
+            bool isSurnameValid = Validator.ValidSurname(newStudent.Name);
 
             //assert
             Assert.That(isSurnameValid, Is.True);
@@ -54,7 +54,7 @@ namespace GPASystem.Web.Tests.Features
 
             //act
             var Validator = new SurnameValidator(MockGpaRepo.Object);
-            bool isSurnameValid = Validator.ValidSurname(newStudent);
+            bool isSurnameValid = Validator.ValidSurname(newStudent.Name);
 
             //assert
             Assert.That(isSurnameValid, Is.False);
@@ -81,7 +81,7 @@ namespace GPASystem.Web.Tests.Features
               //edit the student's properties:
             stuToEdit.Name = "Bobby Black";//change first name.
             stuToEdit.Gpa = 3.8;
-            bool isSurnameValid = Validator.ValidSurname(stuToEdit);
+            bool isSurnameValid = Validator.ValidSurname(stuToEdit.Name, stuToEdit.Id);
 
             //assert
             Assert.That(isSurnameValid, Is.True);
@@ -109,7 +109,7 @@ namespace GPASystem.Web.Tests.Features
             //edit the student's properties:
             stuToEdit.Name = "Bobby Yellow";//change Last name to Yellow, which is already existed
             stuToEdit.Gpa = 3.8;
-            bool isSurnameValid = Validator.ValidSurname(stuToEdit);
+            bool isSurnameValid = Validator.ValidSurname(stuToEdit.Name, stuToEdit.Id);
 
             //assert
             Assert.That(isSurnameValid, Is.False);

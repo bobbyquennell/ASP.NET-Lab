@@ -212,6 +212,7 @@
     <Compile Include="Models\Lesson\LessonEditViewModel.cs" />
     <Compile Include="Models\EfGPARepository.cs" />
     <Compile Include="Models\Home\HomeInexViewModel.cs" />
+    <Compile Include="Models\SurnameAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

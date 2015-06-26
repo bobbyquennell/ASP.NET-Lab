@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GPASystem.Web.Tests.Features
+namespace GPA.Domain.Features
 {
-    class SurnameValidator
+    public class SurnameValidator
     {
         private IRepository repo;
 
@@ -16,16 +16,16 @@ namespace GPASystem.Web.Tests.Features
             this.repo = repository;
         }
 
-        internal bool ValidSurname(Student StuToValid)
+        public bool ValidSurname(string StudentFullName, int studentId = 0)
         {
             //bool isEdit = false;
-            string SurnameToCheck = getSurname(StuToValid.Name);
+            string SurnameToCheck = getSurname(StudentFullName);
             foreach (var item in repo.GetAll<Student>())
             {
                 var surname = getSurname(item.Name);
                 if (SurnameToCheck == surname)
                 {
-                    if (StuToValid.Id != item.Id)//if the one we fund is itself?
+                    if (studentId != item.Id)//if the one we fund is itself?
                     {
                         return false;
                         //case 1) new create student.Id should be 0 or null, while item.Id >=1, then should return false, cuz we found a already existed one in database.

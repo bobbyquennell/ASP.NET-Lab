@@ -78,7 +78,7 @@ namespace GPASystem.Web.Controllers
         [HttpPost]
         public ActionResult Edit(int id, LearnerCreateViewModel studentToUpdate)
         {
-            try
+            if(ModelState.IsValid)
             {
                 Student stu = _GpaRepo.GetAll<Student>().Single(s => s.Id == id);
                 stu.Gpa = studentToUpdate.GPA;
@@ -89,7 +89,7 @@ namespace GPASystem.Web.Controllers
 
                 return RedirectToAction("Index","Home",null);
             }
-            catch
+            else
             {
                 return View();
             }
