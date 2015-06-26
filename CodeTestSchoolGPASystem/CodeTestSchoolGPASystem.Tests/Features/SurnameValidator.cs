@@ -19,15 +19,19 @@ namespace GPASystem.Web.Tests.Features
         internal bool ValidSurname(Student newStudent)
         {
 
-            string SurnameToCheck = newStudent.Name.Split(' ').Last().ToLower();
+            string SurnameToCheck = getSurname(newStudent.Name);
             foreach (var item in repo.GetAll<Student>())
             {
-                var surname = item.Name.Split(' ').Last().ToLower();
+                var surname = getSurname(item.Name);
                 if (SurnameToCheck == surname)
                     return false;
             }  
 
             return true;
+        }
+        private string getSurname(string FullName)
+        {
+            return FullName.Split(' ').Last().ToLower();
         }
     }
 }

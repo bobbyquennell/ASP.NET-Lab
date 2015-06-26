@@ -19,7 +19,7 @@ namespace GPASystem.Web.Tests.Features
     public class UnitTest1
     {
         [Test]
-        public void TestMethod1()
+        public void Validator_Should_Return_True_When_Surname_Valid()
         {
             //arrange
             Student newStudent = new Student();
