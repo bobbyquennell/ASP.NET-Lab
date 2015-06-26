@@ -1,4 +1,5 @@
 ﻿using GPA.Domain.Entities;
+using GPA.Domain.Repositories;
 using GPASystem.Web.Models;
 using GPASystem.Web.Models.Lesson;
 using System;
@@ -11,7 +12,14 @@ namespace GPASystem.Web.Controllers
 {
     public class LessonController : Controller
     {
-        private EfGPARepository _GpaRepo = new EfGPARepository();
+        private IRepository _GpaRepo;
+        public LessonController()
+        {
+            _GpaRepo = new EfGPARepository();
+        }
+        public LessonController(IRepository repo){
+            _GpaRepo = repo;
+        }
         public ActionResult Create()
         {
             var viewModel = new LessonEditViewModel();
