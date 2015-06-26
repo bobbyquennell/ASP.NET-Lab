@@ -39,5 +39,25 @@ namespace GPASystem.Web.Tests.Features
             Assert.That(isSurnameValid, Is.True);
 
         }
+        [Test]
+        public void SurnameValidator_Should_Return_False_When_SurName_Invalid()
+        {
+            //arrange
+            Student newStudent = new Student();
+            newStudent.Name = "Peter Black";
+            IList<Student> Students = new List<Student>(){ 
+                new Student(){ Name = "Peter Wang"},
+                new Student(){ Name = "Peter Black"}
+            };
+            Mock<IRepository> MockGpaRepo = new Mock<IRepository>();
+            MockGpaRepo.Setup(r => r.GetAll<Student>()).Returns(Students.AsQueryable());
+
+            //act
+            var Validator = new SurnameValidator(MockGpaRepo.Object);
+            bool isSurnameValid = Validator.ValidSurname(newStudent);
+
+            //assert
+            Assert.That(isSurnameValid, Is.False);
+        }
     }
 }
