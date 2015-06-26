@@ -86,5 +86,33 @@ namespace GPASystem.Web.Tests.Features
             //assert
             Assert.That(isSurnameValid, Is.True);
         }
+
+        [Test]
+        public void SurnameValidator_Should_Return_False_When_Edit_A_Student_With_Invalid_Surname()
+        {
+            //arrange
+            Student stuToEdit = new Student()
+            {
+                Id = 2,
+                Name = "Peter Black"
+            };
+            IList<Student> Students = new List<Student>(){ 
+                new Student(){ Name = "Peter Yellow", Id = 1},
+                stuToEdit,
+                new Student(){ Name = "Peter White", Id = 3}
+            };
+            Mock<IRepository> MockGpaRepo = new Mock<IRepository>();
+            MockGpaRepo.Setup(r => r.GetAll<Student>()).Returns(Students.AsQueryable());
+            var Validator = new SurnameValidator(MockGpaRepo.Object);
+
+            //act
+            //edit the student's properties:
+            stuToEdit.Name = "Bobby Yellow";//change Last name to Yellow, which is already existed
+            stuToEdit.Gpa = 3.8;
+            bool isSurnameValid = Validator.ValidSurname(stuToEdit);
+
+            //assert
+            Assert.That(isSurnameValid, Is.False);
+        }
     }
 }

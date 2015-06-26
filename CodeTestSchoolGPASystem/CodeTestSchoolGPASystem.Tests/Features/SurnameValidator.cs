@@ -20,24 +20,16 @@ namespace GPASystem.Web.Tests.Features
         {
             //bool isEdit = false;
             string SurnameToCheck = getSurname(StuToValid.Name);
-            //Check whether the student is already exist in our database.
-            //if (StuToValid.Id > 0 )
-            //{
-            //    IQueryable<Student> stuList = from stu in repo.GetAll<Student>()
-            //                  where stu.Id == StuToValid.Id
-            //                  select stu;
-            //    if (stuList.Count() > 0)
-            //        isEdit = true;
-
-            //}
             foreach (var item in repo.GetAll<Student>())
             {
                 var surname = getSurname(item.Name);
                 if (SurnameToCheck == surname)
                 {
-                    if (StuToValid.Id != item.Id)//new create or edit?
+                    if (StuToValid.Id != item.Id)//if the one we fund is itself?
                     {
                         return false;
+                        //case 1) new create student.Id should be 0 or null, while item.Id >=1, then should return false, cuz we found a already existed one in database.
+                        //case 2) an edit student.Id should >=1, if we found an item, whose name equals to the student.name while their ID do not match, when we found an already existed one in database. 
                     }
 
                 }
