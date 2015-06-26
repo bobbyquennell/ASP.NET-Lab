@@ -36,8 +36,10 @@ namespace GPASystem.Web.Controllers
                 model.TeacherName = LessonToCreate.TeacherName;
                 _GpaRepo.Add<Course>(model);
                 _GpaRepo.SaveChanges();
+                return RedirectToAction("Index", "Home", null);
             }
-            return RedirectToAction("Index", "Home", null);
+            return View(LessonToCreate);
+            
         }
         // GET: /Course/Edit/5
 
