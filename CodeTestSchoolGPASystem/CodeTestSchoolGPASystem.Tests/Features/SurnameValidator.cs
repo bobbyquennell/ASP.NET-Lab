@@ -17,7 +17,7 @@ namespace GPASystem.Web.Tests.Features
 
         internal bool ValidSurname(GPA.Domain.Entities.Student newStudent)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
