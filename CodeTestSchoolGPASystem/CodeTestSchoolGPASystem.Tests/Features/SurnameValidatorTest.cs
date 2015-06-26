@@ -16,7 +16,7 @@ using GPASystem.Web.Tests.Features;
 namespace GPASystem.Web.Tests.Features
 {
     [TestFixture]
-    public class UnitTest1
+    public class SurnameValidatorTest
     {
         [Test]
         public void SurnameValidator_Should_Return_True_When_Add_A_Student_With_Valid_Surname()
