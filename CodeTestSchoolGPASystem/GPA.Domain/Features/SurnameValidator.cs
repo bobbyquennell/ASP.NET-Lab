@@ -35,7 +35,7 @@ namespace GPA.Domain.Features
                 }
             }  
 
-            return true;
+            return true; //It's a valid surname
         }
         private string getSurname(string FullName)
         {
