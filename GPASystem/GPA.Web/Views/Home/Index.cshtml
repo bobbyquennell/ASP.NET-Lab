@@ -1,0 +1,39 @@
+﻿@model GPA.Web.Models.Home.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Course Name</th>
+        <th>Location</th>
+        <th>Teacher Name</th>
+    </tr>
+
+@foreach (var item in Model.Courses) {
+    <tr>
+        <td>
+            @Html.DisplayFor(name =>item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(location => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(teachername => item.TeacherName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
+        
