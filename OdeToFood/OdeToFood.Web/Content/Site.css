@@ -25,6 +25,9 @@ textarea {
 }
 
 /* modify this for the home index page view */
+.RestaurantList {
+    margin-top:3em;
+}
 .RestaurantList li{
     padding-top:3em;
     border-bottom:1px solid black;
