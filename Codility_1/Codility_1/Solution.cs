@@ -20,17 +20,18 @@ namespace Codility_1
             {
                 rightSum += item;
             }
-            LeftSum = A[0];
-            rightSum -= A[0];
-            CurrentDifferValue = (rightSum - LeftSum > 0) ? (rightSum - LeftSum) : (LeftSum - rightSum);
+
             LastDifferValue = CurrentDifferValue;
 
-            for (int i = 1; i < A.Length; i++)
+            for (int i = 0; i < A.Length-1; i++)
             {
                 LeftSum += A[i];
                 rightSum -= A[i];
                 
                 CurrentDifferValue = (rightSum - LeftSum > 0) ? (rightSum - LeftSum) : (LeftSum - rightSum);
+                if (i == 0)
+                    LastDifferValue = CurrentDifferValue;
+
                 if (CurrentDifferValue < LastDifferValue)
                     LastDifferValue = CurrentDifferValue;
                 
