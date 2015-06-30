@@ -19,7 +19,7 @@ namespace GPA.Web.Controllers
             model.Courses = _repo.GetAll<Course>().ToList();
             return View(model);
         }
-        
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

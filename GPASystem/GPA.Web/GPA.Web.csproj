@@ -159,6 +159,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\LessonController.cs" />
+    <Compile Include="Models\Lesson\LessonEditViewModel.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EfRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -229,6 +231,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Lesson\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

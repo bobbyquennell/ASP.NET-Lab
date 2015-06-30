@@ -17,7 +17,10 @@ namespace GPA.Web.Modelss
         {
             return Set<T>();
         }
-
+        public T GetById<T>(int id) where T : class
+        {
+            return Set<T>().Find(id);
+        }
         public void Add<T>(T entity) where T : class
         {
             throw new NotImplementedException();
@@ -25,17 +28,18 @@ namespace GPA.Web.Modelss
 
         public void Update<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Entry<T>(entity).State = EntityState.Modified;
         }
 
-        public void SaveChanges()
+
+        void IRepository.SaveChanges()
         {
-            throw new NotImplementedException();
+            base.SaveChanges();
         }
-
         public void Delete<T>(T entity) where T : class
         {
             throw new NotImplementedException();
         }
+
     }
 }
