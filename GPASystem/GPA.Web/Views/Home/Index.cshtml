@@ -3,37 +3,40 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container">
+    <h2>Classes</h2>
 
-<h2>Index</h2>
+    <table class="table col-md-4">
+        <tr>
+            <th>Course Name</th>
+            <th>Location</th>
+            <th>Teacher Name</th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>Course Name</th>
-        <th>Location</th>
-        <th>Teacher Name</th>
-    </tr>
+        @foreach (var item in Model.Courses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(name => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(location => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(teachername => item.TeacherName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model.Courses) {
-    <tr>
-        <td>
-            @Html.DisplayFor(name =>item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(location => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(teachername => item.TeacherName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    </table>
+    <form class="col-md-5 " action="~/Course/Create" method="post">
+        <input class="btn-danger" type="submit" name="name" value="Add A New Class" />
+    </form>
+</div>
 
-</table>
+
         
