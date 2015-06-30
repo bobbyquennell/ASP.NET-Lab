@@ -16,7 +16,7 @@ namespace Codility_1
             int LeftSum = 0;
 
             //List<int> leftArray = new List<int>();
-            foreach (var item in A.ToList())
+            foreach (var item in A)
             {
                 rightSum += item;
             }
