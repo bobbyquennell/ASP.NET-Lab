@@ -18,22 +18,27 @@ namespace GPA.Web.Controllers
         // GET: Lesson/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new LessonEditViewModel();
+            return View(model);
         }
 
         // POST: Lesson/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(LessonEditViewModel viewModel)
         {
-            try
+            if(ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var model = new Course();
+                model.Name = viewModel.CourseName;
+                model.Location = viewModel.Location;
+                model.TeacherName = viewModel.TeacherName;
+                _repo.Add<Course>(model);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home", null);
             }
-            catch
+            else
             {
-                return View();
+                return View(viewModel);
             }
         }
         // GET: Lesson/Edit/5

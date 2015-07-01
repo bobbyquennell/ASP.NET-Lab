@@ -23,7 +23,8 @@ namespace GPA.Web.Modelss
         }
         public void Add<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Set<T>().Add(entity);
+            base.SaveChanges();
         }
 
         public void Update<T>(T entity) where T : class
