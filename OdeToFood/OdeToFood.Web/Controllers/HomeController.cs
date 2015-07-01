@@ -3,6 +3,7 @@ using OdeToFood.Domain.Repositories;
 using OdeToFood.Web.Models;
 using OdeToFood.Web.Models.Home;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,8 +16,15 @@ namespace OdeToFood.Web.Controllers
         IRepository _repo = new EfRepository();
         public ActionResult Index()
         {
-            var model = new HomeIndexViewModel();
-            model.Restaurants = _repo.GetAll<Restaurant>();
+            var model = _repo.GetAll<Restaurant>()
+                .Select(r => new RestaurantListViewModel
+                {
+                    City = r.City,
+                    Country = r.Country,
+                    RestaurantName = r.Name,
+                    ReviewNumber = r.Reviews.Count
+                });
+
             return View(model);
         }
 
