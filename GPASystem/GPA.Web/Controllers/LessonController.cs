@@ -14,16 +14,6 @@ namespace GPA.Web.Controllers
     {
         private IRepository _repo = new EfRepository();
         // GET: Lesson
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Lesson/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         // GET: Lesson/Create
         public ActionResult Create()
@@ -68,8 +58,6 @@ namespace GPA.Web.Controllers
                 courseToEdit.Location = model.Location;
                 courseToEdit.TeacherName = model.TeacherName;
                 _repo.Update<Course>(courseToEdit);
-                _repo.SaveChanges();
-
                 return RedirectToAction("Index","Home",null);
             }
             else
@@ -81,22 +69,27 @@ namespace GPA.Web.Controllers
         // GET: Lesson/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _repo.GetById<Course>(id);
+            var viewModel = new LessonEditViewModel();
+            viewModel.TeacherName = model.TeacherName;
+            viewModel.Location = model.Location;
+            viewModel.CourseName = model.Name;
+            return View(viewModel);
         }
 
         // POST: Lesson/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, LessonEditViewModel viewModel)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var model = _repo.GetById<Course>(id);
+                _repo.Delete<Course>(model);
+                return RedirectToAction("Index","Home",null);
             }
             catch
             {
-                return View();
+                return View(viewModel);
             }
         }
     }

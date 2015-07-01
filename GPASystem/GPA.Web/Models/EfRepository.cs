@@ -29,6 +29,7 @@ namespace GPA.Web.Modelss
         public void Update<T>(T entity) where T : class
         {
             Entry<T>(entity).State = EntityState.Modified;
+            base.SaveChanges();
         }
 
 
@@ -38,7 +39,8 @@ namespace GPA.Web.Modelss
         }
         public void Delete<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Set<T>().Remove(entity);
+            base.SaveChanges();
         }
 
     }
