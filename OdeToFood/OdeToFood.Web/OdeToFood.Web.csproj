@@ -161,6 +161,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Bristo\RestaurantEditViewModel.cs" />
     <Compile Include="Models\EfRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\Home\HomeIndexViewModel.cs" />
@@ -233,6 +234,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Restaurant\Index.cshtml" />
+    <Content Include="Views\Restaurant\Edit.cshtml" />
+    <Content Include="Views\Restaurant\Delete.cshtml" />
+    <Content Include="Views\Restaurant\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

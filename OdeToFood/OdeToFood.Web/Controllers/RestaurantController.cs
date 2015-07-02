@@ -21,81 +21,97 @@ namespace OdeToFood.Web.Controllers
                     {
                          City = r.City,
                           Country = r.Country,
-                           Restaurant = r.Name
+                           Restaurant = r.Name,
+                            Id = r.Id
+                           
                     }
                 );
             return View(model);
         }
 
-        // GET: Restaurant/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Restaurant/Create
         public ActionResult Create()
         {
-            return View();
+            var ViewModel = new RestaurantEditViewModel();
+            return View(ViewModel);
         }
 
         // POST: Restaurant/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RestaurantEditViewModel ViewModel)
         {
-            try
+            if(ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var model = new Restaurant();
+                model.Name = ViewModel.Name;
+                model.Country = ViewModel.Country;
+                model.City = ViewModel.City;
+                _repo.Add<Restaurant>(model);
 
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                return View(ViewModel);
             }
         }
 
         // GET: Restaurant/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var ViewModel = new RestaurantEditViewModel();
+            var model = _repo.GetById<Restaurant>(id);
+            ViewModel.City = model.City;
+            ViewModel.Country = model.Country;
+            ViewModel.Name = model.Name;
+            return View(ViewModel);
         }
 
         // POST: Restaurant/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, RestaurantEditViewModel ViewModel)
         {
-            try
+            if(ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var model = _repo.GetById<Restaurant>(id);
+                model.Name = ViewModel.Name;
+                model.Country = ViewModel.Country;
+                model.City = ViewModel.City;
+                _repo.Update<Restaurant>(model);
 
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                return View(ViewModel);
             }
         }
 
         // GET: Restaurant/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var ViewModel = new RestaurantEditViewModel();
+            var model = _repo.GetById<Restaurant>(id);
+            ViewModel.City = model.City;
+            ViewModel.Country = model.Country;
+            ViewModel.Name = model.Name;
+            return View(ViewModel);
         }
 
         // POST: Restaurant/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, RestaurantEditViewModel ViewModel)
         {
             try
             {
-                // TODO: Add delete logic here
+                var RestaurantToDelete = _repo.GetById<Restaurant>(id);
+                _repo.Delete<Restaurant>(RestaurantToDelete);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(ViewModel);
             }
         }
     }

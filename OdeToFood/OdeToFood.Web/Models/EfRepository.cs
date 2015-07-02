@@ -20,22 +20,25 @@ namespace OdeToFood.Web.Models
 
         public T GetById<T>(int Id) where T : class
         {
-            throw new NotImplementedException();
+            return Set<T>().Find(Id);
         }
 
         public void Add<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Set<T>().Add(entity);
+            base.SaveChanges();
         }
 
         public void Update<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Entry<T>(entity).State = EntityState.Modified;
+            base.SaveChanges();
         }
 
         public void Delete<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            Set<T>().Remove(entity);
+            base.SaveChanges();
         }
 
         void IRepository.SaveChanges()

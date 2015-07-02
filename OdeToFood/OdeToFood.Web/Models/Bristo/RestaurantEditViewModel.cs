@@ -5,11 +5,10 @@ using System.Web;
 
 namespace OdeToFood.Web.Models.Bristo
 {
-    public class RestaurantIndexViewModel
+    public class RestaurantEditViewModel
     {
-        public string Restaurant { get; set; }
+        public string Name { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public int Id { get; set; }
     }
 }
