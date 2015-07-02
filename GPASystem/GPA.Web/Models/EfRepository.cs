@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
-namespace GPA.Web.Modelss
+namespace GPA.Web.Models
 {
     public class EfRepository:DbContext,IRepository
     {

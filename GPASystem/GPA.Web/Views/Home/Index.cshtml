@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="container">
+<div class="container CourseSection">
     <h2>Classes</h2>
 
     <table class="table col-md-4">
@@ -16,8 +16,8 @@
         @foreach (var item in Model.Courses)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(name => item.Name)
+                <td class="CourseName">
+                    @Html.ActionLink(item.Name, "Index","Student",new { id = item.Id}, null)
                 </td>
                 <td>
                     @Html.DisplayFor(location => item.Location)
@@ -36,6 +36,9 @@
     <form class="col-md-5 " action="~/Lesson/Create" method="get">
         <input class="btn-danger" type="submit" value="Add A New Class" />
     </form>
+</div>
+
+<div id="StudentSection"class="StudentSection container">
 </div>
 
 

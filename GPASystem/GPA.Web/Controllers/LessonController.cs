@@ -1,7 +1,7 @@
 ﻿using GPA.Domain.Entities;
 using GPA.Domain.Repositories;
 using GPA.Web.Models.Lesson;
-using GPA.Web.Modelss;
+using GPA.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
