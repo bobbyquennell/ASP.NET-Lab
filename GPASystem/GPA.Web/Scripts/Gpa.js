@@ -10,9 +10,13 @@
                 console.log("found target!");
             }
             $("#StudentSection").html(data);
-            console.log("done!");
+        }).then(function () {
+            $("td.gpa").each(function () {
+                if (parseFloat($(this).html()) >= 3.2) {
+                    $(this).prev().prev().css("color", "red");
+                }
+            });
         });
-        console.log("bingo!!!!!")
         return false;
     }
     $(".body-content").on("click", ".CourseName a", AjaxShowStudentList);
