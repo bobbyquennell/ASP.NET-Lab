@@ -1,0 +1,47 @@
+﻿@model IEnumerable<OdeToFood.Web.Models.Rating.ReviewIndexViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="ReviewSection">
+    <h2 class="top">Reviews of @ViewBag.RestaurantName</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviewer)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reviewer)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { ReviewId = item.Id }) |
+                </td>
+            </tr>
+        }
+
+    </table>
+    <p class="label">
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
+
+
