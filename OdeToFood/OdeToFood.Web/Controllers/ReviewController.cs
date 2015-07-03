@@ -17,33 +17,42 @@ namespace OdeToFood.Web.Controllers
         public ActionResult Index(int id)
         {
             var model = _repo.GetAll<Review>().Where(r => r.RestaurantId == id)
-                .Select(r => new ReviewIndexViewModel
+                .Select(r => new ReviewViewModel
                 {
                       Comments = r.Comment, Rating = r.Rating, Reviewer = r.Reviewer, Id = r.Id
                 });
+            var viewModel = new ReviewIndexViewModel();
+            viewModel.RestaurantId = id;
+            viewModel.Reviews = model;
             ViewBag.RestaurantName = _repo.GetById<Restaurant>(id).Name;
-            return View(model);
+            return View(viewModel);
         }
 
         // GET: Review/Create
-        public ActionResult Create()
+        public ActionResult Create(int RestaurantId)
         {
-            return View();
+            
+            return View(new ReviewEditViewModel());
         }
 
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int RestaurantId, ReviewEditViewModel ViewModel)
         {
-            try
+            if(ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var model = new Review();
+                model.RestaurantId = RestaurantId;
+                model.Reviewer = ViewModel.Reviewer;
+                model.Rating = ViewModel.Rating;
+                model.Comment = ViewModel.Comments;
+                _repo.Add<Review>(model);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = RestaurantId });
             }
-            catch
+            else
             {
-                return View();
+                return View(ViewModel);
             }
         }
 
