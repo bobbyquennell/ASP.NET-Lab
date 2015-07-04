@@ -7,6 +7,7 @@ using NUnit.Framework;
 using GPA.Domain.Repositories;
 using Moq;
 using GPA.Domain.Entities;
+using GPA.Domain.Features;
 /*
  * A (stupid) business rule is that surnames must be unique across classes
  * (and within the same class) i.e. if there is a student with the surname

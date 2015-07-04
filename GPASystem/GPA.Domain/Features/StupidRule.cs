@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GPA.Tests.Features
+namespace GPA.Domain.Features
 {
-    class StupidRule
+    public class StupidRule
     {
         IRepository _repo;
         public StupidRule(IRepository repo)
