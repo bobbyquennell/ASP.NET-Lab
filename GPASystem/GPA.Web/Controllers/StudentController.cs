@@ -21,7 +21,8 @@ namespace GPA.Web.Controllers
                 Select( stu => new StudentListViewModel{
                      Age = stu.Age,
                       Gpa = stu.Gpa,
-                       StudentName = stu.Name
+                       StudentName = stu.Name,
+                       Id = stu.Id
                 });
             ViewBag.CourseName = _repo.GetById<Course>(id).Name;
             return PartialView("_PartialViewStudentList", model);
@@ -58,22 +59,30 @@ namespace GPA.Web.Controllers
         // GET: Student/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var ViewModel = new StudentEditViewModel();
+            var model = _repo.GetById<Student>(id);
+            ViewModel.Gpa = model.Gpa;
+            ViewModel.Age = model.Age;
+            ViewModel.StudentName = model.Name;
+            return View(ViewModel);
         }
 
         // POST: Student/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, StudentEditViewModel viewModel)
         {
-            try
+            if(ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                var model = _repo.GetById<Student>(id);
+                model.Name = viewModel.StudentName;
+                model.Age = viewModel.Age;
+                model.Gpa = viewModel.Gpa;
+                _repo.Update<Student>(model);
+                return RedirectToAction("Index","Home");
             }
-            catch
+            else
             {
-                return View();
+                return View(viewModel);
             }
         }
 
