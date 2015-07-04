@@ -177,6 +177,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Models\Learner\StudentDeleteViewModel.cs" />
     <Compile Include="Models\Learner\StudentEditViewModel.cs" />
     <Compile Include="Models\Learner\StudentListViewModel.cs" />
     <Compile Include="Models\Lesson\LessonEditViewModel.cs" />
@@ -257,6 +258,7 @@
     <Content Include="Views\Lesson\Create.cshtml" />
     <Content Include="Views\Student\_PartialViewStudentList.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

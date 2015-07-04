@@ -89,22 +89,28 @@ namespace GPA.Web.Controllers
         // GET: Student/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _repo.GetById<Student>(id);
+            var ViewModel = new StudentDeleteViewModel();
+            ViewModel.Gpa = model.Gpa;
+            ViewModel.StudentName = model.Name;
+            ViewModel.Age = model.Age;
+            return View(ViewModel);
         }
 
         // POST: Student/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, StudentDeleteViewModel ViewModel)
         {
             try
             {
-                // TODO: Add delete logic here
+                var model = _repo.GetById<Student>(id);
+                _repo.Delete<Student>(model);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             catch
             {
-                return View();
+                return View(ViewModel);
             }
         }
     }
