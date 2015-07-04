@@ -7,6 +7,7 @@ namespace GPA.Web.Models.Learner
 {
     public class StudentListViewModel
     {
+        [StupidValidation]
         public string StudentName { get; set; }
         public int Age { get; set; }
         public double Gpa { get; set; }
