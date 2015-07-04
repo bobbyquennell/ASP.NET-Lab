@@ -16,7 +16,7 @@ namespace GPA.Web.Controllers
         // GET: Student
         public ActionResult Index(int id)
         {
-            var viewModel = new StudentListViewModel();
+            var viewModel = new StudentIndexViewModel();
             var model = _repo.GetById<Course>(id).Students.
                 Select( stu => new StudentListViewModel{
                      Age = stu.Age,
@@ -24,8 +24,10 @@ namespace GPA.Web.Controllers
                        StudentName = stu.Name,
                        Id = stu.Id
                 });
+            viewModel.CourseId = id;
+            viewModel.Students = model;
             ViewBag.CourseName = _repo.GetById<Course>(id).Name;
-            return PartialView("_PartialViewStudentList", model);
+            return PartialView("_PartialViewStudentList", viewModel);
         }
 
         // GET: Student/Details/5
@@ -35,24 +37,31 @@ namespace GPA.Web.Controllers
         }
 
         // GET: Student/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            return View();
+            var model = new StudentEditViewModel();
+
+            return View(model);
         }
 
         // POST: Student/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int id, StudentEditViewModel ViewModel)
         {
-            try
+            if(ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var model = new Student();
+                model.Age = ViewModel.Age;
+                model.Name = ViewModel.StudentName;
+                model.Gpa = ViewModel.Gpa;
+                model.CourseId = id;
+                _repo.Add<Student>(model);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home",null);
             }
-            catch
+            else
             {
-                return View();
+                return View(ViewModel);
             }
         }
 

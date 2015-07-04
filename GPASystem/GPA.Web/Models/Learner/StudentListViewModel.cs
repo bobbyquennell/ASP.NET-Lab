@@ -12,4 +12,9 @@ namespace GPA.Web.Models.Learner
         public double Gpa { get; set; }
         public int Id { get; set; }
     }
+    public class StudentIndexViewModel
+    {
+        public int CourseId { get; set; }
+        public IEnumerable<StudentListViewModel> Students { get; set; }
+    }
 }
