@@ -24,7 +24,7 @@ namespace GPA.Web.Controllers
                        StudentName = stu.Name,
                        Id = stu.Id
                 });
-            viewModel.CourseId = id;
+            viewModel.CourseId = id;//comments
             viewModel.Students = model;
             ViewBag.CourseName = _repo.GetById<Course>(id).Name;
             return PartialView("_PartialViewStudentList", viewModel);
