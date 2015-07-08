@@ -65,6 +65,24 @@ namespace OdeToFood.Web.Migrations
                 }
                
             );
+            for (int i = 0; i < 300; i++)
+            {
+                context.Restaurants.AddOrUpdate(
+                    r => r.Name,
+                    new Restaurant
+                    {
+                        Name = "Restaurant" + i,
+                        City = "Melbourne",
+                        Country = "Australia",
+                        Reviews = new List<Review>()
+                                    {
+                                       new Review{ Rating = 8, Comment = "Good but not perfect", Reviewer = "Bobby"},
+                                       new Review{ Rating = 9, Comment = "Best Ramen in the CBD", Reviewer = "Dandan"}
+                                    }
+                    }
+
+                );
+            }
         }
     }
 }
