@@ -16,7 +16,7 @@ namespace OdeToFood.Web.Controllers
         IRepository _repo = new EfRepository();
         public ActionResult Index()
         {
-            var model = _repo.GetAll<Restaurant>()
+            var model = _repo.GetAll<Restaurant>().OrderBy(r=>r.Name).Take(10)
                 .Select(r => new RestaurantListViewModel
                 {
                     City = r.City,
