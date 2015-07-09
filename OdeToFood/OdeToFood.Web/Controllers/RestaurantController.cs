@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 namespace OdeToFood.Web.Controllers
 {
     public class RestaurantController : Controller
@@ -16,14 +15,14 @@ namespace OdeToFood.Web.Controllers
         // GET: Restaurant
         public ActionResult Index()
         {
-            var model = _repo.GetAll<Restaurant>().OrderBy(r=>r.Name).Take(10)
+            var model = _repo.GetAll<Restaurant>().OrderBy(r => r.Name).Take(10)
                 .Select(r => new RestaurantIndexViewModel
                     {
-                         City = r.City,
-                          Country = r.Country,
-                           Restaurant = r.Name,
-                            Id = r.Id
-                           
+                        City = r.City,
+                        Country = r.Country,
+                        Restaurant = r.Name,
+                        Id = r.Id
+
                     }
                 );
             return View(model);

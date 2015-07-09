@@ -9,7 +9,9 @@
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.container.body-content {
+  margin-top: 50px;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -25,11 +27,11 @@ textarea {
 }
 
 /* modify this for the home index page view */
-.RestaurantList {
+/*.RestaurantList {
     margin-top:3em;
-}
+}*/
 .RestaurantList li{
-    padding-top:3em;
+    /*padding-top:3em;*/
     border-bottom:1px solid black;
 }
 .RestaurantList h4{

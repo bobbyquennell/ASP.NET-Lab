@@ -8,22 +8,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace OdeToFood.Web.Controllers
 {
     public class HomeController : Controller
     {
         IRepository _repo = new EfRepository();
-        public ActionResult Index()
+        public ActionResult Index(int page =1)
         {
-            var model = _repo.GetAll<Restaurant>().OrderBy(r=>r.Name).Take(10)
+           
+            var model = _repo.GetAll<Restaurant>().OrderBy(r => r.Name)
                 .Select(r => new RestaurantListViewModel
                 {
                     City = r.City,
                     Country = r.Country,
                     RestaurantName = r.Name,
                     ReviewNumber = r.Reviews.Count
-                });
+                }).ToPagedList(page, 15);
 
             return View(model);
         }
