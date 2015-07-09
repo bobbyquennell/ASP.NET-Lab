@@ -15,10 +15,10 @@ namespace OdeToFood.Web.Controllers
     public class HomeController : Controller
     {
         IRepository _repo = new EfRepository();
-        public ActionResult Index(int page =1)
+        public ActionResult Index(string searchTerm = null, int page = 1)
         {
-           
-            var model = _repo.GetAll<Restaurant>().OrderBy(r => r.Name)
+
+            var model = _repo.GetAll<Restaurant>().OrderBy(r => r.Name).Where(r => searchTerm == null || r.Name.Contains(searchTerm))
                 .Select(r => new RestaurantListViewModel
                 {
                     City = r.City,

@@ -4,10 +4,13 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="pagedList" data-otf-target="#restaurantList">
-    @*@Html.PagedListPager(Model, pageNumber => Url.Action("Index",
-        new { pageNumber }), PagedListRenderOptions.MinimalWithItemCountText)*@
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+<form method="get" action="@Url.Action("Index")">
+    <input type="submit" value="search by name" />
+    <input type="search" placeholder="Restaurant Name" name="searchTerm" />@*we have a "searchTerm" parameter in our Index action, so we need the name attribute to match with that, cuz the "name" of
+        the control will be submitted with the form data to the server*@
+</form>
+<div class="pagedList">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),PagedListRenderOptions.MinimalWithItemCountText)
 </div>
 <ul class="RestaurantList">
     @foreach (var restaurant in Model)
