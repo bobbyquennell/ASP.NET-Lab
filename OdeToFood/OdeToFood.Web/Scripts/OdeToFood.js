@@ -24,7 +24,7 @@
             data: $("#autoComplete").serialize()//send searchterm value to index method, otherwise, if we have 10 pages search result, then cannot display the next pages of search results.
         }
         $.ajax(options).done(function (data) {
-            $("div.RestaurantListPartial").html(data).effect("highlight");
+            $("div.RestaurantListPartial").html(data);
         });
         return false;
     }
