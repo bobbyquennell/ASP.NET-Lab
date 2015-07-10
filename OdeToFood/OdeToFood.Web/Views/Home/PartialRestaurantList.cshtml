@@ -1,4 +1,9 @@
 ﻿@model PagedList.IPagedList<OdeToFood.Web.Models.Home.RestaurantListViewModel>
+@using PagedList.Mvc;
+@using PagedList;
+<div class="pagedList">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+</div>
 <ul class="RestaurantList">
     @foreach (var restaurant in Model)
     {
