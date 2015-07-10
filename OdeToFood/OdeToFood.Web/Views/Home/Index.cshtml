@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<form method="get" action="@Url.Action("Index")">
+<form method="get" action="@Url.Action("Index")" data-otf-ajax='true'>
     <input type="submit" value="search by name" />
     <input type="search" placeholder="Restaurant Name" name="searchTerm" id="autoComplete" data-otf-action="@Url.Action("AutoComplete")"/>@*we have a "searchTerm" parameter in our Index action, so we need the name attribute to match with that, cuz the "name" of
         the control will be submitted with the form data to the server*@
