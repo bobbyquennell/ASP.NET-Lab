@@ -36,7 +36,10 @@ namespace OdeToFood.Web.Controllers
                     RestaurantName = r.Name,
                     ReviewNumber = r.Reviews.Count
                 }).ToPagedList(page, 15);
-
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("PartialRestaurantList", model);
+            }
             return View(model);
         }
 

@@ -1,0 +1,11 @@
+﻿@model PagedList.IPagedList<OdeToFood.Web.Models.Home.RestaurantListViewModel>
+<ul class="RestaurantList">
+    @foreach (var restaurant in Model)
+    {
+        <li>
+            <h4>@Html.DisplayFor(name => restaurant.RestaurantName)</h4>
+            <p>@restaurant.City, @restaurant.Country</p>
+            <p>Reviews:@restaurant.ReviewNumber</p>
+        </li>
+    }
+</ul>

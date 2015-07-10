@@ -5,20 +5,13 @@
     ViewBag.Title = "Index";
 }
 <form method="get" action="@Url.Action("Index")" data-otf-ajax='true'>
-    <input type="submit" value="search by name" />
+    <input type="submit" value="search by name" id="ajaxTag"/>
     <input type="search" placeholder="Restaurant Name" name="searchTerm" id="autoComplete" data-otf-action="@Url.Action("AutoComplete")"/>@*we have a "searchTerm" parameter in our Index action, so we need the name attribute to match with that, cuz the "name" of
         the control will be submitted with the form data to the server*@
 </form>
 <div class="pagedList">
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),PagedListRenderOptions.MinimalWithItemCountText)
 </div>
-<ul class="RestaurantList">
-    @foreach (var restaurant in Model)
-    {
-        <li>
-            <h4>@Html.DisplayFor(name => restaurant.RestaurantName)</h4>
-            <p>@restaurant.City, @restaurant.Country</p>
-            <p>Reviews:@restaurant.ReviewNumber</p>
-        </li>
-    }
-</ul>
+<div class="RestaurantListPartial">
+    @Html.Partial("PartialRestaurantList", Model)
+</div>
