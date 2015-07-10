@@ -13,7 +13,7 @@
             data: $("#autoComplete").serialize()
         }
         $.ajax(options).done(function (data) {
-            $("div.RestaurantListPartial").html(data);
+            $("div.RestaurantListPartial").html(data).effect("highlight");
         });
         return false;
     }
