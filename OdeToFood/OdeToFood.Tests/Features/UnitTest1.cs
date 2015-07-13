@@ -59,6 +59,18 @@ namespace OdeToFood.Tests.Features
             //assert
             Assert.That(result, Is.EqualTo(8));
         }
+        [Test]
+        public void Weighted_Average_Rating_With_4_ratings()
+        {
+            //arrange 
+
+            IEnumerable<Review> reviews = FakeRatings(new int[] { 10, 4,3,5 });
+            var sut = new RatingCalculator(reviews);
+            //act
+            var result = sut.WeightedComputeRating();
+            //assert
+            Assert.That(result, Is.EqualTo(6));
+        }
         public IEnumerable<Review> FakeRatings(params int[] ratings)
         {
             var result = ratings.Select(r => new Review { Rating = r });
