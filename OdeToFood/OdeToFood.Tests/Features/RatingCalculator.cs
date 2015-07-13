@@ -19,5 +19,10 @@ namespace OdeToFood.Tests.Features
             int rating =(int) _reviews.Average(r => r.Rating);
             return rating;
         }
+
+        public int WeightedComputeRating()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
