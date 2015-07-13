@@ -16,7 +16,8 @@ namespace OdeToFood.Tests.Features
         }
         public int ComputeAverageRating(int numberOfReviews)
         {
-            int rating =(int) _reviews.Average(r => r.Rating);
+            var SelectedReviews = _reviews.Take(numberOfReviews);
+            int rating = (int)SelectedReviews.Average(r => r.Rating);
             return rating;
         }
 
