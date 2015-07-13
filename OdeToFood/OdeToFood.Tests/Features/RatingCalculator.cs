@@ -20,8 +20,8 @@ namespace OdeToFood.Tests.Features
             return rating;
         }
 
-        public int WeightedComputeRating()
-        {
+        public int WeightedComputeRating(int numberOfReviews)
+        {            
             int length = _reviews.Count();
             int RatingSum = 0;
 
