@@ -21,16 +21,17 @@ namespace OdeToFood.Tests.Features
         }
 
         public int WeightedComputeRating(int numberOfReviews)
-        {            
-            int length = _reviews.Count();
+        {
+            var SelectedReviews = _reviews.Take(numberOfReviews);
+            int length = SelectedReviews.Count();
             int RatingSum = 0;
 
             for (int i = 0; i < length; i++)
             {
                 if (i < length / 2)
-                    RatingSum += _reviews.ElementAt(i).Rating * 2;
+                    RatingSum += SelectedReviews.ElementAt(i).Rating * 2;
                 else
-                    RatingSum += _reviews.ElementAt(i).Rating;
+                    RatingSum += SelectedReviews.ElementAt(i).Rating;
 
             }
             return RatingSum / (length + length / 2);
