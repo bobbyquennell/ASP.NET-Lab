@@ -35,5 +35,21 @@ namespace OdeToFood.Tests.Features
             //assert
             Assert.That(result, Is.EqualTo(5));
         }
+        [Test]
+        public void Should_Return_8_When_Input_4_ratings()
+        {
+            //arrange 
+            var sut = new RatingCalculator();
+            List<Review> reviews = new List<Review>(new List<Review>{
+                new Review(){ Rating = 10 },
+                new Review(){ Rating = 6 },
+                new Review(){ Rating = 7 },
+                new Review(){ Rating = 9 }
+            });
+            //act
+            var result = sut.ComputeAverageRating(reviews);
+            //assert
+            Assert.That(result, Is.EqualTo(8));
+        }
     }
 }
