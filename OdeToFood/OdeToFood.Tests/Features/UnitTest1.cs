@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OdeToFood.Domain.Entities;
 using System.Collections.Generic;
+using System.Linq;
 
 /*
 * A restaurant's overall rating can be calculated using various methods
@@ -22,16 +23,15 @@ namespace OdeToFood.Tests.Features
     public class UnitTest1
     {
         [Test]
-        public void TestMethod1()
+        public void Compute_Results_With_Two_Ratings()
         {
             //arrange 
-            var sut = new RatingCalculator();
-            List<Review> reviews = new List<Review>(new List<Review>{
-                new Review(){ Rating = 4 },
-                new Review(){ Rating = 6 }
-            });
+
+            IEnumerable<Review> reviews = FakeRatings(new int[]{4, 6});
+            var sut = new RatingCalculator(reviews);
+
             //act
-            var result = sut.ComputeAverageRating(reviews);
+            var result = sut.ComputeAverageRating();
             //assert
             Assert.That(result, Is.EqualTo(5));
         }
@@ -39,17 +39,22 @@ namespace OdeToFood.Tests.Features
         public void Should_Return_8_When_Input_4_ratings()
         {
             //arrange 
-            var sut = new RatingCalculator();
-            List<Review> reviews = new List<Review>(new List<Review>{
-                new Review(){ Rating = 10 },
-                new Review(){ Rating = 6 },
-                new Review(){ Rating = 7 },
-                new Review(){ Rating = 9 }
-            });
+            
+            IEnumerable<Review> reviews = FakeRatings(new int[]{10, 6, 7, 9});
+            var sut = new RatingCalculator(reviews);
             //act
-            var result = sut.ComputeAverageRating(reviews);
+            var result = sut.ComputeAverageRating();
             //assert
             Assert.That(result, Is.EqualTo(8));
+        }
+        public IEnumerable<Review> FakeRatings(params int[] ratings)
+        {
+            new List<Review>(new List<Review>{
+                new Review(){ Rating = 4 },
+                new Review(){ Rating = 6 }
+            });
+            var result = ratings.Select(r => new Review { Rating = r });
+            return result;
         }
     }
 }

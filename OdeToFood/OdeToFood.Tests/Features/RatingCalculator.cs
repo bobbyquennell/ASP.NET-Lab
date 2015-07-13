@@ -9,14 +9,14 @@ namespace OdeToFood.Tests.Features
 {
     public class RatingCalculator
     {
-        public int ComputeAverageRating(IEnumerable<Review> reviews)
+        IEnumerable<Review> _reviews;
+        public RatingCalculator(IEnumerable<Review> reviews)
         {
-            int rating = 0;
-            foreach (var review in reviews)
-            {
-                rating += review.Rating;
-            }
-            rating = rating / reviews.Count();
+            _reviews = reviews;
+        }
+        public int ComputeAverageRating()
+        {
+            int rating =(int) _reviews.Average(r => r.Rating);
             return rating;
         }
     }
