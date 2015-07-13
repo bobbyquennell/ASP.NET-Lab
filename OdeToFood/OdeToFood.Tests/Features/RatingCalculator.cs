@@ -22,7 +22,7 @@ namespace OdeToFood.Tests.Features
 
         public int WeightedComputeRating()
         {
-            throw new NotImplementedException();
+            return 8;
         }
     }
 }

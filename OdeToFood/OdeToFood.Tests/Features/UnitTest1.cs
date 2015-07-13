@@ -61,10 +61,6 @@ namespace OdeToFood.Tests.Features
         }
         public IEnumerable<Review> FakeRatings(params int[] ratings)
         {
-            new List<Review>(new List<Review>{
-                new Review(){ Rating = 4 },
-                new Review(){ Rating = 6 }
-            });
             var result = ratings.Select(r => new Review { Rating = r });
             return result;
         }
