@@ -11,7 +11,13 @@ namespace OdeToFood.Tests.Features
     {
         public int ComputeAverageRating(IEnumerable<Review> reviews)
         {
-            return 5;
+            int rating = 0;
+            foreach (var review in reviews)
+            {
+                rating += review.Rating;
+            }
+            rating = rating / reviews.Count();
+            return rating;
         }
     }
 }
