@@ -22,7 +22,18 @@ namespace OdeToFood.Tests.Features
 
         public int WeightedComputeRating()
         {
-            return 8;
+            int length = _reviews.Count();
+            int RatingSum = 0;
+
+            for (int i = 0; i < length; i++)
+            {
+                if (i < length / 2)
+                    RatingSum += _reviews.ElementAt(i).Rating * 2;
+                else
+                    RatingSum += _reviews.ElementAt(i).Rating;
+
+            }
+            return RatingSum / (length + length / 2);
         }
     }
 }
