@@ -10,32 +10,15 @@ namespace OdeToFood.Tests.Features
     public class RatingCalculator
     {
         IEnumerable<Review> _reviews;
-        public RatingCalculator(IEnumerable<Review> reviews)
+        IAlgorithm _alg;
+        public RatingCalculator(IAlgorithm alg, IEnumerable<Review> reviews)
         {
             _reviews = reviews;
+            _alg = alg;
         }
-        public int ComputeAverageRating(int numberOfReviews)
+        public int ComputeRating(int numberOfReviews)
         {
-            var SelectedReviews = _reviews.Take(numberOfReviews);
-            int rating = (int)SelectedReviews.Average(r => r.Rating);
-            return rating;
-        }
-
-        public int WeightedComputeRating(int numberOfReviews)
-        {
-            var SelectedReviews = _reviews.Take(numberOfReviews);
-            int length = SelectedReviews.Count();
-            int RatingSum = 0;
-
-            for (int i = 0; i < length; i++)
-            {
-                if (i < length / 2)
-                    RatingSum += SelectedReviews.ElementAt(i).Rating * 2;
-                else
-                    RatingSum += SelectedReviews.ElementAt(i).Rating;
-
-            }
-            return RatingSum / (length + length / 2);
+            return _alg.computeRating(_reviews.Take(numberOfReviews));
         }
     }
 }

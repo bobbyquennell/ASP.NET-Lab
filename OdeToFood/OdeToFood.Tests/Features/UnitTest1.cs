@@ -23,27 +23,29 @@ namespace OdeToFood.Tests.Features
     public class UnitTest1
     {
         [Test]
-        public void Compute_Results_With_Two_Ratings()
+        public void Simple_Compute_With_Two_Ratings()
         {
             //arrange 
 
             IEnumerable<Review> reviews = FakeRatings(new int[]{4, 6});
-            var sut = new RatingCalculator(reviews);
+            SimpleAlgorithm alg = new SimpleAlgorithm();
+            var sut = new RatingCalculator(alg,reviews);
 
             //act
-            var result = sut.ComputeAverageRating(10);
+            var result = sut.ComputeRating(10);
             //assert
             Assert.That(result, Is.EqualTo(5));
         }
         [Test]
-        public void Should_Return_8_When_Input_4_ratings()
+        public void Simple_Compute_With_4_ratings()
         {
             //arrange 
             
             IEnumerable<Review> reviews = FakeRatings(new int[]{10, 6, 7, 9});
-            var sut = new RatingCalculator(reviews);
+            SimpleAlgorithm alg = new SimpleAlgorithm();
+            var sut = new RatingCalculator(alg, reviews);
             //act
-            var result = sut.ComputeAverageRating(10);
+            var result = sut.ComputeRating(10);
             //assert
             Assert.That(result, Is.EqualTo(8));
         }
@@ -53,9 +55,10 @@ namespace OdeToFood.Tests.Features
             //arrange 
 
             IEnumerable<Review> reviews = FakeRatings(new int[] { 10, 4});
-            var sut = new RatingCalculator(reviews);
+            WeightedAlgorithm alg = new WeightedAlgorithm();
+            var sut = new RatingCalculator(alg, reviews);
             //act
-            var result = sut.WeightedComputeRating(10);
+            var result = sut.ComputeRating(10);
             //assert
             Assert.That(result, Is.EqualTo(8));
         }
@@ -65,9 +68,11 @@ namespace OdeToFood.Tests.Features
             //arrange 
 
             IEnumerable<Review> reviews = FakeRatings(new int[] { 10, 4,3,5 });
-            var sut = new RatingCalculator(reviews);
+            WeightedAlgorithm alg = new WeightedAlgorithm();
+
+            var sut = new RatingCalculator(alg, reviews);
             //act
-            var result = sut.WeightedComputeRating(10);
+            var result = sut.ComputeRating(10);
             //assert
             Assert.That(result, Is.EqualTo(6));
         }
@@ -77,9 +82,10 @@ namespace OdeToFood.Tests.Features
             //arrange 
 
             IEnumerable<Review> reviews = FakeRatings(new int[] { 10, 4, 3, 5,3,3,3,3 });
-            var sut = new RatingCalculator(reviews);
+            WeightedAlgorithm alg = new WeightedAlgorithm();
+            var sut = new RatingCalculator(alg, reviews);
             //act
-            var result = sut.WeightedComputeRating(4);
+            var result = sut.ComputeRating(4);
             //assert
             Assert.That(result, Is.EqualTo(6));
         }
@@ -89,9 +95,10 @@ namespace OdeToFood.Tests.Features
             //arrange 
 
             IEnumerable<Review> reviews = FakeRatings(new int[] { 3,3,3,3, 10, 4, 3, 5 });
-            var sut = new RatingCalculator(reviews);
+            SimpleAlgorithm alg = new SimpleAlgorithm();
+            var sut = new RatingCalculator(alg, reviews);
             //act
-            var result = sut.ComputeAverageRating(4);
+            var result = sut.ComputeRating(4);
             //assert
             Assert.That(result, Is.EqualTo(3));
         }
