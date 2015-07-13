@@ -31,7 +31,7 @@ namespace OdeToFood.Tests.Features
             var sut = new RatingCalculator(reviews);
 
             //act
-            var result = sut.ComputeAverageRating();
+            var result = sut.ComputeAverageRating(10);
             //assert
             Assert.That(result, Is.EqualTo(5));
         }
@@ -43,7 +43,7 @@ namespace OdeToFood.Tests.Features
             IEnumerable<Review> reviews = FakeRatings(new int[]{10, 6, 7, 9});
             var sut = new RatingCalculator(reviews);
             //act
-            var result = sut.ComputeAverageRating();
+            var result = sut.ComputeAverageRating(10);
             //assert
             Assert.That(result, Is.EqualTo(8));
         }
@@ -82,6 +82,18 @@ namespace OdeToFood.Tests.Features
             var result = sut.WeightedComputeRating(4);
             //assert
             Assert.That(result, Is.EqualTo(6));
+        }
+        [Test]
+        public void Should_Simple_Rating_the_First_4_ratings()
+        {
+            //arrange 
+
+            IEnumerable<Review> reviews = FakeRatings(new int[] { 3,3,3,3, 10, 4, 3, 5 });
+            var sut = new RatingCalculator(reviews);
+            //act
+            var result = sut.ComputeAverageRating(4);
+            //assert
+            Assert.That(result, Is.EqualTo(3));
         }
         public IEnumerable<Review> FakeRatings(params int[] ratings)
         {
