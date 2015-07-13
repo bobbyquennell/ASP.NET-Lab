@@ -35,7 +35,7 @@ namespace OdeToFood.Web.Controllers
                     Country = r.Country,
                     RestaurantName = r.Name,
                     ReviewNumber = r.Reviews.Count
-                }).ToPagedList(page, 15);
+                }).ToPagedList(page, 5);
             if (Request.IsAjaxRequest())
             {
                 return PartialView("PartialRestaurantList", model);
