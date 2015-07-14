@@ -12,23 +12,71 @@ namespace Codility_3_3
         {
             int N = S.Length;
             int M = P.Length;
-            int[] DNA = new int[N];
+            int[] ACountArray = new int[N];
+            int[] CCountArray = new int[N];
+            int[] GCountArray = new int[N];
+            int[] TCountArray = new int[N];
             int[] QueryResult = new int[M];
+
             for (int i = 0; i < N; i++)
             {
                 switch (S[i])
                 {
                     case 'A':
-                        DNA[i] = 1;
+                        if (i == 0)
+                        {
+                            ACountArray[i] =  1;
+                        }
+                        else
+                        {
+                            ACountArray[i] = ACountArray[i - 1] + 1;
+                            CCountArray[i] = CCountArray[i - 1];
+                            GCountArray[i] = GCountArray[i - 1];
+                            TCountArray[i] = TCountArray[i - 1];
+                        }
+
                         break;
                     case 'C':
-                        DNA[i] = 2;
+                        if (i == 0)
+                        {
+                            CCountArray[i] = 1;
+                        }
+                        else
+                        {
+                            ACountArray[i] = ACountArray[i - 1];
+                            CCountArray[i] = CCountArray[i - 1] + 1;
+                            GCountArray[i] = GCountArray[i - 1];
+                            TCountArray[i] = TCountArray[i - 1];
+                        }
+                        
                         break;
                     case'G':
-                        DNA[i] = 3;
+                        if (i == 0)
+                        {
+                            GCountArray[i] = 1;
+                        }
+                        else
+                        {
+                            ACountArray[i] = ACountArray[i - 1];
+                            CCountArray[i] = CCountArray[i - 1];
+                            GCountArray[i] = GCountArray[i - 1] + 1;
+                            TCountArray[i] = TCountArray[i - 1];
+                        }
+
                         break;
-                    case'T':
-                        DNA[i] = 4;
+                    case 'T':
+                        if (i == 0)
+                        {
+                            TCountArray[i] = 1;
+                        }
+                        else
+                        {
+                            ACountArray[i] = ACountArray[i - 1];
+                            CCountArray[i] = CCountArray[i - 1];
+                            GCountArray[i] = GCountArray[i - 1];
+                            TCountArray[i] = TCountArray[i - 1] + 1;
+                        }
+
                         break;
                     default:
                         break;
@@ -36,25 +84,57 @@ namespace Codility_3_3
             }
             for (int i = 0; i < M; i++)
             {
-                QueryResult[i]= getMinNucleotide(DNA, P[i], Q[i]);
+                if (P[i] == Q[i])
+                    QueryResult[i] = GetImpactFactor(S[P[i]]);
+                else
+                 QueryResult[i] = getMinNucleotide(ACountArray,CCountArray,GCountArray,TCountArray, P[i], Q[i]);
             }
             return QueryResult;
         }
 
-        private int getMinNucleotide(int[] DNA, int p1, int p2)
+        private int GetImpactFactor(char p)
+        {
+            int ImpactFactor = 0;
+            switch (p)
+            {
+                case 'A':
+                    ImpactFactor = 1;
+                    break;
+                case 'C':
+                    ImpactFactor = 2;
+                    break;
+                case 'G':
+                    ImpactFactor = 3;
+                    break;
+                case 'T':
+                    ImpactFactor = 4;
+                    break;
+                default:
+                    break;
+            }
+            return ImpactFactor;
+        }
+
+        private int getMinNucleotide(int[] ACountArray, int[] CCountArray, int[] GCountArray, int[] TCountArray, int p1, int p2)
         {
             int minNucleotide = 4;
-            for (int i = p1; i <= p2; i++)
+            if ((p1 ==0&&ACountArray[p2]>0)||(p1>0 && (ACountArray[p2] - ACountArray[p1-1]) >0))
             {
-                if (DNA[i]<minNucleotide)
-                {
-                    minNucleotide = DNA[i];
-                    if (minNucleotide == 1)
-                    {
-                        break;
-                    }
-                }
+                minNucleotide = 1;
             }
+            else if ((p1 == 0 && CCountArray[p2] > 0) || (p1 > 0 && (CCountArray[p2] - CCountArray[p1 - 1]) > 0))
+            {
+                minNucleotide = 2;
+            }
+            else if ((p1 == 0 && GCountArray[p2] > 0) || (p1 > 0 && (GCountArray[p2] - GCountArray[p1 - 1]) > 0))
+            {
+                minNucleotide = 3;
+            }
+            else if ((p1 == 0 && GCountArray[p2] > 0) || (p1 > 0 && (GCountArray[p2] - GCountArray[p1 - 1]) > 0))
+            {
+                minNucleotide = 4;
+            }
+
             return minNucleotide;
         }
     }
