@@ -14,7 +14,15 @@ namespace OdeToFood.Web.Controllers
 {
     public class HomeController : Controller
     {
-        IRepository _repo = new EfRepository();
+        IRepository _repo;
+        public HomeController(IRepository repo)
+        {
+            _repo = repo;
+        }
+        public HomeController()
+        {
+            _repo = new EfRepository();
+        }
         public ActionResult AutoComplete(string term)
         {
             var model = _repo.GetAll<Restaurant>().OrderBy(r => r.Name).Where(r => r.Name.Contains(term))
