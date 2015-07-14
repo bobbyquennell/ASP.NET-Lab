@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\IAlgorithm.cs" />
+    <Compile Include="Features\RatingCalculator.cs" />
+    <Compile Include="Features\SimpleAlgorithm.cs" />
+    <Compile Include="Features\WeightedAlgorithm.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Entities\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

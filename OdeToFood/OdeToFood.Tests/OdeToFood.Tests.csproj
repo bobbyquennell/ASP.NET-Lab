@@ -101,11 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\IAlgorithm.cs" />
-    <Compile Include="Features\RatingCalculator.cs" />
-    <Compile Include="Features\SimpleAlgorithm.cs" />
-    <Compile Include="Features\UnitTest1.cs" />
-    <Compile Include="Features\WeightedAlgorithm.cs" />
+    <Compile Include="Features\RatingCalculatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

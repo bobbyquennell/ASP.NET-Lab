@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OdeToFood.Tests.Features
+namespace OdeToFood.Domain.Features
 {
     public class RatingCalculator
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OdeToFood.Tests.Features
+namespace OdeToFood.Domain.Features
 {
     public class SimpleAlgorithm:IAlgorithm
     {

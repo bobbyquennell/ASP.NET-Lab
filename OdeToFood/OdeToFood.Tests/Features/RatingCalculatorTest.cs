@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OdeToFood.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using OdeToFood.Domain.Features;
 
 /*
 * A restaurant's overall rating can be calculated using various methods
@@ -20,7 +21,7 @@ using System.Linq;
 namespace OdeToFood.Tests.Features
 {
     [TestFixture]
-    public class UnitTest1
+    public class RatingCalculatorTest
     {
         [Test]
         public void Simple_Compute_With_Two_Ratings()
