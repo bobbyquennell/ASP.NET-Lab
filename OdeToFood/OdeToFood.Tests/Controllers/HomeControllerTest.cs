@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using NUnit.Framework;
 using OdeToFood.Web;
 using OdeToFood.Web.Controllers;
+using OdeToFood.Domain.Entities;
+
 
 namespace OdeToFood.Tests.Controllers
 {
@@ -16,7 +18,9 @@ namespace OdeToFood.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            FakeRepo repo = new FakeRepo();
+            repo.AddSets<Restaurant>(FakeData.FakeRest);
+            HomeController controller = new HomeController(repo);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
