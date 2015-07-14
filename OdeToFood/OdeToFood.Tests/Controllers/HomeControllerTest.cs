@@ -21,7 +21,7 @@ namespace OdeToFood.Tests.Controllers
             FakeRepo repo = new FakeRepo();
             repo.AddSets<Restaurant>(FakeData.FakeRest);
             HomeController controller = new HomeController(repo);
-
+            controller.ControllerContext = new FakeControllerContext();
             // Act
             ViewResult result = controller.Index() as ViewResult;
 

@@ -104,7 +104,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeControllerContext.cs" />
     <Compile Include="FakeData.cs" />
+    <Compile Include="FakeHttpContext.cs" />
+    <Compile Include="FakeHttpRequest.cs" />
     <Compile Include="FakeRepo.cs" />
     <Compile Include="Features\RatingCalculatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
