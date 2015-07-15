@@ -38,19 +38,20 @@ namespace OdeToFood.Tests.Controllers
         public void Create_Will_Not_Save_New_Restaurant_When_InValid()
         {
             //arrange
-            FakeRepo repo = new FakeRepo();
-            var sut = new RestaurantController(repo);
-            RestaurantEditViewModel model = new RestaurantEditViewModel()
-            {
-                City = "Xi'an",
-                Country = "China",
-                Name = "ZhuYuanCun"
-            };
+            //FakeRepo repo = new FakeRepo();
+            List<Restaurant> Restaurants = new List<Restaurant>();
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.Add<Restaurant>(It.IsAny<Restaurant>())).Callback(new Action<Restaurant>(
+                r => { Restaurants.Add(r); }
+                ));
+            var sut = new RestaurantController(mockRepo.Object);
+            RestaurantEditViewModel model = new RestaurantEditViewModel();
+
             sut.ModelState.AddModelError("", " ");
             //act
             ActionResult result = sut.Create(model);
             //assert
-            Assert.That(repo.AddList.Count, Is.EqualTo(0));
+            Assert.That(Restaurants.Count, Is.EqualTo(0));
         }
     }
 }
