@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SortAlgorithm
 {
-    public class SelectSortAlg
+    public class SelectSortAlg: ISortAlgorithm
     {
         public int[] sort(int[] A)
         {
@@ -17,7 +17,7 @@ namespace SortAlgorithm
             {
                 minIndex = i;
 
-                for (int j = i+1; j < N; j++)
+                for (int j = i + 1; j < N; j++)
                 {
                     if (A[minIndex] > A[j])
                     {
