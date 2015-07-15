@@ -22,7 +22,7 @@ namespace OdeToFood.Tests
 
         public void Add<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+             AddList.Add(entity);
         }
 
         public void Update<T>(T entity) where T : class
@@ -41,6 +41,7 @@ namespace OdeToFood.Tests
         }
 
         Dictionary<Type, object> Sets = new Dictionary<Type, object>();
+        public List<object> AddList = new List<object>();
         public void AddSets<T>(IQueryable<T> objects){
             Sets.Add(typeof(T), objects);
        }

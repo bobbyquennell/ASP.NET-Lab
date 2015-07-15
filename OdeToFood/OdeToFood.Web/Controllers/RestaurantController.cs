@@ -11,7 +11,15 @@ namespace OdeToFood.Web.Controllers
 {
     public class RestaurantController : Controller
     {
-        private IRepository _repo = new EfRepository();
+        private IRepository _repo;
+        public RestaurantController()
+        {
+            _repo = new EfRepository();
+        }
+        public RestaurantController(IRepository repo)
+        {
+            _repo = repo;
+        }
         // GET: Restaurant
         public ActionResult Index()
         {
