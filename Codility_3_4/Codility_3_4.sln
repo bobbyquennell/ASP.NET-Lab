@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codility_3_4", "Codility_3_4\Codility_3_4.csproj", "{5CD5688E-DA7F-4B60-A577-FC68844F9D70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{FED36D1F-4AFA-45A9-925C-0D52EF3EB304}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CD5688E-DA7F-4B60-A577-FC68844F9D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD5688E-DA7F-4B60-A577-FC68844F9D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD5688E-DA7F-4B60-A577-FC68844F9D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD5688E-DA7F-4B60-A577-FC68844F9D70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED36D1F-4AFA-45A9-925C-0D52EF3EB304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED36D1F-4AFA-45A9-925C-0D52EF3EB304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED36D1F-4AFA-45A9-925C-0D52EF3EB304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED36D1F-4AFA-45A9-925C-0D52EF3EB304}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
