@@ -7,7 +7,8 @@ using NUnit.Framework;
 using OdeToFood.Web;
 using OdeToFood.Web.Controllers;
 using OdeToFood.Domain.Entities;
-
+using Moq;
+using OdeToFood.Domain.Repositories;
 
 namespace OdeToFood.Tests.Controllers
 {
@@ -18,9 +19,12 @@ namespace OdeToFood.Tests.Controllers
         public void Index()
         {
             // Arrange
-            FakeRepo repo = new FakeRepo();
-            repo.AddSets<Restaurant>(FakeData.FakeRest);
-            HomeController controller = new HomeController(repo);
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.GetAll<Restaurant>()).Returns( FakeData.FakeRest);
+            //http://abelperezmartinez.blogspot.com.au/2014/01/mocking-repository-using-moq.html
+            //FakeRepo repo = new FakeRepo();
+            //repo.AddSets<Restaurant>(FakeData.FakeRest);
+            HomeController controller = new HomeController(mockRepo.Object);
             controller.ControllerContext = new FakeControllerContext();
             // Act
             ViewResult result = controller.Index() as ViewResult;
