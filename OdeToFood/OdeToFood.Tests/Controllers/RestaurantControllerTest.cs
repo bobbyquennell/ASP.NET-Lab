@@ -30,5 +30,23 @@ namespace OdeToFood.Tests.Controllers
             //assert
             Assert.That(repo.AddList.Count, Is.EqualTo(1));
         }
+        [Test]
+        public void Create_Will_Not_Save_New_Restaurant_When_InValid()
+        {
+            //arrange
+            FakeRepo repo = new FakeRepo();
+            var sut = new RestaurantController(repo);
+            RestaurantEditViewModel model = new RestaurantEditViewModel()
+            {
+                City = "Xi'an",
+                Country = "China",
+                Name = "ZhuYuanCun"
+            };
+            sut.ModelState.AddModelError("", " ");
+            //act
+            ActionResult result = sut.Create(model);
+            //assert
+            Assert.That(repo.AddList.Count, Is.EqualTo(0));
+        }
     }
 }
