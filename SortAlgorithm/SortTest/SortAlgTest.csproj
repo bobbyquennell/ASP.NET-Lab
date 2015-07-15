@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountingSortTest.cs" />
+    <Compile Include="MergSortTest.cs" />
     <Compile Include="SelectionSortTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

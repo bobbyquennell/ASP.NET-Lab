@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="CountingSortAlg.cs" />
     <Compile Include="ISortAlgorithm.cs" />
+    <Compile Include="MergeSortAlg.cs" />
     <Compile Include="SelectSortAlg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sorter.cs" />
